@@ -1,0 +1,514 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.youtube_player"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="33" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->D:\kkk\upwork_mastery\android\app\src\debug\AndroidManifest.xml:5:5-77
+11-->D:\kkk\upwork_mastery\android\app\src\debug\AndroidManifest.xml:5:22-75
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:4:5-67
+12-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:4:22-64
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- See https://developer.android.com/training/package-visibility/declaring for more details. -->
+13-->[com.facebook.flipper:flipper:0.125.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\03f04a3f11198ce3b7c6cedb9b41266b\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:16:5-76
+13-->[com.facebook.flipper:flipper:0.125.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\03f04a3f11198ce3b7c6cedb9b41266b\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:16:22-73
+14    <queries>
+14-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:10:5-18:15
+15
+16        <!-- Added to check the default browser that will host the AuthFlow. -->
+17        <intent>
+17-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:13:9-17:18
+18            <action android:name="android.intent.action.VIEW" />
+18-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:14:13-65
+18-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:14:21-62
+19
+20            <data android:scheme="http" />
+20-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:13-43
+20-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:19-40
+21        </intent>
+22        <!-- Added to check if Chrome is installed for browser-based payment authentication (e.g. 3DS1). -->
+23        <package android:name="com.android.chrome" /> <!-- Needs to be explicitly declared on Android R+ -->
+23-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:11:9-54
+23-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:11:18-51
+24        <package android:name="com.google.android.apps.maps" />
+24-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:33:9-64
+24-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:33:18-61
+25    </queries> <!-- Include required permissions for Google Maps API to run. -->
+26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+26-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:23:5-79
+26-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:23:22-76
+27
+28    <uses-feature
+28-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:26:5-28:35
+29        android:glEsVersion="0x00020000"
+29-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:27:9-41
+30        android:required="true" />
+30-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:28:9-32
+31
+32    <permission
+32-->[androidx.core:core:1.9.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0442dcddf7c8962f91c947e4fa892631\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+33        android:name="com.youtube_player.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+33-->[androidx.core:core:1.9.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0442dcddf7c8962f91c947e4fa892631\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+34        android:protectionLevel="signature" />
+34-->[androidx.core:core:1.9.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0442dcddf7c8962f91c947e4fa892631\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+35
+36    <uses-permission android:name="com.youtube_player.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+36-->[androidx.core:core:1.9.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0442dcddf7c8962f91c947e4fa892631\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+36-->[androidx.core:core:1.9.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0442dcddf7c8962f91c947e4fa892631\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+37
+38    <application
+38-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:6:5-25:19
+39        android:name="com.youtube_player.MainApplication"
+39-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:7:7-38
+40        android:allowBackup="false"
+40-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:11:7-34
+41        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+41-->[androidx.core:core:1.9.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0442dcddf7c8962f91c947e4fa892631\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+42        android:debuggable="true"
+43        android:icon="@mipmap/ic_launcher"
+43-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:9:7-41
+44        android:label="@string/app_name"
+44-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:8:7-39
+45        android:roundIcon="@mipmap/ic_launcher_round"
+45-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:10:7-52
+46        android:theme="@style/AppTheme"
+46-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:12:7-38
+47        android:usesCleartextTraffic="true" >
+47-->D:\kkk\upwork_mastery\android\app\src\debug\AndroidManifest.xml:8:9-44
+48        <activity
+48-->D:\kkk\upwork_mastery\android\app\src\debug\AndroidManifest.xml:11:9-111
+49            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+49-->D:\kkk\upwork_mastery\android\app\src\debug\AndroidManifest.xml:11:19-83
+50            android:exported="false" />
+50-->D:\kkk\upwork_mastery\android\app\src\debug\AndroidManifest.xml:11:84-108
+51        <activity
+51-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:13:7-24:18
+52            android:name="com.youtube_player.MainActivity"
+52-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:14:9-37
+53            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+53-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:16:9-118
+54            android:exported="true"
+54-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:19:9-32
+55            android:label="@string/app_name"
+55-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:15:9-41
+56            android:launchMode="singleTask"
+56-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:17:9-40
+57            android:windowSoftInputMode="adjustResize" >
+57-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:18:9-51
+58            <intent-filter>
+58-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:20:9-23:25
+59                <action android:name="android.intent.action.MAIN" />
+59-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:21:13-65
+59-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:21:21-62
+60
+61                <category android:name="android.intent.category.LAUNCHER" />
+61-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:22:13-73
+61-->D:\kkk\upwork_mastery\android\app\src\main\AndroidManifest.xml:22:23-70
+62            </intent-filter>
+63        </activity>
+64
+65        <provider
+65-->[:react-native-webview] D:\kkk\upwork_mastery\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+66            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+66-->[:react-native-webview] D:\kkk\upwork_mastery\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-83
+67            android:authorities="com.youtube_player.fileprovider"
+67-->[:react-native-webview] D:\kkk\upwork_mastery\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-64
+68            android:exported="false"
+68-->[:react-native-webview] D:\kkk\upwork_mastery\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+69            android:grantUriPermissions="true" >
+69-->[:react-native-webview] D:\kkk\upwork_mastery\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+70            <meta-data
+70-->[:react-native-webview] D:\kkk\upwork_mastery\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:63
+71                android:name="android.support.FILE_PROVIDER_PATHS"
+71-->[:react-native-webview] D:\kkk\upwork_mastery\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+72                android:resource="@xml/file_provider_paths" />
+72-->[:react-native-webview] D:\kkk\upwork_mastery\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-60
+73        </provider>
+74
+75        <activity
+75-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:8:9-12:58
+76            android:name="com.stripe.android.paymentsheet.PaymentSheetActivity"
+76-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:9:13-80
+77            android:exported="false"
+77-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:10:13-37
+78            android:theme="@style/StripePaymentSheetDefaultTheme"
+78-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:11:13-66
+79            android:windowSoftInputMode="adjustResize" />
+79-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:12:13-55
+80        <activity
+80-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:13:9-17:58
+81            android:name="com.stripe.android.paymentsheet.PaymentOptionsActivity"
+81-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:14:13-82
+82            android:exported="false"
+82-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:15:13-37
+83            android:theme="@style/StripePaymentSheetDefaultTheme"
+83-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:16:13-66
+84            android:windowSoftInputMode="adjustResize" />
+84-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:17:13-55
+85        <activity
+85-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:18:9-21:69
+86            android:name="com.stripe.android.paymentsheet.addresselement.AddressElementActivity"
+86-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:19:13-97
+87            android:exported="false"
+87-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:20:13-37
+88            android:theme="@style/StripePaymentSheetDefaultTheme" />
+88-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:21:13-66
+89        <activity
+89-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:22:9-25:69
+90            android:name="com.stripe.android.paymentsheet.paymentdatacollection.polling.PollingActivity"
+90-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:23:13-105
+91            android:exported="false"
+91-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:24:13-37
+92            android:theme="@style/StripePaymentSheetDefaultTheme" />
+92-->[com.stripe:paymentsheet:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\9a64feb6866ff5518105b9841cddb83d\transformed\jetified-paymentsheet-20.21.1\AndroidManifest.xml:25:13-66
+93        <activity
+93-->[com.stripe:link:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\a3e5ecbf7b372ef855db12c436793780\transformed\jetified-link-20.21.1\AndroidManifest.xml:8:9-13:58
+94            android:name="com.stripe.android.link.LinkActivity"
+94-->[com.stripe:link:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\a3e5ecbf7b372ef855db12c436793780\transformed\jetified-link-20.21.1\AndroidManifest.xml:9:13-64
+95            android:exported="false"
+95-->[com.stripe:link:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\a3e5ecbf7b372ef855db12c436793780\transformed\jetified-link-20.21.1\AndroidManifest.xml:10:13-37
+96            android:label="@string/link"
+96-->[com.stripe:link:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\a3e5ecbf7b372ef855db12c436793780\transformed\jetified-link-20.21.1\AndroidManifest.xml:11:13-41
+97            android:theme="@style/LinkBaseTheme"
+97-->[com.stripe:link:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\a3e5ecbf7b372ef855db12c436793780\transformed\jetified-link-20.21.1\AndroidManifest.xml:12:13-49
+98            android:windowSoftInputMode="adjustResize" />
+98-->[com.stripe:link:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\a3e5ecbf7b372ef855db12c436793780\transformed\jetified-link-20.21.1\AndroidManifest.xml:13:13-55
+99        <activity
+99-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:21:9-64:20
+100            android:name="com.stripe.android.financialconnections.FinancialConnectionsSheetRedirectActivity"
+100-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:22:13-109
+101            android:exported="true" >
+101-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:23:13-36
+102            <intent-filter>
+102-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:24:13-63:29
+103                <action android:name="android.intent.action.VIEW" />
+103-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:14:13-65
+103-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:14:21-62
+104
+105                <category android:name="android.intent.category.DEFAULT" />
+105-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:27:17-76
+105-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:27:27-73
+106                <category android:name="android.intent.category.BROWSABLE" />
+106-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:28:17-78
+106-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:28:27-75
+107
+108                <!-- Returning from app2app: return_url is triggered to reopen web AuthFlow and poll accounts. -->
+109                <data
+109-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:13-43
+110                    android:host="link-accounts"
+111                    android:pathPrefix="/com.youtube_player/authentication_return"
+112                    android:scheme="stripe-auth" />
+112-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:19-40
+113
+114                <!-- Returning from app2app: return_url is triggered to reopen native AuthFlow and poll accounts. -->
+115                <data
+115-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:13-43
+116                    android:host="link-native-accounts"
+117                    android:pathPrefix="/com.youtube_player/authentication_return"
+118                    android:scheme="stripe-auth" />
+118-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:19-40
+119
+120                <!-- End of web AuthFlow success and cancel URIs that begin with "stripe-auth://link-accounts/{app-id}/...” -->
+121                <data
+121-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:13-43
+122                    android:host="link-accounts"
+123                    android:path="/com.youtube_player/success"
+124                    android:scheme="stripe-auth" />
+124-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:19-40
+125                <data
+125-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:13-43
+126                    android:host="link-accounts"
+127                    android:path="/com.youtube_player/cancel"
+128                    android:scheme="stripe-auth" />
+128-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:19-40
+129
+130                <!-- Opening app2app: Web flow triggers stripe-auth://native-redirect/{app-id}/http://web-that-redirects-to-native -->
+131                <data
+131-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:13-43
+132                    android:host="native-redirect"
+133                    android:pathPrefix="/com.youtube_player"
+134                    android:scheme="stripe-auth" />
+134-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:19-40
+135
+136                <!-- Accepts success/cancel/fail URIs that begin with "stripe://auth-redirect” -->
+137                <data
+137-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:13-43
+138                    android:host="auth-redirect"
+139                    android:pathPrefix="/com.youtube_player"
+140                    android:scheme="stripe" />
+140-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:19-40
+141            </intent-filter>
+142        </activity>
+143        <activity
+143-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:65:9-68:57
+144            android:name="com.stripe.android.financialconnections.FinancialConnectionsSheetActivity"
+144-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:66:13-101
+145            android:exported="false"
+145-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:67:13-37
+146            android:theme="@style/StripeDefaultTheme" />
+146-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:68:13-54
+147        <activity
+147-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:69:9-73:58
+148            android:name="com.stripe.android.financialconnections.ui.FinancialConnectionsSheetNativeActivity"
+148-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:70:13-110
+149            android:exported="false"
+149-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:71:13-37
+150            android:theme="@style/StripeDefaultTheme"
+150-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:72:13-54
+151            android:windowSoftInputMode="adjustResize" />
+151-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:73:13-55
+152
+153        <provider
+153-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:75:9-79:43
+154            android:name="com.stripe.android.financialconnections.appinitializer.FinancialConnectionsInitializer"
+154-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:76:13-114
+155            android:authorities="com.youtube_player.financialconnections-init"
+155-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:77:13-77
+156            android:exported="false"
+156-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:78:13-37
+157            android:multiprocess="true" />
+157-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:79:13-40
+158
+159        <activity
+159-->[com.stripe:payments-ui-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\3a6db5075fa3efc453defbffd7e8a078\transformed\jetified-payments-ui-core-20.21.1\AndroidManifest.xml:8:9-11:69
+160            android:name="com.stripe.android.ui.core.cardscan.CardScanActivity"
+160-->[com.stripe:payments-ui-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\3a6db5075fa3efc453defbffd7e8a078\transformed\jetified-payments-ui-core-20.21.1\AndroidManifest.xml:9:13-80
+161            android:exported="false"
+161-->[com.stripe:payments-ui-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\3a6db5075fa3efc453defbffd7e8a078\transformed\jetified-payments-ui-core-20.21.1\AndroidManifest.xml:10:13-37
+162            android:theme="@style/StripePaymentSheetDefaultTheme" />
+162-->[com.stripe:payments-ui-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\3a6db5075fa3efc453defbffd7e8a078\transformed\jetified-payments-ui-core-20.21.1\AndroidManifest.xml:11:13-66
+163        <activity
+163-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:15:9-18:57
+164            android:name="com.stripe.android.view.AddPaymentMethodActivity"
+164-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:16:13-76
+165            android:exported="false"
+165-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:17:13-37
+166            android:theme="@style/StripeDefaultTheme" />
+166-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:18:13-54
+167        <activity
+167-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:19:9-22:57
+168            android:name="com.stripe.android.view.PaymentMethodsActivity"
+168-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:20:13-74
+169            android:exported="false"
+169-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:21:13-37
+170            android:theme="@style/StripeDefaultTheme" />
+170-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:22:13-54
+171        <activity
+171-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:23:9-26:57
+172            android:name="com.stripe.android.view.PaymentFlowActivity"
+172-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:24:13-71
+173            android:exported="false"
+173-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:25:13-37
+174            android:theme="@style/StripeDefaultTheme" />
+174-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:26:13-54
+175        <activity
+175-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:27:9-31:58
+176            android:name="com.stripe.android.view.PaymentAuthWebViewActivity"
+176-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:28:13-78
+177            android:exported="false"
+177-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:29:13-37
+178            android:theme="@style/StripeDefaultTheme"
+178-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:30:13-54
+179            android:windowSoftInputMode="adjustResize" />
+179-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:31:13-55
+180        <activity
+180-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:32:9-35:61
+181            android:name="com.stripe.android.view.PaymentRelayActivity"
+181-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:33:13-72
+182            android:exported="false"
+182-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:34:13-37
+183            android:theme="@style/StripeTransparentTheme" />
+183-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:35:13-58
+184        <!--
+185        Set android:launchMode="singleTop" so that the StripeBrowserLauncherActivity instance that
+186        launched the browser Activity will also handle the return URL deep link.
+187        -->
+188        <activity
+188-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:41:9-45:61
+189            android:name="com.stripe.android.payments.StripeBrowserLauncherActivity"
+189-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:42:13-85
+190            android:exported="false"
+190-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:43:13-37
+191            android:launchMode="singleTask"
+191-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:44:13-44
+192            android:theme="@style/StripeTransparentTheme" />
+192-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:45:13-58
+193        <activity
+193-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:46:9-63:20
+194            android:name="com.stripe.android.payments.StripeBrowserProxyReturnActivity"
+194-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:47:13-88
+195            android:exported="true"
+195-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:48:13-36
+196            android:launchMode="singleTask"
+196-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:49:13-44
+197            android:theme="@style/StripeTransparentTheme" >
+197-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:50:13-58
+198            <intent-filter>
+198-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:51:13-62:29
+199                <action android:name="android.intent.action.VIEW" />
+199-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:14:13-65
+199-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:14:21-62
+200
+201                <category android:name="android.intent.category.DEFAULT" />
+201-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:27:17-76
+201-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:27:27-73
+202                <category android:name="android.intent.category.BROWSABLE" />
+202-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:28:17-78
+202-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:28:27-75
+203
+204                <!-- Must match `DefaultReturnUrl#value`. -->
+205                <data
+205-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:13-43
+206                    android:host="payment_return_url"
+207                    android:path="/com.youtube_player"
+208                    android:scheme="stripesdk" />
+208-->[com.stripe:financial-connections:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\d139884cf37f4dba37f69a854c0ce4a0\transformed\jetified-financial-connections-20.21.1\AndroidManifest.xml:16:19-40
+209            </intent-filter>
+210        </activity>
+211        <activity
+211-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:64:9-67:57
+212            android:name="com.stripe.android.payments.core.authentication.threeds2.Stripe3ds2TransactionActivity"
+212-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:65:13-114
+213            android:exported="false"
+213-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:66:13-37
+214            android:theme="@style/StripeDefaultTheme" />
+214-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:67:13-54
+215        <activity
+215-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:68:9-71:66
+216            android:name="com.stripe.android.googlepaylauncher.StripeGooglePayActivity"
+216-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:69:13-88
+217            android:exported="false"
+217-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:70:13-37
+218            android:theme="@style/StripeGooglePayDefaultTheme" />
+218-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:71:13-63
+219        <activity
+219-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:72:9-75:66
+220            android:name="com.stripe.android.googlepaylauncher.GooglePayLauncherActivity"
+220-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:73:13-90
+221            android:exported="false"
+221-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:74:13-37
+222            android:theme="@style/StripeGooglePayDefaultTheme" />
+222-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:75:13-63
+223        <activity
+223-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:76:9-79:66
+224            android:name="com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncherActivity"
+224-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:77:13-103
+225            android:exported="false"
+225-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:78:13-37
+226            android:theme="@style/StripeGooglePayDefaultTheme" />
+226-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:79:13-63
+227        <activity
+227-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:80:9-83:62
+228            android:name="com.stripe.android.payments.paymentlauncher.PaymentLauncherConfirmationActivity"
+228-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:81:13-107
+229            android:exported="false"
+229-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:82:13-37
+230            android:theme="@style/PayLauncherDefaultTheme" />
+230-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:83:13-59
+231        <activity
+231-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:84:9-87:61
+232            android:name="com.stripe.android.payments.bankaccount.ui.CollectBankAccountActivity"
+232-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:85:13-97
+233            android:exported="false"
+233-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:86:13-37
+234            android:theme="@style/StripeTransparentTheme" />
+234-->[com.stripe:payments-core:20.21.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\ee3a16282276b5af9c032fd0b97b16e6\transformed\jetified-payments-core-20.21.1\AndroidManifest.xml:87:13-58
+235        <activity
+235-->[com.stripe:stripe-3ds2-android:6.1.7] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\f96ab77cff7d04a948939eb3f80cb945\transformed\jetified-stripe-3ds2-android-6.1.7\AndroidManifest.xml:8:9-11:54
+236            android:name="com.stripe.android.stripe3ds2.views.ChallengeActivity"
+236-->[com.stripe:stripe-3ds2-android:6.1.7] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\f96ab77cff7d04a948939eb3f80cb945\transformed\jetified-stripe-3ds2-android-6.1.7\AndroidManifest.xml:9:13-81
+237            android:exported="false"
+237-->[com.stripe:stripe-3ds2-android:6.1.7] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\f96ab77cff7d04a948939eb3f80cb945\transformed\jetified-stripe-3ds2-android-6.1.7\AndroidManifest.xml:10:13-37
+238            android:theme="@style/Stripe3DS2Theme" /> <!-- Needs to be explicitly declared on P+ -->
+238-->[com.stripe:stripe-3ds2-android:6.1.7] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\f96ab77cff7d04a948939eb3f80cb945\transformed\jetified-stripe-3ds2-android-6.1.7\AndroidManifest.xml:11:13-51
+239        <uses-library
+239-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:39:9-41:40
+240            android:name="org.apache.http.legacy"
+240-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:40:13-50
+241            android:required="false" />
+241-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\5b94eed69c74e072e7c17c8facb87462\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:41:13-37
+242
+243        <activity
+243-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\f88b5a2c0b62a187e4b15b1bc1640873\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+244            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+244-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\f88b5a2c0b62a187e4b15b1bc1640873\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+245            android:exported="false"
+245-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\f88b5a2c0b62a187e4b15b1bc1640873\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+246            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+246-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\f88b5a2c0b62a187e4b15b1bc1640873\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+247
+248        <meta-data
+248-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0d39a69999dbc6a118940cc88a77f408\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+249            android:name="com.google.android.gms.version"
+249-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0d39a69999dbc6a118940cc88a77f408\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+250            android:value="@integer/google_play_services_version" />
+250-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0d39a69999dbc6a118940cc88a77f408\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+251
+252        <provider
+252-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\4715a336290b1a0f981db01001cfd130\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+253            android:name="androidx.startup.InitializationProvider"
+253-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\4715a336290b1a0f981db01001cfd130\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+254            android:authorities="com.youtube_player.androidx-startup"
+254-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\4715a336290b1a0f981db01001cfd130\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+255            android:exported="false" >
+255-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\4715a336290b1a0f981db01001cfd130\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+256            <meta-data
+256-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\4715a336290b1a0f981db01001cfd130\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+257                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+257-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\4715a336290b1a0f981db01001cfd130\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+258                android:value="androidx.startup" />
+258-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\4715a336290b1a0f981db01001cfd130\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+259            <meta-data
+259-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\b8ce940bc6cbcdbb40a600f9a8fd3b32\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+260                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+260-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\b8ce940bc6cbcdbb40a600f9a8fd3b32\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+261                android:value="androidx.startup" />
+261-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\b8ce940bc6cbcdbb40a600f9a8fd3b32\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+262            <meta-data
+262-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:30:13-32:52
+263                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+263-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:31:17-85
+264                android:value="androidx.startup" />
+264-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:32:17-49
+265        </provider>
+266
+267        <receiver
+267-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:35:9-47:20
+268            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+268-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:36:13-76
+269            android:directBootAware="false"
+269-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:37:13-44
+270            android:enabled="true"
+270-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:38:13-35
+271            android:exported="true"
+271-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:39:13-36
+272            android:permission="android.permission.DUMP" >
+272-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:40:13-57
+273            <intent-filter>
+273-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:41:13-43:29
+274                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+274-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:42:17-91
+274-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:42:25-88
+275            </intent-filter>
+276            <intent-filter>
+276-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:44:13-46:29
+277                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+277-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:45:17-85
+277-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\0f0cfe22d3deac8aabd8f2b810e398aa\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:45:25-82
+278            </intent-filter>
+279        </receiver>
+280
+281        <meta-data
+281-->[com.google.android.instantapps:instantapps:1.1.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\bb8a5bcfed49ef9fbf926c547ed61036\transformed\jetified-instantapps-1.1.0\AndroidManifest.xml:10:9-12:33
+282            android:name="aia-compat-api-min-version"
+282-->[com.google.android.instantapps:instantapps:1.1.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\bb8a5bcfed49ef9fbf926c547ed61036\transformed\jetified-instantapps-1.1.0\AndroidManifest.xml:11:13-54
+283            android:value="1" />
+283-->[com.google.android.instantapps:instantapps:1.1.0] C:\Users\Kinza Ejaz\.gradle\caches\transforms-3\bb8a5bcfed49ef9fbf926c547ed61036\transformed\jetified-instantapps-1.1.0\AndroidManifest.xml:12:13-30
+284    </application>
+285
+286</manifest>
