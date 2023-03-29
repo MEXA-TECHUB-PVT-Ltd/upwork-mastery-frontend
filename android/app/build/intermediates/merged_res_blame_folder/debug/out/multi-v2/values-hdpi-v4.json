@@ -1,0 +1,38 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.youtube_player.app-mergeDebugResources-84:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Kinza Ejaz\\.gradle\\caches\\transforms-3\\ee3a16282276b5af9c032fd0b97b16e6\\transformed\\jetified-payments-core-20.21.1\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Kinza Ejaz\\.gradle\\caches\\transforms-3\\c679eab958779950674742f79167e34d\\transformed\\appcompat-1.6.1\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "112",
+                        "endLines": "7",
+                        "endColumns": "13",
+                        "endOffsets": "384"
+                    }
+                }
+            ]
+        }
+    ]
+}
