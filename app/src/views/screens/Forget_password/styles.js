@@ -11,8 +11,8 @@ const STYLES = StyleSheet.create({
 
     },
     image: {
-        width: 200,
-        height: 150
+        width: 180,
+        height: 76
     },
 
     myBox: {
@@ -38,16 +38,16 @@ const STYLES = StyleSheet.create({
         marginTop: '70%',       //uper sa margen
         justifyContent: "center",  // for middle writting
         marginHorizontal: '5%',
-        height: 58,
+        height: 52,
         fontSize: 20,
         borderRadius: 50,
         backgroundColor: '#14A800',
         marginBottom: '5%'
     },
     text: {
-        fontSize: 15,
+        fontSize: 14,
         alignSelf: 'center',
-        color:'#242424'
+        color: '#242424'
     },
     navigate_next: {
         //    backgroundColor:'pink',
@@ -73,6 +73,16 @@ const STYLES = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#E6E6E6'
     },
+    txt: {
+        fontSize: 24,
+        alignSelf: 'center',
+        color: '#001E00',
+        marginBottom: '5%'
+    },
+    txtl: {
+        color: '#fff',
+        fontSize: 17
+    }
 })
 
 export default STYLES; 

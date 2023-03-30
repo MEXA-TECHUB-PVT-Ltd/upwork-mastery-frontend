@@ -11,10 +11,14 @@ const STYLES = StyleSheet.create({
         position: 'absolute'
     },
     txtb: {
-        color: 'white', fontSize: 28, fontWeight: '500'
+        color: 'white',
+        fontSize: 28,
+        fontWeight: '500'
     },
     txtg: {
-        color: 'white', fontSize: 12, textAlign: 'center'
+        color: 'white',
+        fontSize: 12,
+        textAlign: 'center'
     },
     bigview: {
         marginTop: '5%',
@@ -24,6 +28,10 @@ const STYLES = StyleSheet.create({
         color: '#242424',
         fontSize: 24,
         marginRight: '20%'
+    },
+    down: {
+        color: '#242424',
+        fontSize: 12
     },
     choose:
     {
@@ -71,6 +79,48 @@ const STYLES = StyleSheet.create({
         fontSize: 17,
         alignSelf: 'center'
     },
+    v1: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: '15%',
+        marginTop: '5%',
+        marginBottom: '7%'
+    },
+    v2: {
+        marginTop: 5,
+        position: 'absolute',
+        marginHorizontal: '5%'
+    },
+    v3: {
+        marginTop: '15%',
+        alignItems: "center"
+    },
+    txt3: {
+        fontSize: 18,
+        color: '#242424'
+    },
+    txt4: {
+        fontSize: 12,
+        color: '#242424',
+        marginRight: '12%',
+        marginTop: '3%'
+    },
+    model: {
+        height: 100,
+        width: 100,
+        backgroundColor: 'white',
+        borderRadius: 100,
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -50,
+        elevation: 5
+    },
+    txt5: {
+        color: '#333333',
+        fontSize: 18,
+        marginTop: '3%'
+    },
     // ----------------------------model styleing----------------------
     centeredView: {
         flex: 1,
@@ -101,10 +151,10 @@ const STYLES = StyleSheet.create({
         elevation: 2,
         marginTop: 10,
         width: 230,
-        marginTop:'13%',
+        marginTop: '13%',
         backgroundColor: '#14A800',
     },
-  
+
     textStyle: {
         fontSize: 23,
         textAlign: "center",
@@ -115,7 +165,9 @@ const STYLES = StyleSheet.create({
         textAlign: "center"
     },
     modelimg: {
-        width: 80, height: 80, marginTop: 10
+        width: 80,
+        height: 80,
+        marginTop: 10
     },
     navigate_next: {
         right: 150,

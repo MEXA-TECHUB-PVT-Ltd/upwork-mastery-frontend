@@ -78,7 +78,7 @@ const Profile = ({ navigation }) => {
                 <View style={[{ flexDirection: 'row' }]}>
 
                     <TouchableOpacity style={styles.btn} activeOpacity={0.9} onPress={() => { setCountryPickerView(true) }}>
-                        <Text style={{ marginLeft: 8, color: '#969AA8' }}>{countryCode}</Text>
+                        <Text style={styles.txt}>{countryCode}</Text>
                         <MaterialIcons name="expand-more" size={20} color={'black'} style={styles.arrowdown} />
                     </TouchableOpacity>
 
@@ -149,18 +149,18 @@ const Profile = ({ navigation }) => {
                             <View style={styles.selectpaymentView}>
                                 <Text style={styles.selectpayment}>Select City</Text>
                             </View>
-                            <TouchableOpacity onPress={onPressHandler2} style={{ alignItems: "center", marginVertical: '4%' }}>
+                            <TouchableOpacity onPress={onPressHandler2} style={styles.op}>
                                 <Text style={styles.payment}>Rawalpindi</Text>
                             </TouchableOpacity>
                             <View style={styles.line}></View>
-                            <TouchableOpacity onPress={onPressHandler3} style={{ alignItems: "center", marginVertical: '4%' }}>
+                            <TouchableOpacity onPress={onPressHandler3} style={styles.op}>
                                 <Text style={styles.payment}>Islamabad</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={onPressHandler4} style={{ alignItems: "center", marginVertical: '4%' }}>
+                            <TouchableOpacity onPress={onPressHandler4} style={styles.op}>
                                 <Text style={styles.payment}>Karachi</Text>
                             </TouchableOpacity>
                             <View style={styles.line}></View>
-                            <TouchableOpacity onPress={onPressHandler5} style={{ alignItems: "center", marginVertical: '4%' }}>
+                            <TouchableOpacity onPress={onPressHandler5} style={styles.op}>
                                 <Text style={styles.payment}>Lahore</Text>
                             </TouchableOpacity>
                         </View>

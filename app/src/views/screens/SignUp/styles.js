@@ -14,8 +14,8 @@ const STYLES = StyleSheet.create({
 
     },
     logo: {
-        width: 200,
-        height: 100,
+        width: 180,
+        height: 76,
     },
     view1: {
 
@@ -35,8 +35,18 @@ const STYLES = StyleSheet.create({
         // marginVertical: '10%',
         marginBottom: '10%'
     },
+    btn: {
+        alignItems: 'center',
+        marginTop: '10%',       //uper sa margen
+        justifyContent: "center",  // for middle writting
+        height: 52,
+        fontSize: 20,
+        borderRadius: 50,
+        backgroundColor: '#14A800',
+        marginBottom: '5%'
+    },
     divider: {
-        backgroundColor: '#969AA8',
+        backgroundColor: '#EFEFEF',
         height: 1,
         width: '25%',
         alignSelf: 'center',
@@ -73,7 +83,7 @@ const STYLES = StyleSheet.create({
 
         alignItems: 'center',
         marginHorizontal: '5%',
-        height: 58,
+        height: 55,
         flexDirection: 'row',
         borderRadius: 10,
         borderColor: '#D1D1D1',

@@ -69,7 +69,7 @@ const App = ({ navigation }) => {
                 <View style={styles.bigview}>
                     <View style={{ marginHorizontal: '5%' }}>
                         <Text style={styles.header}>More than 1k+ Users Trust us</Text>
-                        <Text style={{ color: '#242424', fontSize: 12 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus </Text>
+                        <Text style={styles.down}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus </Text>
                     </View>
 
 
@@ -81,10 +81,10 @@ const App = ({ navigation }) => {
                         </View>
                         <View style={{ marginHorizontal: '5%' }}>
                             <Text style={styles.header}>Why you should learn from Upwork Mastery</Text>
-                            <Text style={{ color: '#242424', fontSize: 12 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna </Text>
+                            <Text style={styles.down}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna </Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: '15%', marginTop: '5%', marginBottom: '7%' }}>
+                        <View style={styles.v1}>
                             <View>
                                 <Text style={styles.txt1}>1k+</Text>
                                 <Text style={styles.txt2}>Lorem ipsum</Text>
@@ -123,9 +123,9 @@ const App = ({ navigation }) => {
                                 renderItem={({ item, index }) => {
                                     return <View style={{ height: 110 }}>
                                         <Star width={640} height={90} />
-                                        <View style={{ marginTop: 5, position: 'absolute', marginHorizontal: '5%' }}>
-                                            <Text style={{ fontSize: 18, color: '#242424' }}>{item.head}</Text>
-                                            <Text style={{ fontSize: 12, color: '#242424', marginRight: '12%', marginTop: '3%' }}>{item.down}</Text>
+                                        <View style={styles.v2}>
+                                            <Text style={styles.txt3}>{item.head}</Text>
+                                            <Text style={styles.txt4}>{item.down}</Text>
                                         </View>
                                     </View>
 
@@ -158,22 +158,12 @@ const App = ({ navigation }) => {
                 >
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
-                            <View style={{
-                                height: 100,
-                                width: 100,
-                                backgroundColor: 'white',
-                                borderRadius: 100,
-                                alignItems: 'center',
-                                position: 'absolute',
-                                alignSelf: 'center',
-                                top: -50,
-                                elevation: 5
-                            }}>
+                            <View style={styles.model}>
                                 <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
                             </View>
-                            <View style={{ marginTop: '15%', alignItems: "center" }}>
+                            <View style={styles.v3}>
                                 <Text style={styles.textStyle}>Success</Text>
-                                <Text style={{ color: '#333333', fontSize: 18, marginTop: '3%' }}>Subscription paid successfully</Text>
+                                <Text style={styles.txt5}>Subscription paid successfully</Text>
                                 <TouchableOpacity
                                     activeOpacity={0.7}
                                     style={[styles.button]}

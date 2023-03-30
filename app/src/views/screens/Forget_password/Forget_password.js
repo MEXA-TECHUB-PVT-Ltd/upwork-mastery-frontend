@@ -67,19 +67,19 @@ const Forget_password = ({ navigation }) => {
                 <Image source={appImages.logo} style={styles.image} resizeMode={'contain'} />
             </View>
             <View style={styles.myBox}>
-                <Text style={{ fontSize: 23, alignSelf: 'center', color: '#001E00', marginBottom: '5%' }}> Forget Password </Text>
+                <Text style={styles.txt}> Forget Password </Text>
                 <Text style={styles.text}> Enter a email for a verification code </Text>
             </View>
             <View style={styles.myBox}>
-            <View style={[styles.inputstyle, { marginVertical: '2%' }]}>
-                    {/* <MaterialIcons name="email" size={24} color={'#8F8F8F'} style={styles.icon} /> */}
+                <View style={[styles.inputstyle, { marginVertical: '2%' }]}>
                     <TextInput
                         placeholder='Email Address'
                         placeholderTextColor={'#969AA8'}
                         onChangeText={email => setemail(email)}
                         style={{
                             marginLeft: '5%',
-                            color: '#969AA8'
+                            color: '#969AA8',
+                            height: 55
                         }}
                     />
                 </View>
@@ -91,8 +91,8 @@ const Forget_password = ({ navigation }) => {
                 <TouchableOpacity onPress={() => {
                     // forgetpass()
                     navigation.navigate("Verification")
-                    }} style={styles.btn}>
-                    <Text style={{ color: '#fff' }}>
+                }} style={styles.btn}>
+                    <Text style={styles.txtl}>
                         Send Code
                     </Text>
                 </TouchableOpacity>

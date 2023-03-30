@@ -47,13 +47,10 @@ const App = ({ navigation }) => {
             <SVGImg width={400} height={190} />
 
             <View style={styles.top}>
-                <View style={{
-                    marginLeft: '60%',
-                    marginTop: 25
-                }}>
+                <View style={styles.v1}>
                     <Text style={styles.txtb}>Home</Text>
                 </View>
-                <View style={{ marginLeft: '10%', marginTop: '15%' }}>
+                <View style={styles.v2}>
                     <Text style={styles.txtb}>Welcome,</Text>
                     <Text style={styles.txtg}>Hohn Deo</Text>
                 </View>
@@ -61,19 +58,19 @@ const App = ({ navigation }) => {
             <View style={styles.bigview}>
                 <View style={{ marginHorizontal: '5%' }}>
                     <Text style={styles.header}>More than 1k+ Users Trust us</Text>
-                    <Text style={{ color: '#242424', fontSize: 12 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus </Text>
+                    <Text style={styles.down}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus </Text>
                 </View>
 
 
 
 
-                <View style={{ backgroundColor: '#F7F7F7', marginTop: '5%' }}>
+                <View style={styles.v3}>
                     <View style={styles.choose}>
                         <Text style={styles.choose1}>Why Choose Us</Text>
                     </View>
                     <View style={{ marginHorizontal: '5%' }}>
                         <Text style={styles.header}>Why you should learn from Upwork Mastery</Text>
-                        <Text style={{ color: '#242424', fontSize: 12 }}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna </Text>
+                        <Text style={styles.down}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna </Text>
                     </View>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: '15%', marginTop: '5%', marginBottom: '7%' }}>
@@ -109,15 +106,13 @@ const App = ({ navigation }) => {
                         <Divider style={{ marginTop: '5%' }} />
                         <FlatList
                             data={TEMP_DATA}
-                            // disableVirtualization={true}
                             ItemSeparatorComponent={Divider}
-                            // scrollEnabled={isScrollEnabled}
                             renderItem={({ item, index }) => {
                                 return <View style={{ height: 110 }}>
                                     <Star width={640} height={90} />
-                                    <View style={{ marginTop: 5, position: 'absolute', marginHorizontal: '5%' }}>
-                                        <Text style={{ fontSize: 18, color: '#242424' }}>{item.head}</Text>
-                                        <Text style={{ fontSize: 12, color: '#242424', marginRight: '12%', marginTop: '3%' }}>{item.down}</Text>
+                                    <View style={styles.v4}>
+                                        <Text style={styles.txt3}>{item.head}</Text>
+                                        <Text style={styles.txt4}>{item.down}</Text>
                                     </View>
                                 </View>
 
