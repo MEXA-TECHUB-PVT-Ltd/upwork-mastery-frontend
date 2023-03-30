@@ -25,7 +25,7 @@ import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const CELL_COUNT = 4;
-const Verification = ({navigation }) => {
+const Verification = ({ navigation }) => {
 
     // const { email, otp } = route.params;
 
@@ -77,8 +77,8 @@ const Verification = ({navigation }) => {
                 <Image source={appImages.logo} style={styles.image} resizeMode={'contain'} />
             </View>
             <View style={styles.myBox}>
-                <Text style={{ fontSize: 25, color: '#001E00', marginBottom: '5%' }}> Verification </Text>
-                <Text style={{ fontSize: 15, color: '#242424', marginBottom: '5%' }}> Enter code that you received on your email </Text>
+                <Text style={{ fontSize: 24, color: '#001E00', marginBottom: '5%' }}> Verification </Text>
+                <Text style={{ fontSize: 14, color: '#242424', marginBottom: '5%' }}> Enter code that you received on your email </Text>
             </View>
 
             <View style={styles.root}>
@@ -117,9 +117,9 @@ const Verification = ({navigation }) => {
                     console.log('dnj')
                     navigation.navigate("Reset_Password")
                 }} style={styles.btn}
-                    // disabled={otp != value ? true : false}
+                // disabled={otp != value ? true : false}
                 >
-                    <Text style={{ color: '#fff' }}>
+                    <Text style={{ color: '#fff', fontSize: 17 }}>
                         verify
                     </Text>
                 </TouchableOpacity>

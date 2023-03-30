@@ -91,7 +91,7 @@ const SignIn = () => {
                     <Text
                         style={{
                             color: '#001E00',
-                            fontSize: 23,
+                            fontSize: 24,
                         }}
                     >
                         Login Account
@@ -121,7 +121,8 @@ const SignIn = () => {
                         onChangeText={email => setemail(email)}
                         style={{
                             marginLeft: '5%',
-                            color: '#969AA8'
+                            color: '#969AA8',
+                            height: 55
                         }}
                     />
                 </View>
@@ -135,20 +136,21 @@ const SignIn = () => {
                             placeholder='Password'
                             onChangeText={pass => setpass(pass)}
                             style={{
-                                marginLeft: '5%',
-                                color: '#969AA8'
+                                marginLeft: '15%',
+                                color: '#969AA8',
+                                height: 55
                             }}
                         />
                     </View>
                     {
                         check === true ?
                             <TouchableOpacity onPress={() => { setcheck(false) }} style={styles.icon}>
-                                <MaterialCommunityIcons name="eye" size={24} color={'#8F8F8F'} />
+                                <MaterialCommunityIcons name="eye" size={24} color={'#BFBFC1'} />
                             </TouchableOpacity>
 
                             :
                             <TouchableOpacity onPress={() => { setcheck(true) }} style={styles.icon} >
-                                <MaterialCommunityIcons name="eye-off" size={24} color={'#8F8F8F'} />
+                                <MaterialCommunityIcons name="eye-off" size={24} color={'#BFBFC1'} />
                             </TouchableOpacity>
                     }
                 </View>
@@ -158,12 +160,12 @@ const SignIn = () => {
 
                 <Text style={{ color: 'red' }}>{fil}</Text>
                 <TouchableOpacity activeOpacity={0.6} onPress={() => navigation.navigate('Forget_password')} style={{
-                    marginVertical: '3%',
+                    marginVertical: '1%',
                     alignSelf: 'flex-end',
                 }} >
                     <Text style={{
                         color: '#14A800',
-                        fontSize: 15,
+                        fontSize: 14,
                     }}>
                         Forget Password?
                     </Text>
@@ -173,23 +175,14 @@ const SignIn = () => {
 
             <View style={{ marginTop: '15%' }}>
                 <View style={styles.buttonview}>
-                    <Button
-                        style={{
-                            backgroundColor: '#14A800',
-                            fontSize: 16,
-                            borderRadius: 50
-                        }}
-                        contentStyle={{
-                            padding: '3%'
-                        }}
-                        mode="contained"
-                        textColor={'white'}
-                        onPress={() => {
-                            // Login()
-                            navigation.navigate('Home')
-                        }}>
-                        Sign In
-                    </Button>
+                    <TouchableOpacity onPress={() => {
+                        // reset()
+                        navigation.navigate('Home')
+                    }} style={styles.btn}>
+                        <Text style={{ color: '#fff', fontSize: 17 }}>
+                            Sign In
+                        </Text>
+                    </TouchableOpacity>
                 </View>
                 <View
                     style={{
@@ -198,7 +191,7 @@ const SignIn = () => {
                     }}
                 >
                     <Divider style={styles.divider} />
-                    <Text style={{ color: '#969AA8' }}>Or Sign in with</Text>
+                    <Text style={{ color: '#242424', fontSize: 12 }}>Or Sign in with</Text>
                     <Divider style={styles.divider} />
                 </View>
 
@@ -208,7 +201,7 @@ const SignIn = () => {
                         // signOut()
                     }}>
                         <Image source={appImages.g} style={styles.googleimg} />
-                        <Text style={{ fontSize: 17, color: 'black' }}>
+                        <Text style={{ fontSize: 14, color: 'black' }}>
                             Connect with Google
                         </Text>
                     </TouchableOpacity>
@@ -218,7 +211,7 @@ const SignIn = () => {
                         // signOut()
                     }}>
                         <Image source={appImages.f} style={styles.googleimg} />
-                        <Text style={{ fontSize: 17, color: 'black' }}>
+                        <Text style={{ fontSize: 14, color: 'black' }}>
                             Connect with Facebook
                         </Text>
                     </TouchableOpacity>

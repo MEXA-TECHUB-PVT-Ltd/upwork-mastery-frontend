@@ -20,6 +20,9 @@ import Complete_Profile from './app/src/views/screens/Complete_Profile/Complete_
 import Home from './app/src/views/screens/Home/Home';
 import My_course from './app/src/views/screens/My_course/My_course';
 import Settings from './app/src/views/screens/Settings/Settings';
+import Search from './app/src/views/screens/Search/Search';
+import Course_Details from './app/src/views/screens/Course_Details/Course_Details';
+import Course_video from './app/src/views/screens/Course_video/Course_video';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -68,7 +71,21 @@ function MainNavigator() {
           component={Tabb}
           options={{ headerShown: false }}
         />
-
+        <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Course_Details"
+          component={Course_Details}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name="Course_video"
+          component={Course_video}
+          options={{ headerShown: false }}
+        />
 
       </Stack.Navigator>
     </NavigationContainer>

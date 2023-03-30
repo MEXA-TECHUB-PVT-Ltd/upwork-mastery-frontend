@@ -74,7 +74,7 @@ const Reset_password = ({ route, navigation }) => {
                 <Image source={appImages.logo} style={styles.image} resizeMode={'contain'} />
             </View>
             <View style={styles.myBox}>
-                <Text style={{ fontSize: 25, color: '#001E00', marginBottom: '5%' }}> Reset Password </Text>
+                <Text style={styles.txt}> Reset Password </Text>
                 <Text style={styles.textStyle}> Create a strong password </Text>
             </View>
 
@@ -86,21 +86,18 @@ const Reset_password = ({ route, navigation }) => {
                             onChangeText={text => setnew(text)}
                             placeholderTextColor={'#969AA8'}
                             placeholder='New Password'
-                            style={{
-                                marginLeft: '10%',
-                                color: '#969AA8',
-                            }}
+                            style={styles.input}
                         />
                     </View>
                     {
                         check === true ?
-                            <TouchableOpacity onPress={() => { setcheck(false) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye" size={24} color={'#969AA8'} />
+                            <TouchableOpacity onPress={() => { setcheck(false) }} style={styles.btn1} >
+                                <MaterialIcons1 name="eye" size={24} color={'#BFBFC1'} />
                             </TouchableOpacity>
 
                             :
-                            <TouchableOpacity onPress={() => { setcheck(true) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye-off" size={24} color={'#969AA8'} />
+                            <TouchableOpacity onPress={() => { setcheck(true) }} style={styles.btn1} >
+                                <MaterialIcons1 name="eye-off" size={24} color={'#BFBFC1'} />
                             </TouchableOpacity>
                     }
                 </View>
@@ -113,28 +110,24 @@ const Reset_password = ({ route, navigation }) => {
                             onChangeText={text => setconferm(text)}
                             placeholderTextColor={'#969AA8'}
                             placeholder='Confirm Password'
-                            style={{
-                                marginLeft: '10%',
-                                color: '#969AA8'
-                            }}
-
+                            style={styles.input}
                         />
                     </View>
                     {
                         check1 === true ?
-                            <TouchableOpacity onPress={() => { setcheck1(false) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye" size={24} color={'#969AA8'} />
+                            <TouchableOpacity onPress={() => { setcheck1(false) }} style={styles.btn1} >
+                                <MaterialIcons1 name="eye" size={24} color={'#BFBFC1'} />
                             </TouchableOpacity>
 
                             :
-                            <TouchableOpacity onPress={() => { setcheck1(true) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye-off" size={24} color={'#969AA8'} />
+                            <TouchableOpacity onPress={() => { setcheck1(true) }} style={styles.btn1}>
+                                <MaterialIcons1 name="eye-off" size={24} color={'#BFBFC1'} />
                             </TouchableOpacity>
                     }
                 </View>
                 {
                     c === false ?
-                        null : <Text style={{ color: 'red', alignSelf: 'flex-end' }}>Incorrect password</Text>
+                        null : <Text style={styles.txt4}>Incorrect password</Text>
                 }
             </View>
 
@@ -144,7 +137,7 @@ const Reset_password = ({ route, navigation }) => {
                     // reset()
                     navigation.navigate('Complete_Profile')
                 }} style={styles.btn}>
-                    <Text style={{ color: '#fff' }}>
+                    <Text style={styles.txtl}>
                         Reset
                     </Text>
                 </TouchableOpacity>
@@ -165,18 +158,16 @@ const Reset_password = ({ route, navigation }) => {
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
 
-                            {/* <Lottie source={require('../../../assets/JsonImages/fictorial.json')} style={styles.modelimg} resizeMode={'cover'} autoPlay loop /> */}
-                            <Text style={[{ fontSize: 21, marginVertical: 4, color: '#FFAA1D' }]}>Sucess</Text>
-                            <Text style={{ fontSize: 15, color: 'black' }}>Password Reset sucessfully</Text>
+                            <Text style={styles.txt1}>Sucess</Text>
+                            <Text style={styles.txt2}>Password Reset sucessfully</Text>
                             <Pressable
                                 style={[styles.button]}
                                 onPress={() => {
                                     setModalVisible(!modalVisible)
                                     navigation.navigate('SignIn')
-                                    // navigation.navigate('Complete_Profile')
                                 }}
                             >
-                                <Text style={{ color: 'white', fontSize: 15 }}>OK</Text>
+                                <Text style={styles.txt3}>OK</Text>
                             </Pressable>
                         </View>
                     </View>

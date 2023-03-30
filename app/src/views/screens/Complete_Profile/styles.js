@@ -39,6 +39,14 @@ const STYLES = StyleSheet.create({
         marginRight: 10,
 
     },
+    txt: {
+        marginLeft: 8,
+        color: '#969AA8'
+    },
+    op: {
+        alignItems: "center",
+        marginVertical: '4%'
+    },
     // ----------------------------model styleing----------------------
     centeredView: {
         flex: 1,
@@ -63,13 +71,13 @@ const STYLES = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
-    selectpaymentView:{
-// backgroundColor:'#14A800',
+    selectpaymentView: {
+        // backgroundColor:'#14A800',
 
     },
-    selectpayment:{
-        color:'#14A800',
-        fontSize:20
+    selectpayment: {
+        color: '#14A800',
+        fontSize: 20
     },
     button: {
         borderRadius: 10,

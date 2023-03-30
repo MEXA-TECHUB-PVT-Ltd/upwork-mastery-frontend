@@ -15,7 +15,7 @@ import {
     Button,
     TouchableRipple,
     Appbar,
-    Divider, ProgressBar
+    Divider, ProgressBar, Checkbox
 } from 'react-native-paper';
 import styles from './styles';
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -28,7 +28,7 @@ import img4 from './../../../assets/images/img4.svg';
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [modalVisible, setModalVisible] = useState(false);
-
+    const [checked, setChecked] = React.useState(false);
 
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
@@ -61,7 +61,7 @@ const App = ({ navigation }) => {
             >
                 <Appbar.Content color={'white'} title="My Course" />
                 <Appbar.Action onPress={() => { }} />
-                <Appbar.Action icon="magnify" color={'white'} onPress={() => { navigation.goBack() }} />
+                <Appbar.Action icon="magnify" color={'white'} onPress={() => { navigation.navigate('Search') }} />
 
             </Appbar.Header>
 
@@ -70,7 +70,7 @@ const App = ({ navigation }) => {
                     data={TEMP_DATA}
                     renderItem={({ item, index }) => (
                         <TouchableOpacity
-
+                            onPress={() => { navigation.navigate('Course_Details') }}
                             style={{ marginHorizontal: '5%', backgroundColor: 'white' }}>
                             <View
                                 style={{
@@ -85,16 +85,25 @@ const App = ({ navigation }) => {
                                 }}>
                                 <View>
                                     <item.src width={100} height={290} viewBox="0 0 100 290" />
+                                    <View style={{ position: 'absolute' }}>
+                                        <Checkbox
+                                            color="#14A800"
+                                            status={checked ? 'checked' : 'unchecked'}
+                                            onPress={() => {
+                                                setChecked(!checked);
+                                            }}
+                                            style={{ width: 30, height: 30 }} />
+                                    </View>
                                 </View>
 
-                                <View style={{ marginTop: 25, width: '60%', marginRight: '10%', marginLeft: '3%' }}>
-                                    <Text style={[styles.txt14, { color: '#14A800' }]}>{item.head}</Text>
-                                    <Text style={[styles.txt12, { marginVertical: '2%' }]}>{item.down}</Text>
+                                <View style={styles.v1}>
+                                    <Text style={[styles.txt14]}>{item.head}</Text>
+                                    <Text style={[styles.txt12]}>{item.down}</Text>
 
                                 </View>
 
                                 <TouchableOpacity
-                                    style={{ position: 'absolute', marginLeft: '90%', marginTop: '5%' }}
+                                    style={styles.btn}
                                     onPress={() => {
 
 

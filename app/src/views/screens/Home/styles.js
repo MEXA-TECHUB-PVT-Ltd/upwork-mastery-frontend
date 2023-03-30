@@ -11,10 +11,13 @@ const STYLES = StyleSheet.create({
         position: 'absolute'
     },
     txtb: {
-        color: 'white', fontSize: 22, fontWeight: '500'
+        color: 'white',
+        fontSize: 22,
+        fontWeight: '500'
     },
     txtg: {
-        color: 'white', fontSize: 18
+        color: 'white',
+        fontSize: 18
     },
     bigview: {
         marginTop: '5%',
@@ -49,6 +52,37 @@ const STYLES = StyleSheet.create({
         marginTop: '5%',
         color: '#242424',
         textAlign: 'center'
+    },
+    v1: {
+        marginLeft: '60%',
+        marginTop: 25
+    },
+    v2: {
+        marginLeft: '10%',
+        marginTop: '15%'
+    },
+    down: {
+        color: '#242424',
+        fontSize: 12
+    },
+    v3: {
+        backgroundColor: '#F7F7F7',
+        marginTop: '5%'
+    },
+    v4: {
+        marginTop: 5,
+        position: 'absolute',
+        marginHorizontal: '5%'
+    },
+    txt3: {
+        fontSize: 18,
+        color: '#242424'
+    },
+    txt4: {
+        fontSize: 12,
+        color: '#242424',
+        marginRight: '12%',
+        marginTop: '3%'
     }
 })
 

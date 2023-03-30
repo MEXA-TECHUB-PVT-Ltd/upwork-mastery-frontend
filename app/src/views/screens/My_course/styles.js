@@ -30,12 +30,13 @@ const STYLES = StyleSheet.create({
         fontSize: 17
     },
     txt14: {
-        fontSize: 15
+        fontSize: 15,
+        color: '#14A800'
     },
     txt12: {
         fontSize: 11,
         color: '#000000',
-
+        marginVertical: '2%'
     },
     txt11: {
         fontSize: 11,
@@ -58,6 +59,11 @@ const STYLES = StyleSheet.create({
         position: "absolute",
         top: 0,
         width: 12,
+    },
+    btn: {
+        position: 'absolute',
+        marginLeft: '90%',
+        marginTop: '5%'
     },
     // ----------------------------model styleing----------------------
     centeredView: {
@@ -107,6 +113,7 @@ const STYLES = StyleSheet.create({
     modelimg: {
         width: 140, height: 100
     },
+    v1: { marginTop: 25, width: '60%', marginRight: '10%', marginLeft: '3%' }
 })
 
 export default STYLES; 

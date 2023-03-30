@@ -13,8 +13,8 @@ const STYLES = StyleSheet.create({
 
     },
     image: {
-        width: 200,
-        height: 150
+        width: 180,
+        height: 76
     },
     myBox: {
         marginTop: 10,
@@ -23,26 +23,7 @@ const STYLES = StyleSheet.create({
 
     },
 
-    view1: {
-        marginTop: '5%'
-    },
-    view11: {
-        alignItems: 'center'
-    },
-    view12: {
-        alignItems: 'center'
-    },
-    f1: {
-        color: COLORS.blue,
-        fontSize: 25,
-        textAlign: 'center',
-        fontWeight: '700'
-    },
-    f2: {
-        color: COLORS.gray,
-        fontSize: 15,
-        textAlign: 'center',
-    },
+
     bigview: {
         marginTop: '10%',
 
@@ -51,7 +32,7 @@ const STYLES = StyleSheet.create({
         alignItems: 'center',
         marginTop: '50%',       //uper sa margen
         justifyContent: "center",  // for middle writting
-        height: 58,
+        height: 52,
         fontSize: 20,
         borderRadius: 50,
         backgroundColor: '#14A800',
@@ -69,6 +50,41 @@ const STYLES = StyleSheet.create({
         backgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#E6E6E6'
+    },
+    txt: {
+        fontSize: 24,
+        color: '#001E00',
+        marginBottom: '5%'
+    },
+    txt1: {
+        fontSize: 21,
+        marginVertical: 4,
+        color: '#FFAA1D'
+    },
+    txt2: {
+        fontSize: 15,
+        color: 'black'
+    },
+    txt3: {
+        color: 'white',
+        fontSize: 15
+    },
+    txt4: {
+        color: 'red',
+        alignSelf: 'flex-end'
+    },
+    txtl: {
+        color: '#fff',
+        fontSize: 17
+    },
+    btn1: {
+        marginHorizontal: '3%',
+        alignSelf: 'center'
+    },
+    input: {
+        marginLeft: '10%',
+        color: '#969AA8',
+        height: 55
     },
     // ----------------------------model styleing----------------------
     centeredView: {
@@ -108,7 +124,7 @@ const STYLES = StyleSheet.create({
 
     },
     textStyle: {
-        fontSize: 15,
+        fontSize: 14,
         color: '#242424'
     },
     modalText: {

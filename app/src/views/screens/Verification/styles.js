@@ -11,8 +11,8 @@ const STYLES = StyleSheet.create({
 
     },
     image: {
-        width: 200,
-        height: 150
+        width: 180,
+        height: 76
     },
 
     myBox: {
@@ -26,7 +26,7 @@ const STYLES = StyleSheet.create({
         marginTop: '70%',       //uper sa margen
         justifyContent: "center",  // for middle writting
         marginHorizontal: '5%',
-        height: 58,
+        height: 52,
         fontSize: 20,
         borderRadius: 50,
         backgroundColor: '#14A800',
