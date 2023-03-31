@@ -113,7 +113,7 @@ const App = ({ navigation }) => {
                         <View style={{ marginHorizontal: '5%' }}>
                             <Text style={styles.header}>What we provide</Text>
                         </View>
-                        <View style={{}}>
+                        <View style={{ marginBottom: '25%' }}>
                             <Divider style={{ marginTop: '5%' }} />
                             <FlatList
                                 data={TEMP_DATA}

@@ -4,11 +4,12 @@ import {
     StyleSheet,
     Dimensions,
     ScrollView, FlatList, Modal, Pressable,
-    View, Image, Text, TouchableOpacity
+    View, Image, Text, TouchableOpacity, Linking
 } from 'react-native'
 import { appImages } from '../../../assets/utilities/index'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+import Alertt from './../../../assets/images/alert.svg';
 import { useIsFocused } from '@react-navigation/native';
 
 import {
@@ -20,50 +21,84 @@ import {
 import styles from './styles';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import img1 from './../../../assets/images/img1.svg';
-import img2 from './../../../assets/images/img2.svg';
-import img3 from './../../../assets/images/img3.svg';
-import img4 from './../../../assets/images/img4.svg';
-
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [modalVisible, setModalVisible] = useState(false);
-
-
+    const p = 'https://mtechub.org/privacy/'
+    const t = 'https://mtechub.org/terms/'
+    const privicy = () => {
+        Linking.canOpenURL(p).then((supported) => {
+            supported && Linking.openURL(p)
+        })
+    }
+    const term = () => {
+        Linking.canOpenURL(t).then((supported) => {
+            supported && Linking.openURL(t)
+        })
+    }
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
             id: 1,
-            src: 'home',
+            src: 'person',
             head: 'Update Profile',
         },
         {
             id: 2,
-            src: 'home',
+            src: 'mode-edit',
             head: 'Change password',
         },
         {
             id: 3,
-            src: 'home',
+            src: 'bookmark',
             head: 'Saved Videos',
         },
         {
             id: 4,
-            src: 'home',
+            src: 'lock',
             head: 'Privacy Policy',
         },
         {
             id: 5,
-            src: 'home',
+            src: 'note',
             head: 'Terms & Conditions',
         },
         {
             id: 6,
-            src: 'home',
+            src: 'info',
             head: 'About Us',
         }
     ])
 
+    const call = (id) => {
+        if (id == 1) {
+            navigation.navigate('Update_Profile')
+        }
+        if (id == 2) {
+            navigation.navigate('Change_password')
+        }
+        if (id == 3) {
+            navigation.navigate('Saved_Videos')
+        }
+        if (id == 4) {
+            privicy()
+        }
+        if (id == 5) {
+            term()
+        }
+        if (id == 6) {
+            navigation.navigate('AboutUs')
+        }
+    }
 
+
+    const openmodel = async () => {
+        setModalVisible(true)
+
+    }
+    const logout = () => {
+        navigation?.popToTop();
+        navigation.replace("SignIn")
+    }
     useEffect(() => {
 
     }, [isFocused]);
@@ -74,39 +109,95 @@ const App = ({ navigation }) => {
             >
                 <Appbar.Content color={'white'} title="Settings" />
                 <Appbar.Action onPress={() => { }} />
-                <Appbar.Action icon="location-exit" color={'white'} onPress={() => { navigation.goBack() }} />
+                <Appbar.Action icon="logout" color={'white'} onPress={() => { openmodel() }} />
             </Appbar.Header>
 
             <View>
-                <View style={{ backgroundColor: '#FAFAFA', alignSelf: 'center', width: 280, height: 136, borderRadius: 10, marginTop: '20%', alignItems: 'center' }}>
-                    <View style={{ marginTop: '15%', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 18, color: '#242424' }}>Johan Deo</Text>
-                        <Text style={{ fontSize: 14, color: '#242424', marginTop: '1%' }}>johndeo@gmail.com</Text>
-                        <Text style={{ fontSize: 14, color: '#242424', marginTop: '1%' }}>Washington,US</Text>
+                <View style={styles.v1}>
+                    <View style={styles.v2}>
+                        <Text style={styles.txt1}>Johan Deo</Text>
+                        <Text style={styles.txt2}>johndeo@gmail.com</Text>
+                        <Text style={styles.txt2}>Washington,US</Text>
                     </View>
                 </View>
-                <View style={{ position: 'absolute', backgroundColor: '#14A800', borderRadius: 50, width: 60, height: 60, justifyContent: 'center', alignSelf: 'center', marginTop: 40 }}>
-                    <Text style={{ fontSize: 24, color: 'white', alignSelf: 'center' }}>JD</Text>
+                <View style={styles.v3}>
+                    <Text style={styles.txt3}>JD</Text>
                 </View>
             </View>
-            <View style={{ marginHorizontal: '5%' }}>
+            <View style={styles.v4}>
                 <FlatList
                     data={TEMP_DATA}
-                    ItemSeparatorComponent={Divider}
+                    // ItemSeparatorComponent={Divider}
                     renderItem={({ item, index }) => {
-                        return <View style={{ backgroundColor: '#FAFAFA', alignSelf: 'center', width: 280, height: 60, borderRadius: 10, marginTop: '5%', flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <View style={{ flexDirection: 'row', marginLeft: '5%', justifyContent: 'center' }}>
-                                <MaterialIcons name="trending-up" size={20} color={'#14A800'} style={{ alignSelf: 'center' }} />
-                                <Text style={{ marginLeft: '10%', alignSelf: 'center' }}>{item.head}</Text>
+                        return <TouchableOpacity onPress={() => { call(item.id) }} style={styles.v5}>
+                            <View style={styles.v6}>
+                                <MaterialIcons name={item.src} size={20} color={'#14A800'} style={styles.m1} />
+                                <Text style={styles.txt4}>{item.head}</Text>
                             </View>
-                            <MaterialIcons name="trending-up" size={20} color={'#14A800'} style={{ alignSelf: 'center', marginRight: '5%' }} />
-                        </View>
+                            <MaterialIcons name="navigate-next" size={20} color={'#14A800'} style={styles.m2} />
+                        </TouchableOpacity>
 
                     }}
                     numColumns={1}
                     keyExtractor={item => item.id}
                 />
             </View>
+            <View style={styles.centeredView}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <View style={{
+                                height: 100,
+                                width: 100,
+                                backgroundColor: 'white',
+                                borderRadius: 100,
+                                alignItems: 'center',
+                                position: 'absolute',
+                                alignSelf: 'center',
+                                top: -50,
+                                elevation: 5
+                            }}>
+
+                                <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
+                            </View>
+                            <View style={{ marginTop: 40 }}>
+                                <Text style={{ fontSize: 22, color: '#14A800', alignSelf: 'center' }}>Confirmation</Text>
+                                <Text style={styles.textStyle}>Do you want to logout?</Text>
+                                <View style={{ flexDirection: 'row', alignItems: "center", marginTop: '5%' }}>
+                                    <TouchableOpacity
+                                        activeOpacity={0.7}
+                                        style={[styles.button, styles.buttonClose]}
+                                        onPress={() => setModalVisible(!modalVisible)}
+                                    >
+                                        <Text style={[styles.textStyle1, { color: '#14A800' }]}>Cancel</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                        activeOpacity={0.7}
+                                        style={[styles.button1, styles.buttonClose1]}
+                                        onPress={() => {
+                                            logout()
+                                        }}
+                                    >
+                                        <Text style={[styles.textStyle1, { color: 'white' }]}>Logout</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+
+                </Modal>
+
+            </View>
+
         </ScrollView >
     )
 }

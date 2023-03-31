@@ -24,17 +24,7 @@ import Star from './../../../assets/images/img3.svg';
 
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
-    const [modalVisible, setModalVisible] = useState(false);
-    const [checked, setChecked] = React.useState(false);
-    const images = ([
-        {
-            src: Thumnail
-        },
-        {
-            src: Star
-        }
-    ])
-
+  
     useEffect(() => {
 
     }, [isFocused]);

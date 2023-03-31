@@ -91,10 +91,7 @@ const STYLES = StyleSheet.create({
         position: 'absolute',
         marginHorizontal: '5%'
     },
-    v3: {
-        marginTop: '15%',
-        alignItems: "center"
-    },
+   
     txt3: {
         fontSize: 18,
         color: '#242424'
@@ -105,22 +102,8 @@ const STYLES = StyleSheet.create({
         marginRight: '12%',
         marginTop: '3%'
     },
-    model: {
-        height: 100,
-        width: 100,
-        backgroundColor: 'white',
-        borderRadius: 100,
-        alignItems: 'center',
-        position: 'absolute',
-        alignSelf: 'center',
-        top: -50,
-        elevation: 5
-    },
-    txt5: {
-        color: '#333333',
-        fontSize: 18,
-        marginTop: '3%'
-    },
+  
+  
     // ----------------------------model styleing----------------------
     centeredView: {
         flex: 1,
@@ -143,6 +126,17 @@ const STYLES = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
+        elevation: 5
+    },
+    model: {
+        height: 100,
+        width: 100,
+        backgroundColor: 'white',
+        borderRadius: 100,
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -50,
         elevation: 5
     },
     button: {
@@ -172,7 +166,16 @@ const STYLES = StyleSheet.create({
     navigate_next: {
         right: 150,
         top: 10
-    }
+    },
+    v3: {
+        marginTop: '15%',
+        alignItems: "center"
+    },
+    txt5: {
+        color: '#333333',
+        fontSize: 18,
+        marginTop: '3%'
+    },
 })
 
 export default STYLES; 
