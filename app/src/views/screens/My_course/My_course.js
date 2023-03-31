@@ -30,6 +30,7 @@ const App = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [checked, setChecked] = React.useState(false);
 
+    const [clickedId, setclickedId] = useState(100)
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
             id: 1,
@@ -105,10 +106,9 @@ const App = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={styles.btn}
                                     onPress={() => {
-
-
+                                        setclickedId(index)
                                     }}>
-                                    <MaterialIcons name="bookmark-outline" size={25} color={'#9D9D9D'} />
+                                    <MaterialIcons name={clickedId == index ? "bookmark" : "bookmark-outline"} size={25} color={clickedId == index ? '#14A800':'#9D9D9D'} />
                                 </TouchableOpacity >
                             </View>
 

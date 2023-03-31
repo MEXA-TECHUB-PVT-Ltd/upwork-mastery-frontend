@@ -17,6 +17,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CountryPicker from "react-native-country-picker-modal"
 
+import Alertt from './../../../assets/images/alert.svg';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { appImages } from '../../../assets/utilities/index'
 import styles from './styles';
@@ -27,7 +28,11 @@ const Profile = ({ navigation }) => {
     const [city, setcity] = useState('city');
     // -------------------category dropdown----------------------
     const [categoryModal, setcategoryModal] = useState(false);
-    const [category, setcategory] = useState('Select');
+    const [category, setcategory] = useState('City');
+
+
+    const [modalVisible, setModalVisible] = useState(false);
+
 
     const onPressHandler1 = () => {
 
@@ -54,7 +59,7 @@ const Profile = ({ navigation }) => {
             <Appbar.Header
                 style={{ backgroundColor: '#14A800', }}>
                 <Appbar.Action icon="chevron-left" onPress={() => { navigation.goBack() }} iconColor='white' />
-                <Appbar.Content style={{ alignItems: 'center' }} title="Complete Profile" color='white' />
+                <Appbar.Content title="Complete Profile" color='white' />
                 <Appbar.Action />
             </Appbar.Header>
 
@@ -136,6 +141,13 @@ const Profile = ({ navigation }) => {
                 />
             </View>
 
+            <View style={{ marginTop: '50%', marginBottom: '5%', marginHorizontal: '5%' }}>
+                <TouchableOpacity
+                    onPress={() => { setModalVisible(true) }}
+                    style={{ backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' }}>
+                    <Text style={{ color: 'white', alignSelf: 'center', fontSize: 17 }}>Create Account</Text>
+                </TouchableOpacity>
+            </View>
 
             <Modal
                 visible={categoryModal}
@@ -167,6 +179,39 @@ const Profile = ({ navigation }) => {
                     </View>
                 </View>
             </Modal>
+            <View style={styles.centeredView}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <View style={styles.model}>
+                                <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
+                            </View>
+                            <View style={styles.v3}>
+                                <Text style={styles.textStyle}>Success</Text>
+                                <Text style={styles.txt5}>Profile created successfully</Text>
+                                <TouchableOpacity
+                                    activeOpacity={0.7}
+                                    style={[styles.button]}
+                                    onPress={() => {
+                                        setModalVisible(!modalVisible)
+                                        navigation.navigate('Home')
+                                    }}
+                                >
+                                    <Text style={[styles.textStyle, { color: 'white' }]}>Go to Home</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
+                </Modal>
+            </View>
         </ScrollView>
     );
 };

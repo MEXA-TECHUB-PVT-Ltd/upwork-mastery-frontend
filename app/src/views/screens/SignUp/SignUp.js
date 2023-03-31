@@ -167,7 +167,7 @@ const SignIn = () => {
                 <View style={styles.buttonview}>
                 <TouchableOpacity onPress={() => {
                         // reset()
-                        navigation.navigate('Home')
+                        navigation.navigate('Complete_Profile')
                     }} style={styles.btn}>
                         <Text style={{ color: '#fff', fontSize: 17 }}>
                             Sign Up

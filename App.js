@@ -23,6 +23,11 @@ import Settings from './app/src/views/screens/Settings/Settings';
 import Search from './app/src/views/screens/Search/Search';
 import Course_Details from './app/src/views/screens/Course_Details/Course_Details';
 import Course_video from './app/src/views/screens/Course_video/Course_video';
+import Change_password from './app/src/views/screens/Change_password/Change_password';
+import AboutUs from './app/src/views/screens/AboutUs/AboutUs';
+import Update_Profile from './app/src/views/screens/Update_Profile/Update_Profile';
+import Saved_Videos from './app/src/views/screens/Saved_Videos/Saved_Videos';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -81,9 +86,29 @@ function MainNavigator() {
           component={Course_Details}
           options={{ headerShown: false }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Course_video"
           component={Course_video}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Change_password"
+          component={Change_password}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AboutUs"
+          component={AboutUs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Update_Profile"
+          component={Update_Profile}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Saved_Videos"
+          component={Saved_Videos}
           options={{ headerShown: false }}
         />
 
