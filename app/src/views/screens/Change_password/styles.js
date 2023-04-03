@@ -48,7 +48,7 @@ const STYLES = StyleSheet.create({
     },
     button1: {
         alignItems: 'center',
-        marginTop: '80%',       //uper sa margen
+        marginTop: '86%',       //uper sa margen
         justifyContent: "center",  // for middle writting
         height: 58,
         fontSize: 20,
@@ -56,78 +56,78 @@ const STYLES = StyleSheet.create({
         backgroundColor: '#14A800',
         marginHorizontal: '5%'
     },
- // ----------------------------model styleing----------------------
- centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    // marginTop: 22,
-    backgroundColor: 'rgba(52,52,52,0.5)'
-},
-modalView: {
-    margin: 20,
-    width: '85%', height: 230,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-        width: 0,
-        height: 2
+    // ----------------------------model styleing----------------------
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        // marginTop: 22,
+        backgroundColor: 'rgba(52,52,52,0.5)'
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-},
-model: {
-    height: 100,
-    width: 100,
-    backgroundColor: 'white',
-    borderRadius: 100,
-    alignItems: 'center',
-    position: 'absolute',
-    alignSelf: 'center',
-    top: -50,
-    elevation: 5
-},
-button: {
-    borderRadius: 25,
-    padding: 3,
-    elevation: 2,
-    marginTop: 10,
-    width: 230,
-    marginTop: '13%',
-    backgroundColor: '#14A800',
-},
+    modalView: {
+        marginHorizontal: '5%',
+        width: '85%', height: 230,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    model: {
+        height: 100,
+        width: 100,
+        backgroundColor: 'white',
+        borderRadius: 100,
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -50,
+        elevation: 5
+    },
+    button: {
+        borderRadius: 25,
+        padding: 3,
+        elevation: 2,
+        marginTop: 10,
+        width: 230,
+        marginTop: '13%',
+        backgroundColor: '#14A800',
+    },
 
-textStyle: {
-    fontSize: 23,
-    textAlign: "center",
-    color: '#14A800', margin: 5
-},
-modalText: {
-    marginBottom: 10,
-    textAlign: "center"
-},
-modelimg: {
-    width: 80,
-    height: 80,
-    marginTop: 10
-},
-navigate_next: {
-    right: 150,
-    top: 10
-},
-v3: {
-    marginTop: '15%',
-    alignItems: "center"
-},
-txt5: {
-    color: '#333333',
-    fontSize: 18,
-    marginTop: '3%'
-},
+    textStyle: {
+        fontSize: 23,
+        textAlign: "center",
+        color: '#14A800', margin: 5
+    },
+    modalText: {
+        marginBottom: 10,
+        textAlign: "center"
+    },
+    modelimg: {
+        width: 80,
+        height: 80,
+        marginTop: 10
+    },
+    navigate_next: {
+        right: 150,
+        top: 10
+    },
+    v3: {
+        marginTop: '15%',
+        alignItems: "center"
+    },
+    txt5: {
+        color: '#333333',
+        fontSize: 18,
+        marginTop: '3%'
+    },
 })
 
 export default STYLES; 

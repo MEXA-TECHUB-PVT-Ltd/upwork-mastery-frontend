@@ -23,7 +23,7 @@ const STYLES = StyleSheet.create({
     },
     btn: {
         alignItems: 'center',
-        marginTop: '70%',       //uper sa margen
+        marginTop: '95%',       //uper sa margen
         justifyContent: "center",  // for middle writting
         marginHorizontal: '5%',
         height: 52,

@@ -27,7 +27,8 @@ const STYLES = StyleSheet.create({
     header: {
         color: '#242424',
         fontSize: 24,
-        marginRight: '20%'
+        marginRight: '20%',
+        fontWeight: 'bold'
     },
     down: {
         color: '#242424',
@@ -50,7 +51,8 @@ const STYLES = StyleSheet.create({
     txt1: {
         fontSize: 24,
         color: '#242424',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: 'bold'
     },
     txt2: {
         fontSize: 14,
@@ -89,12 +91,15 @@ const STYLES = StyleSheet.create({
     v2: {
         marginTop: 5,
         position: 'absolute',
-        marginHorizontal: '5%'
+        marginHorizontal: '5%',
+        width: '65%',
+        // backgroundColor: 'pink'
     },
-   
+
     txt3: {
         fontSize: 18,
-        color: '#242424'
+        color: '#242424',
+        fontWeight: 'bold'
     },
     txt4: {
         fontSize: 12,
@@ -102,8 +107,8 @@ const STYLES = StyleSheet.create({
         marginRight: '12%',
         marginTop: '3%'
     },
-  
-  
+
+
     // ----------------------------model styleing----------------------
     centeredView: {
         flex: 1,
@@ -113,19 +118,12 @@ const STYLES = StyleSheet.create({
         backgroundColor: 'rgba(52,52,52,0.5)'
     },
     modalView: {
-        margin: 20,
+        // margin: 10,
         width: '80%', height: 230,
         backgroundColor: "white",
         borderRadius: 20,
-        padding: 35,
+        padding: 20,
         alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
         elevation: 5
     },
     model: {
@@ -141,7 +139,7 @@ const STYLES = StyleSheet.create({
     },
     button: {
         borderRadius: 25,
-        padding: 3,
+        padding: 10,
         elevation: 2,
         marginTop: 10,
         width: 230,
@@ -150,9 +148,14 @@ const STYLES = StyleSheet.create({
     },
 
     textStyle: {
+        fontSize: 17,
+        textAlign: "center",
+        color: '#14A800',
+    },
+    textStyle1: {
         fontSize: 23,
         textAlign: "center",
-        color: '#14A800', margin: 5
+        color: '#14A800',
     },
     modalText: {
         marginBottom: 10,

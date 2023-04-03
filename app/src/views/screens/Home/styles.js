@@ -26,7 +26,8 @@ const STYLES = StyleSheet.create({
     header: {
         color: '#242424',
         fontSize: 24,
-        marginRight: '20%'
+        marginRight: '20%',
+        fontWeight:'bold'
     },
     choose:
     {
@@ -45,7 +46,8 @@ const STYLES = StyleSheet.create({
     txt1: {
         fontSize: 24,
         color: '#242424',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight:'bold'
     },
     txt2: {
         fontSize: 14,
@@ -59,7 +61,8 @@ const STYLES = StyleSheet.create({
     },
     v2: {
         marginLeft: '10%',
-        marginTop: '15%'
+        marginTop: '15%',
+        width: '65%',
     },
     down: {
         color: '#242424',
@@ -76,7 +79,8 @@ const STYLES = StyleSheet.create({
     },
     txt3: {
         fontSize: 18,
-        color: '#242424'
+        color: '#242424',
+        fontWeight:'bold'
     },
     txt4: {
         fontSize: 12,

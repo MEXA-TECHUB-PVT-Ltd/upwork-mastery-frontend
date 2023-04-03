@@ -10,7 +10,7 @@ const STYLES = StyleSheet.create({
     myBackground: {
         // flex: 1,
         backgroundColor: 'white',
-        paddingHorizontal: '5%',
+        paddingHorizontal: '7%',
 
     },
     logo: {
@@ -33,7 +33,7 @@ const STYLES = StyleSheet.create({
     },
     buttonview: {
         // marginVertical: '10%',
-        marginBottom: '10%'
+        // marginBottom: '10%'
     },
     btn: {
         alignItems: 'center',
@@ -82,7 +82,6 @@ const STYLES = StyleSheet.create({
     search: {
 
         alignItems: 'center',
-        marginHorizontal: '5%',
         height: 55,
         flexDirection: 'row',
         borderRadius: 10,

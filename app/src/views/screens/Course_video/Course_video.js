@@ -39,7 +39,7 @@ const App = ({ navigation }) => {
             Alert.alert("video has finished playing!");
         }
     }, []);
-  
+
     useEffect(() => {
 
     }, [isFocused]);

@@ -10,7 +10,7 @@ const STYLES = StyleSheet.create({
     myBackground: {
         // flex: 1,
         backgroundColor: 'white',
-        paddingHorizontal: '5%',
+        paddingHorizontal: '7%',
 
     },
     logo: {
@@ -33,11 +33,11 @@ const STYLES = StyleSheet.create({
     },
     buttonview: {
         // marginVertical: '10%',
-        marginBottom: '10%'
+        // marginBottom: '5%'
     },
     btn: {
         alignItems: 'center',
-        marginTop: '10%',       //uper sa margen
+        marginTop: '5%',       //uper sa margen
         justifyContent: "center",  // for middle writting
         height: 52,
         fontSize: 20,
@@ -52,7 +52,6 @@ const STYLES = StyleSheet.create({
         alignSelf: 'center',
     },
     imgview: {
-
     },
     img: {
         height: 53,
@@ -82,8 +81,7 @@ const STYLES = StyleSheet.create({
     search: {
 
         alignItems: 'center',
-        marginHorizontal: '5%',
-        height: 58,
+        height: 55,
         flexDirection: 'row',
         borderRadius: 10,
         borderColor: '#E1E1E1',

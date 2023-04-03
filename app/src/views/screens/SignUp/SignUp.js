@@ -92,6 +92,7 @@ const SignIn = () => {
                         style={{
                             color: '#001E00',
                             fontSize: 24,
+                            fontWeight:'bold'
                         }}
                     >
                         Sign Up
@@ -163,7 +164,7 @@ const SignIn = () => {
             </View>
 
 
-            <View style={{ marginTop: '15%' }}>
+            <View style={{ marginTop: '5%' }}>
                 <View style={styles.buttonview}>
                 <TouchableOpacity onPress={() => {
                         // reset()
@@ -178,6 +179,7 @@ const SignIn = () => {
                     style={{
                         flexDirection: 'row',
                         justifyContent: 'space-between',
+                        marginVertical:'5%'
                     }}
                 >
                     <Divider style={styles.divider} />

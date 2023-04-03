@@ -30,7 +30,7 @@ const STYLES = StyleSheet.create({
     },
     btn: {
         alignItems: 'center',
-        marginTop: '50%',       //uper sa margen
+        marginTop: '80%',       //uper sa margen
         justifyContent: "center",  // for middle writting
         height: 52,
         fontSize: 20,
@@ -54,7 +54,8 @@ const STYLES = StyleSheet.create({
     txt: {
         fontSize: 24,
         color: '#001E00',
-        marginBottom: '5%'
+        marginBottom: '5%',
+        fontWeight: 'bold'
     },
     txt1: {
         fontSize: 21,
@@ -92,11 +93,11 @@ const STYLES = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         // marginTop: 22,
-        backgroundColor: 'rgba(52, 52, 52, 0.5)',
+        backgroundColor: 'rgba(52,52,52,0.5)'
     },
     modalView: {
-        // margin: 20,
-        width: 250, height: 280,
+        margin: 20,
+        width: '85%', height: 230,
         backgroundColor: "white",
         borderRadius: 20,
         padding: 35,
@@ -110,34 +111,51 @@ const STYLES = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
-
-
-    button: {
-        width: 220,
-        height: 48,
-        marginTop: '9%',
-        backgroundColor: COLORS.orange,
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
-        alignItems: 'center'
-
+    model: {
+        height: 100,
+        width: 100,
+        backgroundColor: 'white',
+        borderRadius: 100,
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -50,
+        elevation: 5
     },
+    button: {
+        borderRadius: 25,
+        padding: 3,
+        elevation: 2,
+        marginTop: 10,
+        width: 230,
+        marginTop: '13%',
+        backgroundColor: '#14A800',
+    },
+
     textStyle: {
-        fontSize: 14,
-        color: '#242424'
+        fontSize: 17,
+        textAlign: "center",
+        color: '#14A800', margin: 5
     },
     modalText: {
-        marginBottom: 15,
+        marginBottom: 10,
         textAlign: "center"
     },
     modelimg: {
-        width: 100, height: 100
+        width: 80,
+        height: 80,
+        marginTop: 10
     },
-    navigate_next: {
-        width: 20,
-        marginTop: '5%',
-    }
+
+    v3: {
+        marginTop: '15%',
+        alignItems: "center"
+    },
+    txt5: {
+        color: '#333333',
+        fontSize: 18,
+        marginTop: '3%'
+    },
 })
 
 export default STYLES; 
