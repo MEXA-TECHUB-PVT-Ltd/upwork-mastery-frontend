@@ -10,11 +10,13 @@ const STYLES = StyleSheet.create({
     },
     text1: {
         color: '#040404',
-        marginTop: 5
+        marginTop: 5,
+        fontSize: 18
     },
     text2: {
         color: '#6D6D6D',
-        marginTop: 5
+        marginTop: 5,
+        fontSize: 17
     },
     margen: {
         marginTop: 20,

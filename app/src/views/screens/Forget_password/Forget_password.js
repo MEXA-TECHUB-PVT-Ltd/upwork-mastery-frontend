@@ -76,11 +76,7 @@ const Forget_password = ({ navigation }) => {
                         placeholder='Email Address'
                         placeholderTextColor={'#969AA8'}
                         onChangeText={email => setemail(email)}
-                        style={{
-                            marginLeft: '5%',
-                            color: '#969AA8',
-                            height: 55
-                        }}
+                        style={styles.inputstyle1}
                     />
                 </View>
                 <Text style={{ color: 'red' }}>{fil}</Text>

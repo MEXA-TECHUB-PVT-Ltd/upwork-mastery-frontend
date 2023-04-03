@@ -97,6 +97,17 @@ const STYLES = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
+    main:{
+        height: 100,
+        width: 100,
+        backgroundColor: 'white',
+        borderRadius: 100,
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -50,
+        elevation: 5
+    },
     button: {
         borderRadius: 25,
         padding: 10,

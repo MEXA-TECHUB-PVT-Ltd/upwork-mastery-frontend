@@ -141,11 +141,11 @@ const Profile = ({ navigation }) => {
                 />
             </View>
 
-            <View style={{ marginTop: '80%', marginBottom: '5%', marginHorizontal: '5%' }}>
+            <View style={styles.btnv}>
                 <TouchableOpacity
                     onPress={() => { setModalVisible(true) }}
-                    style={{ backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' }}>
-                    <Text style={{ color: 'white', alignSelf: 'center', fontSize: 17 }}>Create Account</Text>
+                    style={styles.btn1}>
+                    <Text style={styles.txt1}>Create Account</Text>
                 </TouchableOpacity>
             </View>
 

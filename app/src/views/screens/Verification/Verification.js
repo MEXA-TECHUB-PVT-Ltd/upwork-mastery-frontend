@@ -5,7 +5,7 @@ import {
     Text,
     View, Image, ImageBackground,
     // TextInput,
-    TouchableOpacity,
+    TouchableOpacity, Modal
 } from 'react-native';
 
 // import { TouchableRipple, Checkbox, TextInput, TextInput as MaterialTextInput } from 'react-native-paper';
@@ -18,6 +18,8 @@ import {
     useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 
+
+import Alertt from './../../../assets/images/alert.svg';
 import { getActionFromState, useNavigation } from '@react-navigation/native'
 
 import { appImages } from '../../../assets/utilities'
@@ -26,7 +28,12 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const CELL_COUNT = 4;
 const Verification = ({ navigation }) => {
+    const [modalVisible, setModalVisible] = useState(false);
 
+
+    const v = async () => {
+        setModalVisible(true)
+    }
     // const { email, otp } = route.params;
 
 
@@ -77,7 +84,7 @@ const Verification = ({ navigation }) => {
                 <Image source={appImages.logo} style={styles.image} resizeMode={'contain'} />
             </View>
             <View style={styles.myBox}>
-                <Text style={{ fontSize: 24, color: '#001E00', marginBottom: '5%',  fontWeight:'bold' }}> Verification </Text>
+                <Text style={{ fontSize: 24, color: '#001E00', marginBottom: '5%', fontWeight: 'bold' }}> Verification </Text>
                 <Text style={{ fontSize: 14, color: '#242424', marginBottom: '5%' }}> Enter code that you received on your email </Text>
             </View>
 
@@ -115,7 +122,8 @@ const Verification = ({ navigation }) => {
                 <TouchableOpacity onPress={() => {
                     // verify()
                     console.log('dnj')
-                    navigation.navigate("Reset_Password")
+                    // navigation.navigate("Reset_Password")
+                    v()
                 }} style={styles.btn}
                 // disabled={otp != value ? true : false}
                 >
@@ -123,6 +131,38 @@ const Verification = ({ navigation }) => {
                         verify
                     </Text>
                 </TouchableOpacity>
+            </View>
+            <View style={styles.centeredView}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <View style={styles.model}>
+                                <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
+                            </View>
+                            <View style={styles.v3}>
+                                <Text style={styles.textStyle}>Success</Text>
+                                <Text style={styles.txt5}>Code Verified Successfully</Text>
+                                <TouchableOpacity
+                                    activeOpacity={0.7}
+                                    style={[styles.button]}
+                                    onPress={() => {
+                                        navigation.navigate("Reset_Password")
+                                    }}
+                                >
+                                    <Text style={[styles.textStyle, { color: 'white' }]}>Reset Password</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
+                </Modal>
             </View>
 
         </ScrollView>

@@ -47,6 +47,9 @@ const STYLES = StyleSheet.create({
         alignItems: "center",
         marginVertical: '4%'
     },
+    btnv:{ marginTop: '80%', marginBottom: '5%', marginHorizontal: '5%' },
+    btn1:{ backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' },
+    txt1:{ color: 'white', alignSelf: 'center', fontSize: 17 },
     // ----------------------------model styleing----------------------
     centeredView: {
         flex: 1,

@@ -73,6 +73,11 @@ const STYLES = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#E6E6E6'
     },
+    inputstyle1:{
+        marginLeft: '5%',
+        color: '#969AA8',
+        height: 55
+    },
     txt: {
         fontSize: 24,
         alignSelf: 'center',
