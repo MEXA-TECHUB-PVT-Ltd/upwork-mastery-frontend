@@ -40,7 +40,7 @@ const App = ({ navigation }) => {
 
 
 
-    const onDone = async() => {
+    const onDone = async () => {
         console.log("------>>>>", cardinfo)
         if (!!cardinfo)//info ha to yah block chalay ga 
         {

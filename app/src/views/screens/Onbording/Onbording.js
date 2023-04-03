@@ -152,10 +152,10 @@ const App = ({ navigation }) => {
 
             </ScrollView >
             <View style={styles.vbtnlast}>
-                <TouchableOpacity style={styles.btnlast} onPress={() => { 
+                <TouchableOpacity style={styles.btnlast} onPress={() => {
                     openmodel()
                     // navigation.navigate('Payment_Screen')
-                     }}>
+                }}>
                     <Text style={styles.txtlast}>Get Access Now</Text>
                 </TouchableOpacity>
             </View>

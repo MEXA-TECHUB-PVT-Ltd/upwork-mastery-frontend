@@ -20,7 +20,7 @@ const App = () => {
     const navigation = useNavigation()
     return (
         <View style={styles.myBackground}>
-           <Appbar.Header
+            <Appbar.Header
                 style={{ backgroundColor: '#14A800' }}
             >
                 <Appbar.Action icon="chevron-left" color={'white'} onPress={() => { navigation.goBack() }} />
@@ -28,30 +28,30 @@ const App = () => {
                 <Appbar.Action onPress={() => { }} />
 
             </Appbar.Header>
-            <View style={{ marginTop: 10}}>
+            <View style={{ marginTop: 10 }}>
                 <View style={styles.margen}>
-                    <Text style={[styles.text1, { fontSize: 18 }]}>Product Name:</Text>
-                    <Text style={[styles.text2, { fontSize: 17 }]}>Lorem ipsum dolor etetu</Text>
+                    <Text style={[styles.text1]}>Product Name:</Text>
+                    <Text style={[styles.text2]}>Lorem ipsum dolor etetu</Text>
                 </View>
                 <View style={styles.margen}>
-                    <Text style={[styles.text1, { fontSize: 18 }]}>Version:</Text>
-                    <Text style={[styles.text2, { fontSize: 17 }]}>Lorem ipsum dolor </Text>
+                    <Text style={[styles.text1]}>Version:</Text>
+                    <Text style={[styles.text2]}>Lorem ipsum dolor </Text>
                 </View>
                 <View style={styles.margen}>
-                    <Text style={[styles.text1, { fontSize: 18 }]}>Developer:</Text>
-                    <Text style={[styles.text2, { fontSize: 17 }]}>Lorem ipsum dolor </Text>
+                    <Text style={[styles.text1]}>Developer:</Text>
+                    <Text style={[styles.text2]}>Lorem ipsum dolor </Text>
                 </View>
                 <View style={styles.margen}>
-                    <Text style={[styles.text1, { fontSize: 18 }]}>Lorem ipsum dolor lorem ipsum dolor</Text>
-                    <Text style={[styles.text2, { fontSize: 17 }]}>lorem ipsum dolor </Text>
-                </View>
-                <Divider style={styles.dividerhori} />
-                <View style={styles.margen}>
-                    <Text style={[styles.text1, { fontSize: 18 }]}>End User License Agreement</Text>
+                    <Text style={[styles.text1]}>Lorem ipsum dolor lorem ipsum dolor</Text>
+                    <Text style={[styles.text2]}>lorem ipsum dolor </Text>
                 </View>
                 <Divider style={styles.dividerhori} />
                 <View style={styles.margen}>
-                    <Text style={[styles.text1, { fontSize: 18 }]}>Privacy Policy</Text>
+                    <Text style={[styles.text1]}>End User License Agreement</Text>
+                </View>
+                <Divider style={styles.dividerhori} />
+                <View style={styles.margen}>
+                    <Text style={[styles.text1]}>Privacy Policy</Text>
                 </View>
             </View>
         </View>

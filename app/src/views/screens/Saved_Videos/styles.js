@@ -65,6 +65,16 @@ const STYLES = StyleSheet.create({
         marginLeft: '90%',
         marginTop: '5%'
     },
+    v2:{
+        flexDirection: 'row',
+        borderWidth: 1,
+        borderColor: '#DBDBDB',
+        width: '100%',
+        height: 132,
+        borderRadius: 10,
+        marginVertical: '3%',
+        justifyContent: 'space-between'
+    },
     // ----------------------------model styleing----------------------
     centeredView: {
         flex: 1,

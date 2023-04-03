@@ -66,7 +66,7 @@ const Change_password = () => {
             //             }).then(response => response.json())
             //                 .then(async data => {
             //                     if (data.message === 'Password has been updated') {
-                                     setModalVisible(true)
+            setModalVisible(true)
             //                         settxt('')
             //                         await AsyncStorage.setItem("password", conferm);
             //                     }
@@ -104,125 +104,125 @@ const Change_password = () => {
 
 
     return (
-        <View> 
-        <ScrollView source={appImages.background} style={styles.container}>
+        <View>
+            <ScrollView source={appImages.background} style={styles.container}>
 
-            <Appbar.Header
-                style={{ backgroundColor: '#14A800' }}
-            >
-                <Appbar.Action icon="chevron-left" color={'white'} onPress={() => { navigation.goBack() }} />
-                <Appbar.Content color={'white'} title="Change Password" />
-                <Appbar.Action onPress={() => { }} />
+                <Appbar.Header
+                    style={{ backgroundColor: '#14A800' }}
+                >
+                    <Appbar.Action icon="chevron-left" color={'white'} onPress={() => { navigation.goBack() }} />
+                    <Appbar.Content color={'white'} title="Change Password" />
+                    <Appbar.Action onPress={() => { }} />
 
-            </Appbar.Header>
+                </Appbar.Header>
 
 
 
-            <View style={styles.bigview}>
+                <View style={styles.bigview}>
 
-                <View style={[styles.inputstyle, { marginVertical: '2%' }]}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <TextInput
-                            secureTextEntry={check === false ? true : false}
-                            onChangeText={text => setold(text)}
-                            placeholderTextColor={'#8F8F8F'}
-                            placeholder='Old Password'
-                            style={{
-                                marginLeft: '15%',
-                                height: 55,
-                                color: '#969AA8'
-                            }}
-                        />
+                    <View style={[styles.inputstyle, { marginVertical: '2%' }]}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TextInput
+                                secureTextEntry={check === false ? true : false}
+                                onChangeText={text => setold(text)}
+                                placeholderTextColor={'#8F8F8F'}
+                                placeholder='Old Password'
+                                style={{
+                                    marginLeft: '15%',
+                                    height: 55,
+                                    color: '#969AA8'
+                                }}
+                            />
+                        </View>
+                        {
+                            check === true ?
+                                <TouchableOpacity onPress={() => { setcheck(false) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
+                                    <MaterialIcons1 name="eye" size={24} color={'#D1D1D1'} />
+                                </TouchableOpacity>
+
+                                :
+                                <TouchableOpacity onPress={() => { setcheck(true) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
+                                    <MaterialIcons1 name="eye-off" size={24} color={'#D1D1D1'} />
+                                </TouchableOpacity>
+                        }
                     </View>
-                    {
-                        check === true ?
-                            <TouchableOpacity onPress={() => { setcheck(false) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye" size={24} color={'#D1D1D1'} />
-                            </TouchableOpacity>
 
-                            :
-                            <TouchableOpacity onPress={() => { setcheck(true) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye-off" size={24} color={'#D1D1D1'} />
-                            </TouchableOpacity>
+                    <View style={[styles.inputstyle, { marginVertical: '4%' }]}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TextInput
+                                secureTextEntry={check1 === false ? true : false}
+                                onChangeText={text => setnew(text)}
+                                placeholderTextColor={'#8F8F8F'}
+                                placeholder='New Password'
+                                style={{
+                                    marginLeft: '15%',
+                                    height: 55,
+                                    color: '#969AA8'
+                                }}
+                            // textColor='pink'
+                            />
+                        </View>
+                        {
+                            check1 === true ?
+                                <TouchableOpacity onPress={() => { setcheck1(false) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
+                                    <MaterialIcons1 name="eye" size={24} color={'#D1D1D1'} />
+                                </TouchableOpacity>
+
+                                :
+                                <TouchableOpacity onPress={() => { setcheck1(true) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
+                                    <MaterialIcons1 name="eye-off" size={24} color={'#D1D1D1'} />
+                                </TouchableOpacity>
+                        }
+                    </View>
+
+                    <View style={[styles.inputstyle, { marginVertical: '4%' }]}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TextInput
+                                secureTextEntry={check2 === false ? true : false}
+                                onChangeText={text => setconferm(text)}
+                                placeholderTextColor={'#8F8F8F'}
+                                placeholder='Confirm Password'
+                                style={{
+                                    marginLeft: '15%',
+                                    height: 55,
+                                    color: '#969AA8'
+                                }}
+                            // textColor='pink'
+                            />
+                        </View>
+                        {
+                            check2 === true ?
+                                <TouchableOpacity onPress={() => { setcheck2(false) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
+                                    <MaterialIcons1 name="eye" size={24} color={'#D1D1D1'} />
+                                </TouchableOpacity>
+
+                                :
+                                <TouchableOpacity onPress={() => { setcheck2(true) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
+                                    <MaterialIcons1 name="eye-off" size={24} color={'#D1D1D1'} />
+                                </TouchableOpacity>
+                        }
+                    </View>
+
+                    {
+                        c === false ?
+                            null : <Text style={{ color: 'red', alignSelf: 'flex-end' }}>{txt}</Text>
                     }
+
                 </View>
 
-                <View style={[styles.inputstyle, { marginVertical: '4%' }]}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <TextInput
-                            secureTextEntry={check1 === false ? true : false}
-                            onChangeText={text => setnew(text)}
-                            placeholderTextColor={'#8F8F8F'}
-                            placeholder='New Password'
-                            style={{
-                                marginLeft: '15%',
-                                height: 55,
-                                color: '#969AA8'
-                            }}
-                        // textColor='pink'
-                        />
-                    </View>
-                    {
-                        check1 === true ?
-                            <TouchableOpacity onPress={() => { setcheck1(false) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye" size={24} color={'#D1D1D1'} />
-                            </TouchableOpacity>
-
-                            :
-                            <TouchableOpacity onPress={() => { setcheck1(true) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye-off" size={24} color={'#D1D1D1'} />
-                            </TouchableOpacity>
-                    }
-                </View>
-
-                <View style={[styles.inputstyle, { marginVertical: '4%' }]}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <TextInput
-                            secureTextEntry={check2 === false ? true : false}
-                            onChangeText={text => setconferm(text)}
-                            placeholderTextColor={'#8F8F8F'}
-                            placeholder='Confirm Password'
-                            style={{
-                                marginLeft: '15%',
-                                height: 55,
-                                color: '#969AA8'
-                            }}
-                        // textColor='pink'
-                        />
-                    </View>
-                    {
-                        check2 === true ?
-                            <TouchableOpacity onPress={() => { setcheck2(false) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye" size={24} color={'#D1D1D1'} />
-                            </TouchableOpacity>
-
-                            :
-                            <TouchableOpacity onPress={() => { setcheck2(true) }} style={{ marginHorizontal: '3%', alignSelf: 'center' }} >
-                                <MaterialIcons1 name="eye-off" size={24} color={'#D1D1D1'} />
-                            </TouchableOpacity>
-                    }
-                </View>
-
-                {
-                    c === false ?
-                        null : <Text style={{ color: 'red', alignSelf: 'flex-end' }}>{txt}</Text>
-                }
-
-            </View>
 
 
 
 
+                <TouchableOpacity onPress={() => reset()} style={styles.button1}>
+                    <Text style={{ fontSize: 18, color: '#fff' }}>
+                        Change
+                    </Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => reset()} style={styles.button1}>
-                <Text style={{ fontSize: 18, color: '#fff' }}>
-                    Change
-                </Text>
-            </TouchableOpacity>
-       
 
-        </ScrollView>
-        <View style={styles.centeredView}>
+            </ScrollView>
+            <View style={styles.centeredView}>
                 <Modal
                     animationType="slide"
                     transparent={true}

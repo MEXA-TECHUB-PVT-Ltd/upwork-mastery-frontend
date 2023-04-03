@@ -74,16 +74,7 @@ const App = ({ navigation }) => {
                             onPress={() => { navigation.navigate('Course_Details') }}
                             style={{ marginHorizontal: '5%', backgroundColor: 'white' }}>
                             <View
-                                style={{
-                                    flexDirection: 'row',
-                                    borderWidth: 1,
-                                    borderColor: '#DBDBDB',
-                                    width: '100%',
-                                    height: 132,
-                                    borderRadius: 10,
-                                    marginVertical: '3%',
-                                    justifyContent: 'space-between'
-                                }}>
+                                style={styles.v2}>
                                 <View>
                                     <item.src width={100} height={290} viewBox="0 0 100 290" />
                                     <View style={{ position: 'absolute' }}>

@@ -155,17 +155,7 @@ const App = ({ navigation }) => {
 
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
-                            <View style={{
-                                height: 100,
-                                width: 100,
-                                backgroundColor: 'white',
-                                borderRadius: 100,
-                                alignItems: 'center',
-                                position: 'absolute',
-                                alignSelf: 'center',
-                                top: -50,
-                                elevation: 5
-                            }}>
+                            <View style={styles.main}>
 
                                 <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
                             </View>
