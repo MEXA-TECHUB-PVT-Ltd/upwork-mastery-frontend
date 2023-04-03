@@ -77,7 +77,7 @@ const Verification = ({ navigation }) => {
                 <Image source={appImages.logo} style={styles.image} resizeMode={'contain'} />
             </View>
             <View style={styles.myBox}>
-                <Text style={{ fontSize: 24, color: '#001E00', marginBottom: '5%' }}> Verification </Text>
+                <Text style={{ fontSize: 24, color: '#001E00', marginBottom: '5%',  fontWeight:'bold' }}> Verification </Text>
                 <Text style={{ fontSize: 14, color: '#242424', marginBottom: '5%' }}> Enter code that you received on your email </Text>
             </View>
 

@@ -109,7 +109,7 @@ const App = ({ navigation }) => {
                             ItemSeparatorComponent={Divider}
                             renderItem={({ item, index }) => {
                                 return <View style={{ height: 110 }}>
-                                    <Star width={640} height={90} />
+                                    <Star width={600} height={90} style={{ marginLeft: '6%' }} />
                                     <View style={styles.v4}>
                                         <Text style={styles.txt3}>{item.head}</Text>
                                         <Text style={styles.txt4}>{item.down}</Text>

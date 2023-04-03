@@ -97,7 +97,8 @@ const STYLES = StyleSheet.create({
     },
     txt3: {
         color: '#171717',
-        fontSize: 20
+        fontSize: 20,
+        fontWeight:'bold'
     },
     txt4: {
         fontSize: 10,

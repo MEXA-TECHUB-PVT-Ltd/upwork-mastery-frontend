@@ -90,7 +90,7 @@ const STYLES = StyleSheet.create({
         backgroundColor: COLORS.orange,
     },
     textStyle: {
-        fontSize: 15,
+        fontSize: 21,
         textAlign: "center",
         color: '#fff', margin: 5
     },
@@ -152,7 +152,7 @@ const STYLES = StyleSheet.create({
     },
 
     textStyle: {
-        fontSize: 23,
+        fontSize: 21,
         textAlign: "center",
         color: '#14A800', margin: 5
     },

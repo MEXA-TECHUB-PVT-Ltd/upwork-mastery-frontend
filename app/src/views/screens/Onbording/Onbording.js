@@ -23,9 +23,13 @@ import SVGImg from './../../../assets/images/home1.svg';
 import Star from './../../../assets/images/star.svg';
 import Alertt from './../../../assets/images/alert.svg';
 import { collectBankAccountForPayment } from '@stripe/stripe-react-native';
-// LogBox.ignoreAllLogs();
 
+import PaymentScreen from './../Payment_Screen/Payment_Screen'
+LogBox.ignoreAllLogs();
+import { StripeProvider } from '@stripe/stripe-react-native';
+import { SP_KEY } from '@env'
 const App = ({ navigation }) => {
+    // alert(SP_KEY)
     const openmodel = async () => {
         setModalVisible(true)
     }
@@ -122,7 +126,7 @@ const App = ({ navigation }) => {
                                 // scrollEnabled={isScrollEnabled}
                                 renderItem={({ item, index }) => {
                                     return <View style={{ height: 110 }}>
-                                        <Star width={640} height={90} />
+                                        <Star width={600} height={90} style={{ marginLeft: '6%' }} />
                                         <View style={styles.v2}>
                                             <Text style={styles.txt3}>{item.head}</Text>
                                             <Text style={styles.txt4}>{item.down}</Text>
@@ -138,11 +142,20 @@ const App = ({ navigation }) => {
                     </View>
                 </View>
 
-
+                <StripeProvider
+                    publishableKey={SP_KEY}
+                    merchantIdentifier="merchant.identifier" // required for Apple Pay
+                    urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
+                >
+                    {/* <PaymentScreen /> */}
+                </StripeProvider>
 
             </ScrollView >
             <View style={styles.vbtnlast}>
-                <TouchableOpacity style={styles.btnlast} onPress={() => { openmodel() }}>
+                <TouchableOpacity style={styles.btnlast} onPress={() => { 
+                    openmodel()
+                    // navigation.navigate('Payment_Screen')
+                     }}>
                     <Text style={styles.txtlast}>Get Access Now</Text>
                 </TouchableOpacity>
             </View>
@@ -162,7 +175,7 @@ const App = ({ navigation }) => {
                                 <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
                             </View>
                             <View style={styles.v3}>
-                                <Text style={styles.textStyle}>Success</Text>
+                                <Text style={styles.textStyle1}>Success</Text>
                                 <Text style={styles.txt5}>Subscription paid successfully</Text>
                                 <TouchableOpacity
                                     activeOpacity={0.7}

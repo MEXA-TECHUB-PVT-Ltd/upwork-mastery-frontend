@@ -35,7 +35,7 @@ const STYLES = StyleSheet.create({
     },
     btn: {
         alignItems: 'center',
-        marginTop: '70%',       //uper sa margen
+        marginTop: '90%',       //uper sa margen
         justifyContent: "center",  // for middle writting
         marginHorizontal: '5%',
         height: 52,
@@ -77,7 +77,8 @@ const STYLES = StyleSheet.create({
         fontSize: 24,
         alignSelf: 'center',
         color: '#001E00',
-        marginBottom: '5%'
+        marginBottom: '5%',
+        fontWeight:'bold'
     },
     txtl: {
         color: '#fff',

@@ -27,6 +27,8 @@ import Change_password from './app/src/views/screens/Change_password/Change_pass
 import AboutUs from './app/src/views/screens/AboutUs/AboutUs';
 import Update_Profile from './app/src/views/screens/Update_Profile/Update_Profile';
 import Saved_Videos from './app/src/views/screens/Saved_Videos/Saved_Videos';
+import Payment_Screen from './app/src/views/screens/Payment_Screen/Payment_Screen';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -41,6 +43,12 @@ function MainNavigator() {
           component={Onbording}
           options={{ headerShown: false }}
         />
+         <Stack.Screen
+          name="Payment_Screen"
+          component={Payment_Screen}
+          options={{ headerShown: false }}
+        />
+        
         <Stack.Screen
           name="SignIn"
           component={SignIn}
@@ -125,14 +133,13 @@ function MainNavigator() {
             fontSize: 10,
             margin: 0,
             padding: 0,
-
+            color: 'pink'
           },
           // style: {
 
           // },
         }}
         screenOptions={({ route }) => ({
-
 
           // tabBarBackground:()=>{
           // (<View style={{
@@ -145,10 +152,9 @@ function MainNavigator() {
 
           // tabBarHideOnKeyboard: false,
           // style: {
-          //   backgroundColor:'orange',
-          //     borderRadius: 500,
-          //     height: 70,
-
+          //   backgroundColor: 'orange',
+          //   borderRadius: 500,
+          //   height: 70,
           // },
 
 
@@ -158,10 +164,10 @@ function MainNavigator() {
           //   borderBottomWidth: 2,
           // },
 
-          tabBarShowLabel: false,
+          tabBarShowLabel: true,
+          
           tabBarStyle: {
             backgroundColor: '#ffff',
-
             shadowColor: 'rgba(255,255,255,0.5)',
             shadowOffset: { width: 9, height: 9 },
             shadowOpacity: 1,
@@ -201,9 +207,9 @@ function MainNavigator() {
           tabBarInactiveTintColor: '#9D9D9D',
         })}
       >
-        <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
-        <Tab.Screen name="My_course" component={My_course} options={{ headerShown: false }} />
-        <Tab.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
+        <Tab.Screen name="Home" component={Home} options={{ headerShown: false, title: 'Home' }} />
+        <Tab.Screen name="My_course" component={My_course} options={{ headerShown: false, title: 'My_Course', }} />
+        <Tab.Screen name="Settings" component={Settings} options={{ headerShown: false, title: 'Settings' }} />
       </Tab.Navigator>
     );
   }
