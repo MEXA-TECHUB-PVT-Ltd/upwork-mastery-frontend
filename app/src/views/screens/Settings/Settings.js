@@ -47,26 +47,26 @@ const App = ({ navigation }) => {
             src: 'mode-edit',
             head: 'Change password',
         },
+        // {
+        //     id: 3,
+        //     src: 'bookmark',
+        //     head: 'Saved Videos',
+        // },
         {
             id: 3,
-            src: 'bookmark',
-            head: 'Saved Videos',
-        },
-        {
-            id: 4,
             src: 'lock',
             head: 'Privacy Policy',
         },
         {
-            id: 5,
+            id: 4,
             src: 'note',
             head: 'Terms & Conditions',
         },
-        {
-            id: 6,
-            src: 'info',
-            head: 'About Us',
-        }
+        // {
+        //     id: 6,
+        //     src: 'info',
+        //     head: 'About Us',
+        // }
     ])
 
     const call = (id) => {
@@ -76,18 +76,18 @@ const App = ({ navigation }) => {
         if (id == 2) {
             navigation.navigate('Change_password')
         }
+        // if (id == 3) {
+        //     navigation.navigate('Saved_Videos')
+        // }
         if (id == 3) {
-            navigation.navigate('Saved_Videos')
-        }
-        if (id == 4) {
             privicy()
         }
-        if (id == 5) {
+        if (id == 4) {
             term()
         }
-        if (id == 6) {
-            navigation.navigate('AboutUs')
-        }
+        // if (id == 6) {
+        //     navigation.navigate('AboutUs')
+        // }
     }
 
 

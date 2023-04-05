@@ -64,7 +64,9 @@ const STYLES = StyleSheet.create({
     },
     txt4: {
         marginLeft: '10%',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        color:'#242424',
+        fontSize:15
     },
     m1: {
         alignSelf: 'center'

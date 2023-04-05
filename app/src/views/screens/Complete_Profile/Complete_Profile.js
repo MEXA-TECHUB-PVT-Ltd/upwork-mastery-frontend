@@ -12,7 +12,7 @@ import {
     Button,
     TouchableRipple,
     Appbar,
-    Divider
+    Divider, Checkbox
 } from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CountryPicker from "react-native-country-picker-modal"
@@ -25,7 +25,7 @@ import styles from './styles';
 const Profile = ({ navigation }) => {
     const [CountryPickerView, setCountryPickerView] = useState(false);
     const [countryCode, setCountryCode] = useState('Country');
-    const [city, setcity] = useState('city');
+    const [checked, setChecked] = React.useState(false);
     // -------------------category dropdown----------------------
     const [categoryModal, setcategoryModal] = useState(false);
     const [category, setcategory] = useState('City');
@@ -120,25 +120,31 @@ const Profile = ({ navigation }) => {
             <View style={[{ flexDirection: 'row' }]}>
                 <TouchableOpacity onPress={onPressHandler1} style={styles.btn} >
                     {category != " " ?
-                        <Text>  {category}</Text>
+                        <Text style={{ color: '#969AA8' }}>  {category}</Text>
                         :
-                        <Text>Select category</Text>
+                        <Text style={{ color: '#969AA8' }}>Select category</Text>
                     }
                     <MaterialIcons name="expand-more" size={24} color={'black'} style={styles.arrowdown} />
                 </TouchableOpacity>
 
             </View>
 
-            <View style={[styles.inputstyle, { marginVertical: '5%' }]}>
-                <TextInput
-                    placeholder='Referial code'
-                    placeholderTextColor={'#969AA8'}
-                    onChangeText={email => setemail(email)}
-                    style={{
-                        marginLeft: '5%',
-                        color: '#969AA8'
+            <View style={{ flexDirection: 'row', marginTop: '2%' }}>
+                <Checkbox
+                    color="#14A800"
+                    status={checked ? 'checked' : 'unchecked'}
+                    onPress={() => {
+                        setChecked(!checked);
                     }}
-                />
+                    style={{ width: 30, height: 30 }} />
+                <Text style={{ alignSelf: 'center', fontSize: 13, color: '#969AA8' }}>I agree with the </Text>
+                <TouchableOpacity style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
+                    <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>term & Conditions </Text>
+                </TouchableOpacity>
+                <Text style={{ alignSelf: 'center', fontSize: 13, color: '#969AA8' }}>and </Text>
+                <TouchableOpacity style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
+                    <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>Privacy & Policy </Text>
+                </TouchableOpacity>
             </View>
 
             <View style={styles.btnv}>
@@ -205,7 +211,7 @@ const Profile = ({ navigation }) => {
                                         navigation.navigate('Home')
                                     }}
                                 >
-                                    <Text style={[styles.textStyle, { color: 'white' }]}>Go to Home</Text>
+                                    <Text style={[styles.textStyle1, { color: 'white' }]}>Go to Home</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>

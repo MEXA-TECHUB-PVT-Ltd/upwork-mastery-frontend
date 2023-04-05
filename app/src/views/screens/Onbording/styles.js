@@ -179,6 +179,107 @@ const STYLES = StyleSheet.create({
         fontSize: 18,
         marginTop: '3%'
     },
+    // ----------------------------model styleing licence----------------------
+    centeredView1: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        // marginTop: 22,
+        backgroundColor: 'rgba(52,52,52,0.5)'
+    },
+    modalView1: {
+        // margin: 10,
+        width: '80%',
+        backgroundColor: "white",
+        borderRadius: 15,
+        elevation: 5
+    },
+    model1: {
+       
+        width: 100,
+        backgroundColor: 'white',
+        borderRadius: 100,
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -50,
+        elevation: 5
+    },
+    button1: {
+        borderRadius: 25,
+        padding: 10,
+        elevation: 2,
+        marginVertical: 15,
+        width: 230,
+        marginTop: '5%',
+        backgroundColor: '#14A800',
+    },
+
+    textStyle1: {
+        fontSize: 17,
+        textAlign: "center",
+        color: '#14A800',
+    },
+
+    modalText1: {
+        marginBottom: 10,
+        textAlign: "center"
+    },
+
+
+    txt5: {
+        color: '#333333',
+        fontSize: 18,
+        marginTop: '3%'
+    },
+    // ------------------------promo code styling-------------------------------
+    root: { flex: 1, marginTop: '0%' },
+    title: { textAlign: 'center', fontSize: 30 },
+    codeFieldRoot: { marginTop: 10 },
+    cell: {
+        width: 40,
+        height: 46,
+        lineHeight: 38,
+        fontSize: 24,
+        backgroundColor: 'white',
+        borderColor: '#D1D1D1',
+        borderWidth: 1,
+        borderRadius: 5,
+        textAlign: 'center',
+        margin: 5,
+        paddingTop: 5
+    },
+    focusCell: {
+        borderColor: '#D1D1D1',
+    },
+
+    centeredView2: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        // marginTop: 22,
+        backgroundColor: 'rgba(52,52,52,0.5)'
+    },
+    modalView2: {
+        // margin: 10,
+        width: '90%', height: 240,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 20,
+        alignItems: "center",
+        elevation: 5
+    },
+    model2: {
+        height: 100,
+        width: 100,
+        backgroundColor: 'white',
+        borderRadius: 100,
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -50,
+        elevation: 5
+    },
 })
 
 export default STYLES; 

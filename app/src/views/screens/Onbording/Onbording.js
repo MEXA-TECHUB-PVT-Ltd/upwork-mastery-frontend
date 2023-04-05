@@ -28,12 +28,39 @@ import PaymentScreen from './../Payment_Screen/Payment_Screen'
 LogBox.ignoreAllLogs();
 import { StripeProvider } from '@stripe/stripe-react-native';
 import { SP_KEY } from '@env'
+
+
+import {
+    CodeField,
+    Cursor,
+    useBlurOnFulfill,
+    useClearByFocusCell,
+} from 'react-native-confirmation-code-field';
+
+const CELL_COUNT = 6;
 const App = ({ navigation }) => {
     // alert(SP_KEY)
+    const [checked, setChecked] = React.useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible1, setModalVisible1] = useState(false);
+    const [modalVisible2, setModalVisible2] = useState(false);
+
+
+    const [value, setValue] = useState('');
+    const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
+    const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+        value,
+        setValue,
+    });
     const openmodel = async () => {
         setModalVisible(true)
     }
-    const [modalVisible, setModalVisible] = useState(false);
+    const openmodel1 = async () => {
+        setModalVisible1(true)
+    }
+    const openmodel2 = async () => {
+        setModalVisible2(true)
+    }
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
             id: 1,
@@ -153,7 +180,8 @@ const App = ({ navigation }) => {
             </ScrollView >
             <View style={styles.vbtnlast}>
                 <TouchableOpacity style={styles.btnlast} onPress={() => {
-                    openmodel()
+                    // openmodel()
+                    openmodel1()
                     // navigation.navigate('Payment_Screen')
                 }}>
                     <Text style={styles.txtlast}>Get Access Now</Text>
@@ -192,6 +220,127 @@ const App = ({ navigation }) => {
                     </View>
                 </Modal>
             </View>
+
+            {/* ---------------------------licence agreement------------------------------------- */}
+
+            <View style={styles.centeredView1}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible1}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible1(!modalVisible1);
+                    }}
+                >
+                    <View style={styles.centeredView1}>
+                        <View style={styles.modalView1}>
+                            <View style={{ justifyContent: 'center', marginHorizontal: '5%', marginTop: '5%' }}>
+                                <Text style={{ color: '#242424', fontSize: 19 }}>
+                                    License Agreement
+                                </Text>
+                                <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua., sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolo
+                                </Text>
+                            </View>
+
+
+                            <View style={{ flexDirection: 'row', marginTop: '2%', justifyContent: 'space-around', marginRight: '20%' }}>
+                                <Checkbox
+                                    color="#14A800"
+                                    status={checked ? 'checked' : 'unchecked'}
+                                    onPress={() => {
+                                        setChecked(!checked);
+                                    }}
+                                    style={{ width: 30, height: 30 }} />
+                                <Text style={{ alignSelf: 'center', fontSize: 13 ,color:'#000000'}}>I Agree with License Agreement </Text>
+
+                            </View>
+
+                            <View style={{
+                                borderTopColor: 'lightgray', borderTopWidth: 1, alignItems: 'center'
+                            }}>
+                                <TouchableOpacity
+                                    activeOpacity={0.7}
+                                    style={[styles.button1]}
+                                    onPress={() => {
+                                        setModalVisible1(!modalVisible1);
+                                        openmodel2()
+                                    }}
+                                >
+                                    <Text style={[styles.textStyle1, { color: 'white' }]}>Continue</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
+                </Modal>
+            </View>
+
+
+
+            {/* -------------------------promo code  model------------------------------------- */}
+            <View style={styles.centeredView2}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible2}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible2(!modalVisible2);
+                    }}
+                >
+                    <View style={styles.centeredView2}>
+                        <View style={styles.modalView2}>
+                            <View style={styles.root}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    <Text style={{ color: '#242424', fontSize: 19 }}>Add Promo Code</Text>
+                                    <Text onPress={() => {
+                                        openmodel1()
+                                        setModalVisible2(!modalVisible2);
+                                    }}
+                                        style={{ color: '#14A800', fontSize: 16 }}>Skip</Text>
+                                </View>
+                                <View style={{ marginVertical: '7%' }}>
+                                    <CodeField
+                                        ref={ref}
+                                        {...props}
+                                        // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
+                                        value={value}
+                                        onChangeText={setValue}
+                                        cellCount={CELL_COUNT}
+                                        rootStyle={styles.codeFieldRoot}
+                                        keyboardType="number-pad"
+                                        textContentType="oneTimeCode"
+                                        renderCell={({ index, symbol, isFocused }) => (
+                                            <Text
+                                                key={index}
+                                                style={[styles.cell, isFocused && styles.focusCell]}
+                                                onLayout={getCellOnLayoutHandler(index)}>
+                                                {symbol || (isFocused ? <Cursor /> : null)}
+                                            </Text>
+                                        )}
+                                    />
+                                </View>
+                                <View style={{ alignItems: 'center', marginVertical: '5%' }}>
+                                    <TouchableOpacity
+                                        activeOpacity={0.7}
+                                        style={[styles.button1]}
+                                        onPress={() => {
+                                            setModalVisible2(!modalVisible2);
+                                            openmodel()
+                                        }}
+                                    >
+                                        <Text style={[styles.textStyle1, { color: 'white' }]}>Pay</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+
+                        </View>
+
+                    </View>
+                </Modal>
+            </View >
         </View>
     )
 }

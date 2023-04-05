@@ -21,13 +21,52 @@ import styles from './styles';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Thumnail from './../../../assets/images/thumnail.svg';
 import Star from './../../../assets/images/img3.svg';
-
+import img1 from './../../../assets/images/img1.svg';
+import img2 from './../../../assets/images/img2.svg';
+import img3 from './../../../assets/images/img3.svg';
+import img4 from './../../../assets/images/img4.svg';
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
-  
+    const [currentIndex, setCurrentIndex] = useState(0);
     useEffect(() => {
 
     }, [isFocused]);
+    const incrementIndex = () => {
+        console.log(currentIndex)
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+    };
+
+    const decrementIndex = () => {
+        console.log(currentIndex)
+        setCurrentIndex((prevIndex) => prevIndex - 1);
+    };
+    const [TEMP_DATA, setTEMP_DATA] = useState([
+        {
+            id: 1,
+            src: img1,
+        },
+        {
+            id: 2,
+            src: img2,
+        },
+        {
+            id: 3,
+            src: img3,
+        }])
+    const renderItem = ({ item }) => {
+        return (
+            <View style={{ justifyContent: 'center' }}>
+
+                <item.src width={360} height={330} viewBox="0 10 100 91" />
+                <TouchableOpacity
+                    onPress={() => { navigation.navigate('Course_video') }}
+                    style={styles.play}>
+                    <MaterialIcons name="play-arrow" size={35} color={'white'} style={{ alignSelf: 'center' }} />
+                </TouchableOpacity>
+
+            </View>
+        );
+    };
     return (
         <ScrollView style={[styles.myBackground]}>
             <Appbar.Header
@@ -38,17 +77,13 @@ const App = ({ navigation }) => {
                 <Appbar.Action onPress={() => { }} />
 
             </Appbar.Header>
-            <View style={{ justifyContent: 'center' }}>
-
-                <Thumnail width={360} height={330} viewBox="20 0 380 390" />
-                <TouchableOpacity
-                    onPress={() => { navigation.navigate('Course_video') }}
-                    style={styles.play}>
-                    <MaterialIcons name="play-arrow" size={35} color={'white'} style={{ alignSelf: 'center' }} />
-                </TouchableOpacity>
-
-            </View>
-
+            <FlatList
+                data={TEMP_DATA}
+                horizontal={true}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id.toString()}
+                initialScrollIndex={currentIndex}
+            />
             <View style={styles.v1}>
                 <View style={styles.v11}>
                     <Text style={styles.txt1}>Course Title</Text>
@@ -68,12 +103,12 @@ const App = ({ navigation }) => {
 
 
             <View style={styles.v2}>
-                <TouchableOpacity style={styles.btnl}>
+                <TouchableOpacity style={styles.btnl} onPress={() => { decrementIndex() }}>
                     <Text style={styles.txtl}>
                         Back
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnl}>
+                <TouchableOpacity style={styles.btnl} onPress={() => { incrementIndex() }}>
                     <Text style={styles.txtl}>
                         Next
                     </Text>
