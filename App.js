@@ -17,7 +17,7 @@ import Forget_password from './app/src/views/screens/Forget_password/Forget_pass
 import Reset_Password from './app/src/views/screens/Reset_Password/Reset_password';
 import Verification from './app/src/views/screens/Verification/Verification';
 import Complete_Profile from './app/src/views/screens/Complete_Profile/Complete_Profile';
-import Home from './app/src/views/screens/Home/Home';
+
 import My_course from './app/src/views/screens/My_course/My_course';
 import Settings from './app/src/views/screens/Settings/Settings';
 import Search from './app/src/views/screens/Search/Search';
@@ -28,7 +28,7 @@ import AboutUs from './app/src/views/screens/AboutUs/AboutUs';
 import Update_Profile from './app/src/views/screens/Update_Profile/Update_Profile';
 import Saved_Videos from './app/src/views/screens/Saved_Videos/Saved_Videos';
 import Payment_Screen from './app/src/views/screens/Payment_Screen/Payment_Screen';
-
+import Promocode from './app/src/views/screens/Promocode/Promocode';
 
 
 const Stack = createNativeStackNavigator();
@@ -43,12 +43,12 @@ function MainNavigator() {
           component={Onbording}
           options={{ headerShown: false }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Payment_Screen"
           component={Payment_Screen}
           options={{ headerShown: false }}
         />
-        
+
         <Stack.Screen
           name="SignIn"
           component={SignIn}
@@ -165,7 +165,7 @@ function MainNavigator() {
           // },
 
           tabBarShowLabel: true,
-          
+
           tabBarStyle: {
             backgroundColor: '#ffff',
             shadowColor: 'rgba(255,255,255,0.5)',
@@ -184,16 +184,16 @@ function MainNavigator() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === 'Home') {
+            if (route.name === 'My_course') {
               iconName = focused
                 ? 'home'
                 : 'home';
               setname("home")
             }
 
-            else if (route.name === 'My_course') {
-              iconName = focused ? 'photo-camera-front' : 'photo-camera-front';
-              setname("photo-camera-front")
+            else if (route.name === 'Promocode') {
+              iconName = focused ? 'confirmation-num' : 'confirmation-num';
+              setname("confirmation-num")
             }
             else if (route.name === 'Settings') {
               iconName = focused ? 'settings' : 'settings';
@@ -207,8 +207,8 @@ function MainNavigator() {
           tabBarInactiveTintColor: '#9D9D9D',
         })}
       >
-        <Tab.Screen name="Home" component={Home} options={{ headerShown: false, title: 'Home' }} />
-        <Tab.Screen name="My_course" component={My_course} options={{ headerShown: false, title: 'My_Course', }} />
+        <Tab.Screen name="My_course" component={My_course} options={{ headerShown: false, title: 'Home' }} />
+        <Tab.Screen name="Promocode" component={Promocode} options={{ headerShown: false, title: 'Promo Codes', }} />
         <Tab.Screen name="Settings" component={Settings} options={{ headerShown: false, title: 'Settings' }} />
       </Tab.Navigator>
     );

@@ -92,7 +92,7 @@ const SignIn = () => {
                         style={{
                             color: '#001E00',
                             fontSize: 24,
-                            fontWeight:'bold'
+                            fontWeight: 'bold'
                         }}
                     >
                         Sign Up
@@ -164,9 +164,9 @@ const SignIn = () => {
             </View>
 
 
-            <View style={{ marginTop: '5%' }}>
+            <View style={{ marginTop: '70%' }}>
                 <View style={styles.buttonview}>
-                <TouchableOpacity onPress={() => {
+                    <TouchableOpacity onPress={() => {
                         // reset()
                         navigation.navigate('Complete_Profile')
                     }} style={styles.btn}>
@@ -175,41 +175,6 @@ const SignIn = () => {
                         </Text>
                     </TouchableOpacity>
                 </View>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        marginVertical:'5%'
-                    }}
-                >
-                    <Divider style={styles.divider} />
-                    <Text style={{ color: '#242424', fontSize: 12 }}>Or Sign Up with</Text>
-                    <Divider style={styles.divider} />
-                </View>
-
-                <View style={styles.imgview}>
-                    <TouchableOpacity style={styles.search} onPress={() => {
-                        // googlelogin()
-                        // signOut()
-                    }}>
-                        <Image source={appImages.g} style={styles.googleimg} />
-                        <Text style={{ fontSize: 14, color: 'black' }}>
-                            Connect with Google
-                        </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.search} onPress={() => {
-                        // googlelogin()
-                        // signOut()
-                    }}>
-                        <Image source={appImages.f} style={styles.googleimg} />
-                        <Text style={{ fontSize: 14, color: 'black' }}>
-                            Connect with Facebook
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-
-
                 <View style={styles.lastview} >
                     <Text style={{
                         color: 'black',

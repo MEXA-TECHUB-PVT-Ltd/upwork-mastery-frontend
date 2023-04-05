@@ -45,15 +45,6 @@ const STYLES = StyleSheet.create({
         backgroundColor: '#14A800',
         marginBottom: '5%'
     },
-    divider: {
-        backgroundColor: '#EFEFEF',
-        height: 1,
-        width: '25%',
-        alignSelf: 'center',
-    },
-    imgview: {
-
-    },
     img: {
         height: 53,
         width: 53,
@@ -62,7 +53,7 @@ const STYLES = StyleSheet.create({
     lastview: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginVertical: '5%',
+        marginBottom: '5%',
     },
     inputstyle: {
 
@@ -79,21 +70,7 @@ const STYLES = StyleSheet.create({
     icon: {
         marginHorizontal: '3%', alignSelf: 'center'
     },
-    search: {
-
-        alignItems: 'center',
-        height: 55,
-        flexDirection: 'row',
-        borderRadius: 10,
-        borderColor: '#D1D1D1',
-        borderWidth: 1,
-        justifyContent: 'center',
-        marginVertical: '3%'
-    },
-    googleimg: {
-        width: 40, height: 40,
-        marginRight: '4%'
-    },
+    
 })
 
 export default STYLES; 

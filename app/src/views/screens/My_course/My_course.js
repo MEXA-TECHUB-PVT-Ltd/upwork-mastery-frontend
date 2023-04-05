@@ -29,7 +29,7 @@ const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [modalVisible, setModalVisible] = useState(false);
     const [checked, setChecked] = React.useState(false);
-
+    const [book, setbook] = useState(true);
     const [clickedId, setclickedId] = useState(100)
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
@@ -62,7 +62,7 @@ const App = ({ navigation }) => {
             >
                 <Appbar.Content color={'white'} title="My Course" />
                 <Appbar.Action onPress={() => { }} />
-                <Appbar.Action icon="magnify" color={'white'} onPress={() => { navigation.navigate('Search') }} />
+                <Appbar.Action icon={book == true ? 'bookmark-outline' : 'bookmark'} color={'white'} onPress={() => { setbook(!book) }} />
 
             </Appbar.Header>
 

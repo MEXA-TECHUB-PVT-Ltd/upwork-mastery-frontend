@@ -47,9 +47,9 @@ const STYLES = StyleSheet.create({
         alignItems: "center",
         marginVertical: '4%'
     },
-    btnv:{ marginTop: '80%', marginBottom: '5%', marginHorizontal: '5%' },
-    btn1:{ backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' },
-    txt1:{ color: 'white', alignSelf: 'center', fontSize: 17 },
+    btnv: { marginTop: '80%', marginBottom: '5%', marginHorizontal: '5%' },
+    btn1: { backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' },
+    txt1: { color: 'white', alignSelf: 'center', fontSize: 17 },
     // ----------------------------model styleing----------------------
     centeredView: {
         flex: 1,
@@ -82,31 +82,14 @@ const STYLES = StyleSheet.create({
         color: '#14A800',
         fontSize: 20
     },
-    button: {
-        borderRadius: 10,
-        padding: 10,
-        elevation: 2,
-    },
-    buttonClose: {
-        marginTop: 10,
-        width: 220,
-        backgroundColor: COLORS.orange,
-    },
-    textStyle: {
-        fontSize: 21,
-        textAlign: "center",
-        color: '#fff', margin: 5
-    },
+
+
     modalText: {
         marginBottom: 10,
         textAlign: "center"
     },
     modelimg: {
         width: 80, height: 80, marginTop: 10
-    },
-    navigate_next: {
-        right: 150,
-        top: 10
     },
     // ------------------------------------------------------------
     // ----------------------------model styleing----------------------
@@ -146,9 +129,8 @@ const STYLES = StyleSheet.create({
     },
     button: {
         borderRadius: 25,
-        padding: 3,
+        padding: '2%',
         elevation: 2,
-        marginTop: 10,
         width: 230,
         marginTop: '13%',
         backgroundColor: '#14A800',
@@ -156,6 +138,11 @@ const STYLES = StyleSheet.create({
 
     textStyle: {
         fontSize: 21,
+        textAlign: "center",
+        color: '#14A800', margin: 5
+    },
+    textStyle1: {
+        fontSize: 18,
         textAlign: "center",
         color: '#14A800', margin: 5
     },
