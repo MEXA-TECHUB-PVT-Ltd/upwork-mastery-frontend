@@ -50,47 +50,7 @@ const STYLES = StyleSheet.create({
     btnv: { marginTop: '80%', marginBottom: '5%', marginHorizontal: '5%' },
     btn1: { backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' },
     txt1: { color: 'white', alignSelf: 'center', fontSize: 17 },
-    // ----------------------------model styleing----------------------
-    centeredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        // marginTop: 22,
-        backgroundColor: 'rgba(52,52,52,0.5)'
-    },
-    modalView: {
-        margin: 20,
-        width: '80%', height: 250,
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5
-    },
-    selectpaymentView: {
-        // backgroundColor:'#14A800',
 
-    },
-    selectpayment: {
-        color: '#14A800',
-        fontSize: 20
-    },
-
-
-    modalText: {
-        marginBottom: 10,
-        textAlign: "center"
-    },
-    modelimg: {
-        width: 80, height: 80, marginTop: 10
-    },
     // ------------------------------------------------------------
     // ----------------------------model styleing----------------------
     centeredView: {
@@ -129,7 +89,7 @@ const STYLES = StyleSheet.create({
     },
     button: {
         borderRadius: 25,
-        padding: '2%',
+        padding: '4%',
         elevation: 2,
         width: 230,
         marginTop: '13%',
@@ -160,6 +120,63 @@ const STYLES = StyleSheet.create({
         marginTop: '15%',
         alignItems: "center"
     },
+    txt5: {
+        color: '#333333',
+        fontSize: 18,
+        marginTop: '3%'
+    },
+    icon: {
+        marginHorizontal: '3%', alignSelf: 'center'
+    },
+    // ----------------recomendation Model----------------------
+     // ----------------------------model styleing licence----------------------
+     centeredView1: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        // marginTop: 22,
+        backgroundColor: 'rgba(52,52,52,0.5)'
+    },
+    modalView1: {
+        // margin: 10,
+        width: '80%',
+        backgroundColor: "white",
+        borderRadius: 15,
+        elevation: 5
+    },
+    model1: {
+       
+        width: 100,
+        backgroundColor: 'white',
+        borderRadius: 100,
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -50,
+        elevation: 5
+    },
+    button1: {
+        borderRadius: 25,
+        padding: 10,
+        elevation: 2,
+        marginVertical: 15,
+        width: 230,
+        marginTop: '5%',
+        backgroundColor: '#14A800',
+    },
+
+    textStyle1: {
+        fontSize: 17,
+        textAlign: "center",
+        color: '#14A800',
+    },
+
+    modalText1: {
+        marginBottom: 10,
+        textAlign: "center"
+    },
+
+
     txt5: {
         color: '#333333',
         fontSize: 18,

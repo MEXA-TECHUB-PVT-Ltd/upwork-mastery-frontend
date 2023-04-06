@@ -123,7 +123,61 @@ const STYLES = StyleSheet.create({
     modelimg: {
         width: 140, height: 100
     },
-    v1: { marginTop: 25, width: '60%', marginRight: '10%', marginLeft: '3%' }
+    v1: { marginTop: 25, width: '60%', marginRight: '10%', marginLeft: '3%' },
+    // -------------------Recomendation model-------------------
+    centeredView1: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        // marginTop: 22,
+        backgroundColor: 'rgba(52,52,52,0.5)'
+    },
+    modalView1: {
+        // margin: 10,
+        width: '80%',
+        backgroundColor: "white",
+        borderRadius: 15,
+        elevation: 5
+    },
+    model1: {
+       
+        width: 100,
+        backgroundColor: 'white',
+        borderRadius: 100,
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -50,
+        elevation: 5
+    },
+    button1: {
+        borderRadius: 25,
+        padding: 10,
+        elevation: 2,
+        marginVertical: 15,
+        width: 230,
+        marginTop: '5%',
+        backgroundColor: '#14A800',
+    },
+
+    textStyle1: {
+        fontSize: 17,
+        textAlign: "center",
+        color: '#14A800',
+    },
+
+    modalText1: {
+        marginBottom: 10,
+        textAlign: "center"
+    },
+
+
+    txt5: {
+        color: '#333333',
+        fontSize: 18,
+        marginTop: '3%'
+    },
+    
 })
 
 export default STYLES; 

@@ -19,10 +19,11 @@ const STYLES = StyleSheet.create({
     txt12: {
         fontSize: 12,
         color: '#000000',
-        marginVertical: '2%'
+        marginVertical: '2%',
+        alignSelf:'flex-end'
     },
     v2: {
-        marginHorizontal: '5%',
+        
         elevation: 1,
         width: '90%',
         height: 100,

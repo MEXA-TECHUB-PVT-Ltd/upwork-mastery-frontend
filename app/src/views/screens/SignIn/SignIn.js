@@ -174,7 +174,7 @@ const SignIn = () => {
             </View>
 
 
-            <View style={{ marginTop: '67%' }}>
+            <View style={{ marginTop: '74%' }}>
                 <View style={styles.buttonview}>
                     <TouchableOpacity onPress={() => {
                         // reset()
@@ -185,21 +185,7 @@ const SignIn = () => {
                         </Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.lastview} >
-                    <Text style={{
-                        color: 'black',
-                        fontSize: 14,
-                    }}>
-                        Don’t have an account?</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('SignUp')} style={{ marginLeft: '2%' }} >
-                        <Text
-                            style={{
-                                color: '#14A800',
-                                fontSize: 14,
-                            }}
-                        >Sign Up</Text>
-                    </TouchableOpacity>
-                </View>
+
             </View>
         </ScrollView>
 

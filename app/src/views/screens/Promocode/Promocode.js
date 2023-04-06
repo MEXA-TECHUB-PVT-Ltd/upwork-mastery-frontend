@@ -58,7 +58,8 @@ const App = ({ navigation }) => {
 
             </Appbar.Header>
 
-            <View style={{}}>
+            <View style={{marginHorizontal: '5%',marginTop:'5%'}}>
+                <Text style={{color:'#242424',fontSize:16}}>Share with friends so they can enjoy discount on Upwork Mastery</Text>
                 <FlatList
                     data={TEMP_DATA}
                     renderItem={({ item, index }) => (
@@ -66,7 +67,7 @@ const App = ({ navigation }) => {
                             <View style={{ marginHorizontal: '5%', marginVertical: '5%' }}>
                                 <Text style={[styles.txt14]}>{item.code}</Text>
 
-                                <View style={{flexDirection:'row',justifyContent:"space-between",marginTop:'2%'}}>
+                                <View style={{ flexDirection: 'row', justifyContent: "space-between", marginTop: '2%' }}>
                                     <View style={styles.v1}>
                                         <Text style={[styles.txt11]}>Discount:</Text>
                                         <Text style={[styles.txt11]}>Validation Date:</Text>

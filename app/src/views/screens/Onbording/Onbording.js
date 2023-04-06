@@ -29,38 +29,20 @@ LogBox.ignoreAllLogs();
 import { StripeProvider } from '@stripe/stripe-react-native';
 import { SP_KEY } from '@env'
 
-
-import {
-    CodeField,
-    Cursor,
-    useBlurOnFulfill,
-    useClearByFocusCell,
-} from 'react-native-confirmation-code-field';
-
-const CELL_COUNT = 6;
 const App = ({ navigation }) => {
     // alert(SP_KEY)
     const [checked, setChecked] = React.useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible1, setModalVisible1] = useState(false);
-    const [modalVisible2, setModalVisible2] = useState(false);
+   
 
-
-    const [value, setValue] = useState('');
-    const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
-    const [props, getCellOnLayoutHandler] = useClearByFocusCell({
-        value,
-        setValue,
-    });
     const openmodel = async () => {
         setModalVisible(true)
     }
     const openmodel1 = async () => {
         setModalVisible1(true)
     }
-    const openmodel2 = async () => {
-        setModalVisible2(true)
-    }
+  
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
             id: 1,
@@ -210,7 +192,7 @@ const App = ({ navigation }) => {
                                     style={[styles.button]}
                                     onPress={() => {
                                         setModalVisible(!modalVisible)
-                                        navigation.navigate('SignUp')
+                                        navigation.navigate('Complete_Profile')
                                     }}
                                 >
                                     <Text style={[styles.textStyle, { color: 'white' }]}>OK</Text>
@@ -266,7 +248,7 @@ const App = ({ navigation }) => {
                                     style={[styles.button1]}
                                     onPress={() => {
                                         setModalVisible1(!modalVisible1);
-                                        openmodel2()
+                                        openmodel()
                                     }}
                                 >
                                     <Text style={[styles.textStyle1, { color: 'white' }]}>Continue</Text>
@@ -276,71 +258,6 @@ const App = ({ navigation }) => {
                     </View>
                 </Modal>
             </View>
-
-
-
-            {/* -------------------------promo code  model------------------------------------- */}
-            <View style={styles.centeredView2}>
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible2}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been closed.");
-                        setModalVisible2(!modalVisible2);
-                    }}
-                >
-                    <View style={styles.centeredView2}>
-                        <View style={styles.modalView2}>
-                            <View style={styles.root}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ color: '#242424', fontSize: 19 }}>Add Promo Code</Text>
-                                    <Text onPress={() => {
-                                        openmodel1()
-                                        setModalVisible2(!modalVisible2);
-                                    }}
-                                        style={{ color: '#14A800', fontSize: 16 }}>Skip</Text>
-                                </View>
-                                <View style={{ marginVertical: '7%' }}>
-                                    <CodeField
-                                        ref={ref}
-                                        {...props}
-                                        // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
-                                        value={value}
-                                        onChangeText={setValue}
-                                        cellCount={CELL_COUNT}
-                                        rootStyle={styles.codeFieldRoot}
-                                        keyboardType="number-pad"
-                                        textContentType="oneTimeCode"
-                                        renderCell={({ index, symbol, isFocused }) => (
-                                            <Text
-                                                key={index}
-                                                style={[styles.cell, isFocused && styles.focusCell]}
-                                                onLayout={getCellOnLayoutHandler(index)}>
-                                                {symbol || (isFocused ? <Cursor /> : null)}
-                                            </Text>
-                                        )}
-                                    />
-                                </View>
-                                <View style={{ alignItems: 'center', marginVertical: '5%' }}>
-                                    <TouchableOpacity
-                                        activeOpacity={0.7}
-                                        style={[styles.button1]}
-                                        onPress={() => {
-                                            setModalVisible2(!modalVisible2);
-                                            openmodel()
-                                        }}
-                                    >
-                                        <Text style={[styles.textStyle1, { color: 'white' }]}>Pay</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-
-                        </View>
-
-                    </View>
-                </Modal>
-            </View >
         </View>
     )
 }
