@@ -23,37 +23,19 @@ import { appImages } from '../../../assets/utilities/index'
 import styles from './styles';
 
 const Profile = ({ navigation }) => {
-    const [CountryPickerView, setCountryPickerView] = useState(false);
-    const [countryCode, setCountryCode] = useState('Country');
-    const [checked, setChecked] = React.useState(false);
+
     // -------------------category dropdown----------------------
     const [categoryModal, setcategoryModal] = useState(false);
-    const [category, setcategory] = useState('City');
 
+    const [fil, setfil] = useState()
+    const [check, setcheck] = useState(false)
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible1, setModalVisible1] = useState(false);
 
-
-    const onPressHandler1 = () => {
-
-        setcategoryModal(true);
-    };
-    const onPressHandler2 = () => {
-        setcategory('Rawalpindi')
-        setcategoryModal(false);
-    };
-    const onPressHandler3 = () => {
-        setcategory('Islamabad')
-        setcategoryModal(false);
-    };
-    const onPressHandler4 = () => {
-        setcategory('Karachi')
-        setcategoryModal(false);
-    };
-    const onPressHandler5 = () => {
-        setcategory('Lahore')
-        setcategoryModal(false);
-    };
+    const openmodel1 = async () => {
+        setModalVisible1(true)
+    }
     return (
         <ScrollView style={styles.myBackground}>
             <Appbar.Header
@@ -67,6 +49,19 @@ const Profile = ({ navigation }) => {
             <View style={[styles.inputstyle, { marginVertical: '2%' }]}>
 
                 <TextInput
+                    placeholder='Email'
+                    placeholderTextColor={'#969AA8'}
+                    onChangeText={email => setemail(email)}
+                    style={{
+                        marginLeft: '5%',
+                        color: '#969AA8'
+                    }}
+                />
+
+            </View>
+            <View style={[styles.inputstyle, { marginVertical: '2%' }]}>
+
+                <TextInput
                     placeholder='Username'
                     placeholderTextColor={'#969AA8'}
                     onChangeText={email => setemail(email)}
@@ -75,69 +70,40 @@ const Profile = ({ navigation }) => {
                         color: '#969AA8'
                     }}
                 />
+
             </View>
-
-
-            <View style={{ marginTop: '2%' }}>
-
-                <View style={[{ flexDirection: 'row' }]}>
-
-                    <TouchableOpacity style={styles.btn} activeOpacity={0.9} onPress={() => { setCountryPickerView(true) }}>
-                        <Text style={styles.txt}>{countryCode}</Text>
-                        <MaterialIcons name="expand-more" size={20} color={'black'} style={styles.arrowdown} />
-                    </TouchableOpacity>
-
+            <View style={[styles.inputstyle, { marginVertical: '4%', justifyContent: 'space-between' }]}>
+                <View style={{ flexDirection: 'row' }}>
+                    {/* <MaterialIcons name="lock" size={24} color={'#8F8F8F'} style={styles.icon} /> */}
+                    <TextInput
+                        secureTextEntry={check === false ? true : false}
+                        placeholderTextColor={'#8F8F8F'}
+                        placeholder='Password'
+                        onChangeText={pass => setpass(pass)}
+                        style={{
+                            marginLeft: '15%',
+                            height: 55,
+                            color: '#969AA8'
+                        }}
+                    />
                 </View>
                 {
-                    CountryPickerView == true ? <CountryPicker
-                        withFilter={true}
-                        withCallingCode={true}
-                        withModal={true}
-                        withFlag={true}
-                        withFlagButton={true}
-                        onSelect={(e) => {
-                            setCountryPickerView(false)
-                            console.log(e.name)
-                            try {
-                                setCountryCode(e.name)
-                            } catch (err) {
+                    check === true ?
+                        <TouchableOpacity onPress={() => { setcheck(false) }} style={styles.icon}>
+                            <MaterialCommunityIcons name="eye" size={24} color={'#BFBFC1'} />
+                        </TouchableOpacity>
 
-                                console.log('no city name')
-
-                            }
-                        }}
-                        onClose={(e) => {
-                            setCountryPickerView(false)
-                        }}
-                        visible={CountryPickerView}
-                        style={{ marginTop: '10%' }}
-                    /> :
-                        <Text></Text>
+                        :
+                        <TouchableOpacity onPress={() => { setcheck(true) }} style={styles.icon} >
+                            <MaterialCommunityIcons name="eye-off" size={24} color={'#BFBFC1'} />
+                        </TouchableOpacity>
                 }
             </View>
+            {/* <Text style={{ color: 'red' }}>{fil}</Text> */}
 
 
-            <View style={[{ flexDirection: 'row' }]}>
-                <TouchableOpacity onPress={onPressHandler1} style={styles.btn} >
-                    {category != " " ?
-                        <Text style={{ color: '#969AA8' }}>  {category}</Text>
-                        :
-                        <Text style={{ color: '#969AA8' }}>Select category</Text>
-                    }
-                    <MaterialIcons name="expand-more" size={24} color={'black'} style={styles.arrowdown} />
-                </TouchableOpacity>
+            <View style={{ flexDirection: 'row', marginHorizontal: '5%' }}>
 
-            </View>
-
-            <View style={{ flexDirection: 'row', marginTop: '2%' }}>
-                <Checkbox
-                    color="#14A800"
-                    status={checked ? 'checked' : 'unchecked'}
-                    onPress={() => {
-                        setChecked(!checked);
-                    }}
-                    style={{ width: 30, height: 30 }} />
-                <Text style={{ alignSelf: 'center', fontSize: 13, color: '#969AA8' }}>I agree with the </Text>
                 <TouchableOpacity style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
                     <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>term & Conditions </Text>
                 </TouchableOpacity>
@@ -155,36 +121,7 @@ const Profile = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-            <Modal
-                visible={categoryModal}
-                transparent
-                onRequestClose={() => setcategoryModal(false)}
-                animationType="slide"
-                hardwareAccelerated>
-                <View style={styles.centeredView}>
-                    <View style={styles.Success_Modal}>
-                        <View style={styles.modalView}>
-                            <View style={styles.selectpaymentView}>
-                                <Text style={styles.selectpayment}>Select City</Text>
-                            </View>
-                            <TouchableOpacity onPress={onPressHandler2} style={styles.op}>
-                                <Text style={styles.payment}>Rawalpindi</Text>
-                            </TouchableOpacity>
-                            <View style={styles.line}></View>
-                            <TouchableOpacity onPress={onPressHandler3} style={styles.op}>
-                                <Text style={styles.payment}>Islamabad</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={onPressHandler4} style={styles.op}>
-                                <Text style={styles.payment}>Karachi</Text>
-                            </TouchableOpacity>
-                            <View style={styles.line}></View>
-                            <TouchableOpacity onPress={onPressHandler5} style={styles.op}>
-                                <Text style={styles.payment}>Lahore</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            </Modal>
+
             <View style={styles.centeredView}>
                 <Modal
                     animationType="slide"
@@ -208,12 +145,52 @@ const Profile = ({ navigation }) => {
                                     style={[styles.button]}
                                     onPress={() => {
                                         setModalVisible(!modalVisible)
-                                        navigation.navigate('Home')
+                                        openmodel1()
                                     }}
                                 >
                                     <Text style={[styles.textStyle1, { color: 'white' }]}>Go to Home</Text>
                                 </TouchableOpacity>
                             </View>
+                        </View>
+                    </View>
+                </Modal>
+            </View>
+            {/* ----------------recomendation model------------------------------- */}
+            <View style={styles.centeredView1}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible1}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible1(!modalVisible1);
+                    }}
+                >
+                    <View style={styles.centeredView1}>
+                        <View style={styles.modalView1}>
+                            <View style={{ justifyContent: 'center', marginHorizontal: '5%', marginVertical: '5%' }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    <Text style={{ color: '#242424', fontSize: 19 }}>
+                                        Recommendations
+                                    </Text>
+                                    <TouchableOpacity onPress={() => {
+                                        setModalVisible1(!modalVisible1)
+                                        navigation.navigate('Home')
+                                    }}>
+                                        <MaterialIcons name="close" size={24} color={'#000000'} style={styles.icon} />
+                                    </TouchableOpacity>
+                                </View>
+                                <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                    Lorem ipsu
+                                </Text>
+                            </View>
+
+
+
+
+
                         </View>
                     </View>
                 </Modal>

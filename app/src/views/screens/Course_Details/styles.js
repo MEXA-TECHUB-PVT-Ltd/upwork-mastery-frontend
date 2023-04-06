@@ -21,11 +21,11 @@ const STYLES = StyleSheet.create({
     v11: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: '5%'
+        marginBottom: '2%'
     },
     txt1: {
-        color: '#14A800',
-        fontSize: 20
+        color: '#000000',
+        fontSize: 16
     },
     txt2: {
         fontSize: 14,

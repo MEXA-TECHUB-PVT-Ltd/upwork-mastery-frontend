@@ -117,7 +117,6 @@ const App = ({ navigation }) => {
                     <View style={styles.v2}>
                         <Text style={styles.txt1}>Johan Deo</Text>
                         <Text style={styles.txt2}>johndeo@gmail.com</Text>
-                        <Text style={styles.txt2}>Washington,US</Text>
                     </View>
                 </View>
                 <View style={styles.v3}>

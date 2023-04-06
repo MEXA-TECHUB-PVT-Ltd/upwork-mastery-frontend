@@ -28,9 +28,14 @@ import img4 from './../../../assets/images/img4.svg';
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [modalVisible, setModalVisible] = useState(false);
-    const [checked, setChecked] = React.useState(false);
-    const [book, setbook] = useState(true);
+    
+    const [book, setbook] = useState(false);
     const [clickedId, setclickedId] = useState(100)
+    const [modalVisible1, setModalVisible1] = useState(false);
+
+    const openmodel1 = async () => {
+        setModalVisible1(true)
+    }
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
             id: 1,
@@ -62,7 +67,9 @@ const App = ({ navigation }) => {
             >
                 <Appbar.Content color={'white'} title="My Course" />
                 <Appbar.Action onPress={() => { }} />
-                <Appbar.Action icon={book == true ? 'bookmark-outline' : 'bookmark'} color={'white'} onPress={() => { setbook(!book) }} />
+                <Appbar.Action icon={'eye'} color={'white'} onPress={() => { openmodel1() }} />
+
+                <Appbar.Action icon={book == true ? 'bookmark' : 'bookmark-outline'} color={'white'} onPress={() => { setbook(!book) }} />
 
             </Appbar.Header>
 
@@ -77,15 +84,7 @@ const App = ({ navigation }) => {
                                 style={styles.v2}>
                                 <View>
                                     <item.src width={100} height={290} viewBox="0 0 100 290" />
-                                    <View style={{ position: 'absolute' }}>
-                                        <Checkbox
-                                            color="#14A800"
-                                            status={checked ? 'checked' : 'unchecked'}
-                                            onPress={() => {
-                                                setChecked(!checked);
-                                            }}
-                                            style={{ width: 30, height: 30 }} />
-                                    </View>
+                                    
                                 </View>
 
                                 <View style={styles.v1}>
@@ -99,7 +98,7 @@ const App = ({ navigation }) => {
                                     onPress={() => {
                                         setclickedId(index)
                                     }}>
-                                    <MaterialIcons name={clickedId == index ? "bookmark" : "bookmark-outline"} size={25} color={clickedId == index ? '#14A800' : '#9D9D9D'} />
+                                    <MaterialIcons name={clickedId == index || book == true ? "bookmark" : "bookmark-outline"} size={25} color={clickedId == index || book == true ? '#14A800' : '#9D9D9D'} />
                                 </TouchableOpacity >
                             </View>
 
@@ -135,6 +134,46 @@ const App = ({ navigation }) => {
                     </View>
                 </Modal>
 
+            </View>
+            {/* ----------------recomendation model------------------------------- */}
+            <View style={styles.centeredView1}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible1}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible1(!modalVisible1);
+                    }}
+                >
+                    <View style={styles.centeredView1}>
+                        <View style={styles.modalView1}>
+                            <View style={{ justifyContent: 'center', marginHorizontal: '5%', marginVertical: '5%' }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    <Text style={{ color: '#242424', fontSize: 19 }}>
+                                        Recommendations
+                                    </Text>
+                                    <TouchableOpacity onPress={() => {
+                                        setModalVisible1(!modalVisible1)
+
+                                    }}>
+                                        <MaterialIcons name="close" size={24} color={'#000000'} style={styles.icon} />
+                                    </TouchableOpacity>
+                                </View>
+                                <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                    Lorem ipsu
+                                </Text>
+                            </View>
+
+
+
+
+
+                        </View>
+                    </View>
+                </Modal>
             </View>
         </ScrollView >
     )

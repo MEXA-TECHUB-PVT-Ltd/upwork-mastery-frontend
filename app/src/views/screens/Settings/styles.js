@@ -10,7 +10,7 @@ const STYLES = StyleSheet.create({
         backgroundColor: '#FAFAFA',
         alignSelf: 'center',
         width: 280,
-        height: 136,
+        height: 110,
         borderRadius: 10,
         marginTop: '20%',
         alignItems: 'center'
