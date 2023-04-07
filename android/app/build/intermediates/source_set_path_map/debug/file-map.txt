@@ -93,6 +93,7 @@ com.youtube_player.app-packaged_res-91 D:\kkk\upwork-mastery-frontend\node_modul
 com.youtube_player.app-packaged_res-92 D:\kkk\upwork-mastery-frontend\node_modules\react-native-gesture-handler\android\build\intermediates\packaged_res\debug
 com.youtube_player.app-packaged_res-93 D:\kkk\upwork-mastery-frontend\node_modules\react-native-safe-area-context\android\build\intermediates\packaged_res\debug
 com.youtube_player.app-packaged_res-94 D:\kkk\upwork-mastery-frontend\node_modules\react-native-screens\android\build\intermediates\packaged_res\debug
-com.youtube_player.app-packaged_res-95 D:\kkk\upwork-mastery-frontend\node_modules\react-native-svg\android\build\intermediates\packaged_res\debug
-com.youtube_player.app-packaged_res-96 D:\kkk\upwork-mastery-frontend\node_modules\react-native-vector-icons\android\build\intermediates\packaged_res\debug
-com.youtube_player.app-packaged_res-97 D:\kkk\upwork-mastery-frontend\node_modules\react-native-webview\android\build\intermediates\packaged_res\debug
+com.youtube_player.app-packaged_res-95 D:\kkk\upwork-mastery-frontend\node_modules\react-native-sqlite-storage\platforms\android\build\intermediates\packaged_res\debug
+com.youtube_player.app-packaged_res-96 D:\kkk\upwork-mastery-frontend\node_modules\react-native-svg\android\build\intermediates\packaged_res\debug
+com.youtube_player.app-packaged_res-97 D:\kkk\upwork-mastery-frontend\node_modules\react-native-vector-icons\android\build\intermediates\packaged_res\debug
+com.youtube_player.app-packaged_res-98 D:\kkk\upwork-mastery-frontend\node_modules\react-native-webview\android\build\intermediates\packaged_res\debug

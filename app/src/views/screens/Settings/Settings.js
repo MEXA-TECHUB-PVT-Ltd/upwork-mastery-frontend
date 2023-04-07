@@ -80,10 +80,10 @@ const App = ({ navigation }) => {
         //     navigation.navigate('Saved_Videos')
         // }
         if (id == 3) {
-            privicy()
+            navigation.navigate('Privacy_Policy')
         }
         if (id == 4) {
-            term()
+            navigation.navigate('Term_condition')
         }
         // if (id == 6) {
         //     navigation.navigate('AboutUs')
