@@ -19,7 +19,7 @@ const App = () => {
       paymentIntentClientSecret: paymentIntent,
       merchantDisplayName: 'Example Inc.',
       allowsDelayedPaymentMethods: true,
-      returnURL: 'stripe-example://stripe-redirect',
+      // returnURL: 'stripe-example://stripe-redirect',
       applePay: {
         merchantCountryCode: 'US',
       },
@@ -39,7 +39,7 @@ const App = () => {
   }
 
   const fetchPaymentSheetParams = async () => {
-    const response = await fetch("https://mtechub.org/products/upwork_mastery/apis/payment/create_subscrtion.php", {
+    const response = await fetch("https://mtechub.org/products/upworkmastery/apis/payment/create_subscrtion.php", {
       method: 'POST',
       head: {
         'Content-Type': 'application/json',
@@ -58,7 +58,14 @@ const App = () => {
         description: "my description"
       })
     });
-    const { paymentIntent, ephemeralKey, customer } = await response.json()
+    // const { paymentIntent, ephemeralKey, customer } = await response.json()
+    const json = await response.json();
+    // console.log(json)
+    // console.log('-----------', json.payment_intent_client_secret)
+    let paymentIntent=json.payment_intent_client_secret
+    let ephemeralKey=json.ephemeral_secret_Key
+    let customer=json.customer
+    console.log(paymentIntent,ephemeralKey,customer)
     return {
       paymentIntent,
       ephemeralKey,
@@ -70,6 +77,8 @@ const App = () => {
     const { error } = await presentPaymentSheet()
     if (error) {
       Alert.alert(`Error code:${error.code}`, error.message)
+      console.log(error.message)
+      console.log(error)
     }
     else {
       Alert.alert("Success", `The payment was confirmed successfully`)

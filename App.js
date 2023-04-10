@@ -32,6 +32,10 @@ import Promocode from './app/src/views/screens/Promocode/Promocode';
 import Stripe_screen from './app/src/views/screens/Stripe_screen/Stripe_screen';
 import Privacy_Policy from './app/src/views/screens/Privacy_Policy/Privacy_Policy';
 import Term_condition from './app/src/views/screens/Term_condition/Term_condition';
+import Paypal from './app/src/views/screens/Paypal/Paypal';
+import Checkout from './app/src/views/screens/Paypal/Checkout';
+
+
 
 
 const Stack = createNativeStackNavigator();
@@ -41,17 +45,28 @@ function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+{/*       
+      <Stack.Screen
+          name="Checkout"
+          component={Checkout}
+          options={{ headerShown: false }}
+        /> */}
+      {/* <Stack.Screen
+          name="Paypal"
+          component={Paypal}
+          options={{ headerShown: false }}
+        /> */}
         {/* <Stack.Screen
           name="Stripe_screen"
           component={Stripe_screen}
           options={{ headerShown: false }}
         /> */}
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Onbording"
           component={Onbording}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Payment_Screen"
           component={Payment_Screen}
           options={{ headerShown: false }}
