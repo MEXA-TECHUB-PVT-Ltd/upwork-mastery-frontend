@@ -68,7 +68,18 @@ const App = ({ navigation }) => {
             </Appbar.Header>
             <YoutubePlayer
                 height={200}
+
+                // allowWebViewScroll={false}
+                // onFullScreenChange={isFullScreen => {
+                //     if (isFullScreen) {
+                //       // Do nothing
+                //     } else {
+                //       // Exit full screen mode
+                //     }
+                //   }}
+                // initialPlayerParams={{ controls: false }}
                 // ref={controlRef}
+            
                 play={playing}
                 // mute={isMute}
                 videoId={'84WIaK3bl_s'}

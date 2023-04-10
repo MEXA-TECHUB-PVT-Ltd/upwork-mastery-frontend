@@ -29,6 +29,13 @@ import Update_Profile from './app/src/views/screens/Update_Profile/Update_Profil
 import Saved_Videos from './app/src/views/screens/Saved_Videos/Saved_Videos';
 import Payment_Screen from './app/src/views/screens/Payment_Screen/Payment_Screen';
 import Promocode from './app/src/views/screens/Promocode/Promocode';
+import Stripe_screen from './app/src/views/screens/Stripe_screen/Stripe_screen';
+import Privacy_Policy from './app/src/views/screens/Privacy_Policy/Privacy_Policy';
+import Term_condition from './app/src/views/screens/Term_condition/Term_condition';
+import Paypal from './app/src/views/screens/Paypal/Paypal';
+import Checkout from './app/src/views/screens/Paypal/Checkout';
+
+
 
 
 const Stack = createNativeStackNavigator();
@@ -38,16 +45,32 @@ function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+{/*       
+      <Stack.Screen
+          name="Checkout"
+          component={Checkout}
+          options={{ headerShown: false }}
+        /> */}
+      {/* <Stack.Screen
+          name="Paypal"
+          component={Paypal}
+          options={{ headerShown: false }}
+        /> */}
+        {/* <Stack.Screen
+          name="Stripe_screen"
+          component={Stripe_screen}
+          options={{ headerShown: false }}
+        /> */}
         <Stack.Screen
           name="Onbording"
           component={Onbording}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Payment_Screen"
           component={Payment_Screen}
           options={{ headerShown: false }}
-        />
+        /> */}
 
         <Stack.Screen
           name="SignIn"
@@ -119,6 +142,17 @@ function MainNavigator() {
           component={Saved_Videos}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="Privacy_Policy"
+          component={Privacy_Policy}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Term_condition"
+          component={Term_condition}
+          options={{ headerShown: false }}
+        />
+
 
       </Stack.Navigator>
     </NavigationContainer>

@@ -28,13 +28,16 @@ import PaymentScreen from './../Payment_Screen/Payment_Screen'
 LogBox.ignoreAllLogs();
 import { StripeProvider } from '@stripe/stripe-react-native';
 import { SP_KEY } from '@env'
-
+import WebView from 'react-native-webview'
+import paypalApi from './../apis/paypalApi'
+import { ActivityIndicator } from 'react-native-paper'
+import queryString from 'query-string';
 const App = ({ navigation }) => {
     // alert(SP_KEY)
     const [checked, setChecked] = React.useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible1, setModalVisible1] = useState(false);
-   
+
 
     const openmodel = async () => {
         setModalVisible(true)
@@ -42,7 +45,7 @@ const App = ({ navigation }) => {
     const openmodel1 = async () => {
         setModalVisible1(true)
     }
-  
+
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
             id: 1,
@@ -59,6 +62,69 @@ const App = ({ navigation }) => {
             head: 'Lorem ipsum dolor sit amet,',
             down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
         }])
+    // ----------------------paypal------------------------------
+    const [loading, setloading] = useState(false)
+    const [paypalurl, setpaypalurl] = useState(null)
+    const [accesstoken, setaccesstoken] = useState(null)
+    const onPressPaypal = async () => {
+        setloading(true)
+        try {
+            const token = await paypalApi.generateToken()
+            // console.log("res++++++", token)
+            const res = await paypalApi.createOrder(token)
+            setaccesstoken(token)
+            console.log("res++++++", res)
+
+            if (!!res?.links) {
+                const findUrl = res.links.find(data => data?.rel == "approve")
+                //    console.log("findUrl--------------",findUrl)
+                setpaypalurl(findUrl.href)
+            }
+
+
+            setloading(false)
+        } catch (error) {
+            console.log("error", error)
+            setloading(true)
+        }
+    }
+
+
+    // console.log('paypalurl--', paypalurl)
+
+    const onurlchange = (webviewState) => {
+        const { url } = webviewState;
+        console.log('webviewState--' + url)
+        if (webviewState.url.includes('https://example.com/cancel')) {
+            clearpaypalstate()
+            return;
+        }
+        if (webviewState.url.includes('https://example.com/return')) {
+            const urlValues = queryString.parseUrl(webviewState.url)
+            console.log('my urls value  ', urlValues)
+            const { token } = urlValues.query
+            if (!!token) {
+                paymentSucess(token)
+            }
+        }
+    }
+
+    const paymentSucess = async (id) => {
+        try {
+            const res = paypalApi.capturePayment(id, accesstoken)
+            console.log(' capturePayment res+++++++++', res)
+            // alert("payment sucessfull")
+            openmodel()
+            clearpaypalstate()
+        } catch (error) {
+            console.log('error raised in payment capture', error)
+        }
+    }
+
+    const clearpaypalstate = () => {
+        setpaypalurl(null)
+        setaccesstoken(null)
+    }
     return (
         <View>
             <ScrollView style={styles.myBackground}>
@@ -236,7 +302,7 @@ const App = ({ navigation }) => {
                                         setChecked(!checked);
                                     }}
                                     style={{ width: 30, height: 30 }} />
-                                <Text style={{ alignSelf: 'center', fontSize: 13 ,color:'#000000'}}>I Agree with License Agreement </Text>
+                                <Text style={{ alignSelf: 'center', fontSize: 13, color: '#000000' }}>I Agree with License Agreement </Text>
 
                             </View>
 
@@ -248,8 +314,14 @@ const App = ({ navigation }) => {
                                     style={[styles.button1]}
                                     onPress={() => {
                                         setModalVisible1(!modalVisible1);
-                                        openmodel()
+                                        onPressPaypal()
                                     }}
+                                    disabled={loading}
+                                // onPress={() => {
+                                //     setModalVisible1(!modalVisible1);
+
+                                //     openmodel()
+                                // }}
                                 >
                                     <Text style={[styles.textStyle1, { color: 'white' }]}>Continue</Text>
                                 </TouchableOpacity>
@@ -258,6 +330,22 @@ const App = ({ navigation }) => {
                     </View>
                 </Modal>
             </View>
+            {/* --------------------paypalmodel--------------------------- */}
+            <Modal
+                visible={!!paypalurl}>
+                <TouchableOpacity
+                    onPress={() => { clearpaypalstate }}
+                >
+                    <Text>Close</Text>
+                </TouchableOpacity>
+                <View style={{ flex: 1 }}>
+                    <WebView
+                        source={{ uri: paypalurl }}
+                        onNavigationStateChange={onurlchange}
+                    />
+                </View>
+
+            </Modal>
         </View>
     )
 }

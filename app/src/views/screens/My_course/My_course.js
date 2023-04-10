@@ -28,7 +28,7 @@ import img4 from './../../../assets/images/img4.svg';
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [modalVisible, setModalVisible] = useState(false);
-    
+
     const [book, setbook] = useState(false);
     const [clickedId, setclickedId] = useState(100)
     const [modalVisible1, setModalVisible1] = useState(false);
@@ -40,18 +40,21 @@ const App = ({ navigation }) => {
         {
             id: 1,
             src: img1,
+            selected: false,
             head: 'Course Title',
             down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
         },
         {
             id: 2,
             src: img2,
+            selected: false,
             head: 'Course Title',
             down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
         },
         {
             id: 3,
             src: img3,
+            selected: false,
             head: 'Course Title',
             down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
         }])
@@ -60,6 +63,19 @@ const App = ({ navigation }) => {
     useEffect(() => {
 
     }, [isFocused]);
+    const [select, setSelect] = useState(TEMP_DATA)
+    console.log("------", select)
+    const handleOnpress = (item) => {
+        const newlitem = select.map((val) => {
+            if (val.id === item.id) {
+                return { ...val, selected: !val.selected }
+            }
+            else {
+                return val
+            }
+        })
+        setSelect(newlitem)
+    }
     return (
         <ScrollView style={[styles.myBackground, { backgroundColor: 'white' }]}>
             <Appbar.Header
@@ -75,16 +91,23 @@ const App = ({ navigation }) => {
 
             <View style={{}}>
                 <FlatList
-                    data={TEMP_DATA}
-                    renderItem={({ item, index }) => (
-                        <TouchableOpacity
-                            onPress={() => { navigation.navigate('Course_Details') }}
+                    data={select}
+                    renderItem={({ item, index }) => {
+                        if (book == true) {
+                            select.splice(2, 0, select.splice(1, 1)[0]);
+                        }
+                        return <TouchableOpacity
+                            onPress={() => {
+                                navigation.navigate('Course_Details')
+
+                            }}
+
                             style={{ marginHorizontal: '5%', backgroundColor: 'white' }}>
                             <View
                                 style={styles.v2}>
                                 <View>
                                     <item.src width={100} height={290} viewBox="0 0 100 290" />
-                                    
+
                                 </View>
 
                                 <View style={styles.v1}>
@@ -97,14 +120,15 @@ const App = ({ navigation }) => {
                                     style={styles.btn}
                                     onPress={() => {
                                         setclickedId(index)
+                                        handleOnpress(item)
                                     }}>
-                                    <MaterialIcons name={clickedId == index || book == true ? "bookmark" : "bookmark-outline"} size={25} color={clickedId == index || book == true ? '#14A800' : '#9D9D9D'} />
+                                    <MaterialIcons name={item.selected == true ? "bookmark" : "bookmark-outline"} size={25} color={item.selected == true ? '#14A800' : '#9D9D9D'} />
                                 </TouchableOpacity >
                             </View>
 
 
                         </TouchableOpacity>
-                    )}
+                    }}
 
                 />
             </View>
@@ -182,3 +206,33 @@ const App = ({ navigation }) => {
 export default App;
 
 
+// import React, { useState } from 'react';
+// import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+
+// const data = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+
+// const FlatListExample = () => {
+//     const [listData, setListData] = useState(data);
+
+//     const changeIndex = (fromIndex, toIndex) => {
+//         const updatedData = [...listData];
+//         updatedData.splice(toIndex, 0, updatedData.splice(fromIndex, 1)[0]);
+//         setListData(updatedData);
+//     };
+
+//     const renderItem = ({ item, index }) => {
+//         return (
+//             <TouchableOpacity onPress={() => changeIndex(index, index + 1)}>
+//                 <Text>{item}</Text>
+//             </TouchableOpacity>
+//         );
+//     };
+
+//     return (
+//         <View>
+//             <FlatList data={listData} renderItem={renderItem} />
+//         </View>
+//     );
+// };
+
+// export default FlatListExample;

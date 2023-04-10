@@ -20,12 +20,12 @@ const STYLES = StyleSheet.create({
         fontSize: 12,
         color: '#000000',
         marginVertical: '2%',
-        alignSelf:'flex-end'
+        alignSelf: 'flex-end'
     },
     v2: {
-        
+
         elevation: 1,
-        width: '90%',
+        width: '100%',
         height: 100,
         borderRadius: 10,
         marginVertical: '3%',
