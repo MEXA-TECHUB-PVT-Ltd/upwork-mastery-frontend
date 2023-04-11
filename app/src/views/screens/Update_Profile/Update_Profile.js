@@ -70,7 +70,7 @@ const Profile = ({ navigation }) => {
 
 
 
-                <View style={{ marginTop: '95%', marginBottom: '5%' }}>
+                <View style={{ marginTop: '110%', marginBottom: '5%' }}>
                     <TouchableOpacity
                         onPress={() => { setModalVisible(true) }}
                         style={{ backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' }}>

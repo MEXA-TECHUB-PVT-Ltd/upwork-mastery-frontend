@@ -47,9 +47,22 @@ const STYLES = StyleSheet.create({
         alignItems: "center",
         marginVertical: '4%'
     },
-    btnv: { marginTop: '80%', marginBottom: '5%', marginHorizontal: '5%' },
-    btn1: { backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' },
-    txt1: { color: 'white', alignSelf: 'center', fontSize: 17 },
+    btnv: {
+        marginTop: '98%',
+        marginBottom: '5%',
+        marginHorizontal: '5%'
+    },
+    btn1: {
+        backgroundColor: '#14A800',
+        borderRadius: 25,
+        height: 55,
+        justifyContent: 'center'
+    },
+    txt1: {
+        color: 'white',
+        alignSelf: 'center',
+        fontSize: 17
+    },
 
     // ------------------------------------------------------------
     // ----------------------------model styleing----------------------
@@ -129,8 +142,8 @@ const STYLES = StyleSheet.create({
         marginHorizontal: '3%', alignSelf: 'center'
     },
     // ----------------recomendation Model----------------------
-     // ----------------------------model styleing licence----------------------
-     centeredView1: {
+    // ----------------------------model styleing licence----------------------
+    centeredView1: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
@@ -145,7 +158,7 @@ const STYLES = StyleSheet.create({
         elevation: 5
     },
     model1: {
-       
+
         width: 100,
         backgroundColor: 'white',
         borderRadius: 100,

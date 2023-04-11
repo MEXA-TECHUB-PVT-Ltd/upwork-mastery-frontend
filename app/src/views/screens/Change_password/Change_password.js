@@ -116,8 +116,6 @@ const Change_password = () => {
 
                 </Appbar.Header>
 
-
-
                 <View style={styles.bigview}>
 
                     <View style={[styles.inputstyle, { marginVertical: '2%' }]}>
@@ -209,10 +207,6 @@ const Change_password = () => {
                     }
 
                 </View>
-
-
-
-
 
                 <TouchableOpacity onPress={() => reset()} style={styles.button1}>
                     <Text style={{ fontSize: 18, color: '#fff' }}>

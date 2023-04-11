@@ -145,7 +145,8 @@ const Profile = ({ navigation }) => {
                                     style={[styles.button]}
                                     onPress={() => {
                                         setModalVisible(!modalVisible)
-                                        openmodel1()
+                                        navigation.navigate('Home')
+                                        // openmodel1()
                                     }}
                                 >
                                     <Text style={[styles.textStyle1, { color: 'white' }]}>Go to Home</Text>
@@ -155,46 +156,7 @@ const Profile = ({ navigation }) => {
                     </View>
                 </Modal>
             </View>
-            {/* ----------------recomendation model------------------------------- */}
-            <View style={styles.centeredView1}>
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible1}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been closed.");
-                        setModalVisible1(!modalVisible1);
-                    }}
-                >
-                    <View style={styles.centeredView1}>
-                        <View style={styles.modalView1}>
-                            <View style={{ justifyContent: 'center', marginHorizontal: '5%', marginVertical: '5%' }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ color: '#242424', fontSize: 19 }}>
-                                        Recommendations
-                                    </Text>
-                                    <TouchableOpacity onPress={() => {
-                                        setModalVisible1(!modalVisible1)
-                                        navigation.navigate('Home')
-                                    }}>
-                                        <MaterialIcons name="close" size={24} color={'#000000'} style={styles.icon} />
-                                    </TouchableOpacity>
-                                </View>
-                                <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                    Lorem ipsu
-                                </Text>
-                            </View>
 
-
-
-
-
-                        </View>
-                    </View>
-                </Modal>
-            </View>
         </ScrollView>
     );
 };
