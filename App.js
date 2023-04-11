@@ -45,13 +45,13 @@ function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-{/*       
+        {/*       
       <Stack.Screen
           name="Checkout"
           component={Checkout}
           options={{ headerShown: false }}
         /> */}
-      {/* <Stack.Screen
+        {/* <Stack.Screen
           name="Paypal"
           component={Paypal}
           options={{ headerShown: false }}
@@ -61,17 +61,17 @@ function MainNavigator() {
           component={Stripe_screen}
           options={{ headerShown: false }}
         /> */}
-        <Stack.Screen
-          name="Onbording"
-          component={Onbording}
-          options={{ headerShown: false }}
-        />
+
         {/* <Stack.Screen
           name="Payment_Screen"
           component={Payment_Screen}
           options={{ headerShown: false }}
         /> */}
-
+        <Stack.Screen
+          name="Onbording"
+          component={Onbording}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="SignIn"
           component={SignIn}

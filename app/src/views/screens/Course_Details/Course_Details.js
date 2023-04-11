@@ -4,8 +4,9 @@ import {
     StyleSheet,
     Dimensions,
     ScrollView, FlatList, Modal, Pressable,
-    View, Image, Text, TouchableOpacity
+    View, Image, Text, TouchableOpacity, Animated
 } from 'react-native'
+const { height, width } = Dimensions.get('screen')
 import { appImages } from '../../../assets/utilities/index'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -29,8 +30,9 @@ import img4 from './../../../assets/images/img4.svg';
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [currentIndex, setCurrentIndex] = useState(0);
-
+    const [wish, setwish] = useState(false);
     const [playing, setPlaying] = useState(false);
+    const ref = useRef()
 
     const onStateChange = useCallback((state) => {
         if (state === "ended") {
@@ -42,20 +44,32 @@ const App = ({ navigation }) => {
 
     }, [isFocused]);
 
+    // const [TEMP_DATA, setTEMP_DATA] = useState([
+    //     {
+    //         id: 1,
+    //         src: '118783781937'
+    //     },
+    //     {
+    //         id: 2,
+    //         src: 'dhxihwijxiwjx'
+    //     },
+    //     {
+    //         id: 3,
+    //         src: "'][]'''\]'][]']\']''",
+    //     }])
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
             id: 1,
-            src: img1,
+            linkid: 'J28bwxjl4EA'
         },
         {
             id: 2,
-            src: img2,
+            linkid: '84WIaK3bl_s'
         },
         {
             id: 3,
-            src: img3,
+            linkid: 'J28bwxjl4EA'
         }])
-
     return (
         <ScrollView style={[styles.myBackground]}>
             <Appbar.Header
@@ -66,32 +80,39 @@ const App = ({ navigation }) => {
                 <Appbar.Action onPress={() => { }} />
 
             </Appbar.Header>
-            <YoutubePlayer
-                height={200}
+            <Animated.FlatList
+                horizontal
+                data={TEMP_DATA}
+                pagingEnabled={true}
+                keyExtractor={(item) => item.id}
+                ref={ref}
+                showsHorizontalScrollIndicator={false}
+                onScroll={e => {
+                    const x = e.nativeEvent.contentOffset.x
+                    setCurrentIndex((x / (width - 50).toFixed(0)))
+                }}
+                renderItem={({ item, index }) => {
+                    return <Animated.View>
 
-                // allowWebViewScroll={false}
-                // onFullScreenChange={isFullScreen => {
-                //     if (isFullScreen) {
-                //       // Do nothing
-                //     } else {
-                //       // Exit full screen mode
-                //     }
-                //   }}
-                // initialPlayerParams={{ controls: false }}
-                // ref={controlRef}
-            
-                play={playing}
-                // mute={isMute}
-                videoId={'84WIaK3bl_s'}
-                onChangeState={onStateChange}
+                        <YoutubePlayer
+                            height={200}
+                            width={360}
+                            play={playing}
+                            // mute={isMute}
+                            videoId={item.linkid}
+                            onChangeState={onStateChange}
+                        />
+                    </Animated.View>
+                }}
             />
+
 
             <View style={styles.v1}>
                 <View style={styles.v11}>
                     <Text style={styles.txt1}>Course Description</Text>
                     <TouchableOpacity
-                        onPress={() => { }}>
-                        <MaterialIcons name="bookmark-outline" size={25} color={'#9D9D9D'} />
+                        onPress={() => {setwish(!wish) }}>
+                        <MaterialIcons name={wish == false ? "bookmark-outline" : "bookmark"} size={25} color={wish == false ?'#9D9D9D':'#14A800'} />
                     </TouchableOpacity >
                 </View>
 
@@ -104,21 +125,43 @@ const App = ({ navigation }) => {
 
 
             <View style={styles.v2}>
-                <TouchableOpacity style={styles.btnl} onPress={() => { decrementIndex() }}>
-                    <Text style={styles.txtl}>
-                        Back
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btnl} onPress={() => { incrementIndex() }}>
-                    <Text style={styles.txtl}>
-                        Next
-                    </Text>
-                </TouchableOpacity>
+                {
+                    currentIndex == 0 ? <Text></Text> : (
+                        <TouchableOpacity style={styles.btnl}
+                            onPress={() => {
+                                setCurrentIndex(currentIndex - 1)
+                                ref.current.scrollToIndex({
+                                    animated: true,
+                                    index: parseInt(currentIndex) - 1,
+
+                                })
+                            }}>
+                            <Text style={styles.txtl}>
+                                Back
+                            </Text>
+                        </TouchableOpacity>
+                    )
+                }
+                {
+                    TEMP_DATA.length - 1 < currentIndex ? <Text></Text> : (
+                        <TouchableOpacity style={styles.btnl}
+                            onPress={() => {
+                                setCurrentIndex(currentIndex + 1)
+                                ref.current.scrollToIndex({
+                                    animated: true,
+                                    index: parseInt(currentIndex) + 1,
+
+                                })
+                            }}>
+                            <Text style={styles.txtl}>
+                                Next
+                            </Text>
+                        </TouchableOpacity>
+                    )
+                }
             </View>
         </ScrollView >
     )
 }
 
 export default App;
-
-

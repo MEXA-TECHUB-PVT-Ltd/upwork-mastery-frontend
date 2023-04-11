@@ -48,8 +48,8 @@ const STYLES = StyleSheet.create({
     },
     button1: {
         alignItems: 'center',
-        marginTop: '86%',       //uper sa margen
-        marginBottom:'5%',
+        marginTop: '90%',       //uper sa margen
+        marginBottom: '5%',
         justifyContent: "center",  // for middle writting
         height: 58,
         fontSize: 20,

@@ -316,7 +316,8 @@ const App = ({ navigation }) => {
                                         setModalVisible1(!modalVisible1);
                                         onPressPaypal()
                                     }}
-                                    disabled={loading}
+                                    // disabled={true}
+                                    disabled={loading == false && checked == true ? false : true}
                                 // onPress={() => {
                                 //     setModalVisible1(!modalVisible1);
 
@@ -334,9 +335,10 @@ const App = ({ navigation }) => {
             <Modal
                 visible={!!paypalurl}>
                 <TouchableOpacity
-                    onPress={() => { clearpaypalstate }}
+                    onPress={() => { clearpaypalstate() }}
+                    style={{ width: 30, alignSelf: 'flex-end' }}
                 >
-                    <Text>Close</Text>
+                    <MaterialIcons name={'close'} size={27} color={'#000000'} style={{ marginTop: '3%', marginRight: '3%' }} />
                 </TouchableOpacity>
                 <View style={{ flex: 1 }}>
                     <WebView

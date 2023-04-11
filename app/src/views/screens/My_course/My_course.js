@@ -61,8 +61,8 @@ const App = ({ navigation }) => {
 
 
     useEffect(() => {
-
-    }, [isFocused]);
+        openmodel1()
+    }, []);
     const [select, setSelect] = useState(TEMP_DATA)
     console.log("------", select)
     const handleOnpress = (item) => {
@@ -75,6 +75,15 @@ const App = ({ navigation }) => {
             }
         })
         setSelect(newlitem)
+    }
+    if (book == true) {
+        select.splice(2, 0, select.splice(1, 1)[0]);
+        // if (select.selected == true) {
+        // const temp = select[0]
+        // select[0] = select[1]
+        // select[1] = select[2]
+        // select[2] = temp
+        // }
     }
     return (
         <ScrollView style={[styles.myBackground, { backgroundColor: 'white' }]}>
@@ -93,9 +102,7 @@ const App = ({ navigation }) => {
                 <FlatList
                     data={select}
                     renderItem={({ item, index }) => {
-                        if (book == true) {
-                            select.splice(2, 0, select.splice(1, 1)[0]);
-                        }
+
                         return <TouchableOpacity
                             onPress={() => {
                                 navigation.navigate('Course_Details')
