@@ -17,6 +17,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CountryPicker from "react-native-country-picker-modal"
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Alertt from './../../../assets/images/alert.svg';
 import styles from './styles';
 
@@ -24,8 +25,39 @@ const Profile = ({ navigation }) => {
 
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [username, setusername] = useState("")
+
+    // ------------------------------update profile-------------------------------
+
+    const update = async () => {
+        try {
+            console.log(await AsyncStorage.getItem('userid'))
+            await fetch(global.url + "auth/UpdateProfile.php", {
+                method: 'PUT',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: await AsyncStorage.getItem('userid'),
+                    username: username,
+                })
+            }).then(response => response.json())
+                .then(data => {
+                    if (data.status === true) {
+                        setModalVisible(true)
+                    }
+                    else console.log("Plz Try Again!")
+                });
+        }
+        catch (error) {
+            console.log("Post submission failed");
+            console.log(error.message);
+        }
 
 
+
+    }
 
 
     return (
@@ -44,14 +76,14 @@ const Profile = ({ navigation }) => {
                     <TextInput
                         placeholder='Username'
                         placeholderTextColor={'#969AA8'}
-                        onChangeText={email => setemail(email)}
+                        onChangeText={username => setusername(username)}
                         style={{
                             marginLeft: '5%',
                             color: '#969AA8'
                         }}
                     />
                 </View>
-                <View style={{ marginTop: '3%' }}>
+                {/* <View style={{ marginTop: '3%' }}>
                     <Text style={styles.txt1}>Email Address</Text>
                     <View style={[styles.inputstyle, { marginVertical: '2%' }]}>
                         <TextInput
@@ -64,15 +96,15 @@ const Profile = ({ navigation }) => {
                             }}
                         />
                     </View>
-                </View>
+                </View> */}
 
 
 
 
 
-                <View style={{ marginTop: '110%', marginBottom: '5%' }}>
+                <View style={{ marginTop: '150%', marginBottom: '5%' }}>
                     <TouchableOpacity
-                        onPress={() => { setModalVisible(true) }}
+                        onPress={() => { update() }}
                         style={{ backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' }}>
                         <Text style={{ color: 'white', alignSelf: 'center', fontSize: 17 }}>Update</Text>
                     </TouchableOpacity>

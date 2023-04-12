@@ -4,7 +4,7 @@ import {
     StyleSheet,
     Dimensions,
     ScrollView, FlatList, Modal, Pressable,
-    View, Image, Text, TouchableOpacity
+    View, Image, Text, TouchableOpacity, ImageBackground
 } from 'react-native'
 import { appImages } from '../../../assets/utilities/index'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -58,13 +58,39 @@ const App = ({ navigation }) => {
             head: 'Course Title',
             down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
         }])
+    const [r, setr] = useState();
+
+    const allr = async () => {
+        try {
+            const response = await fetch(global.url + "recommendation/getRecomendation.php?id=1")
+            const json = await response.json();
+            setr(json.data.description);            //json.id to sub ides ayan ge
+
+            // console.log(json.result[0]._id)
+
+        } catch (error) {
+            console.error(error);
+        } finally {
+            // setLoading(false);
+        }
+    }
+
+
+    const gett = async () => {
+
+        const userid = await AsyncStorage.getItem('userid')
+        const usename = await AsyncStorage.getItem('username')
+        console.log('userid-->' + userid, usename)
+    }
 
 
     useEffect(() => {
+        allr()
         openmodel1()
+        gett()
     }, []);
     const [select, setSelect] = useState(TEMP_DATA)
-    console.log("------", select)
+    // console.log("------", select)
     const handleOnpress = (item) => {
         const newlitem = select.map((val) => {
             if (val.id === item.id) {
@@ -99,6 +125,21 @@ const App = ({ navigation }) => {
             </Appbar.Header>
 
             <View style={{}}>
+                {/* <ImageBackground style={{
+                    width: "50%",
+                    height: "50%"
+                }}
+                source={appImages.f}>
+                    <View style={{
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: 'rgba( 0, 0, 0, 0.3 )',
+                        alignSelf: "center"
+                    }} />
+                </ImageBackground> */}
+
+
+
                 <FlatList
                     data={select}
                     renderItem={({ item, index }) => {
@@ -192,9 +233,7 @@ const App = ({ navigation }) => {
                                     </TouchableOpacity>
                                 </View>
                                 <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                    Lorem ipsu
+                                    {r}
                                 </Text>
                             </View>
 

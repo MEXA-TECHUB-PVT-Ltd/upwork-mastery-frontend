@@ -22,20 +22,64 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { appImages } from '../../../assets/utilities/index'
 import styles from './styles';
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 const Profile = ({ navigation }) => {
+    const [email, setemail] = useState("")
+    const [pass, setpass] = useState("")
+    const [username, setusername] = useState("")
 
-    // -------------------category dropdown----------------------
-    const [categoryModal, setcategoryModal] = useState(false);
-
-    const [fil, setfil] = useState()
     const [check, setcheck] = useState(false)
-
+    const [fil, setfil] = useState()
     const [modalVisible, setModalVisible] = useState(false);
-    const [modalVisible1, setModalVisible1] = useState(false);
 
     const openmodel1 = async () => {
-        setModalVisible1(true)
+        setModalVisible(true)
     }
+
+    const Login = async () => {
+        if (email != '' && pass != '' && username != '') {
+            var InsertAPIURL = global.url + "auth/Signup.php";
+            var headers = {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            };
+            await fetch(InsertAPIURL, {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: pass
+                }),
+            })
+                .then(response => response.json())
+                .then(async response => {
+                    console.log(response)
+                    if (response.status === true) {
+
+                        await AsyncStorage.setItem("userid", response.user.id);
+                        // await AsyncStorage.setItem("username", response.user.username);
+                        await AsyncStorage.setItem("useremail", response.user.email);
+
+                        // console.log(response.data.id,response.data.username,response.data.email)
+                        openmodel1()
+
+                    } else {
+                        setfil(response.message)
+                    }
+                    console.log(response.message)
+                })
+                .catch(error => {
+                    console.log('this is error' + error);
+                    setfil('Email or Password is incorrect')
+                });
+        }
+        else {
+            setfil('Fill all requirments')
+        }
+    }
+
     return (
         <ScrollView style={styles.myBackground}>
             <Appbar.Header
@@ -64,7 +108,7 @@ const Profile = ({ navigation }) => {
                 <TextInput
                     placeholder='Username'
                     placeholderTextColor={'#969AA8'}
-                    onChangeText={email => setemail(email)}
+                    onChangeText={username => setusername(username)}
                     style={{
                         marginLeft: '5%',
                         color: '#969AA8'
@@ -99,7 +143,7 @@ const Profile = ({ navigation }) => {
                         </TouchableOpacity>
                 }
             </View>
-            {/* <Text style={{ color: 'red' }}>{fil}</Text> */}
+            <Text style={{ color: 'red', marginLeft: '5%', marginBottom: '1%' }}>{fil}</Text>
 
 
             <View style={{ flexDirection: 'row', marginHorizontal: '5%' }}>
@@ -115,7 +159,10 @@ const Profile = ({ navigation }) => {
 
             <View style={styles.btnv}>
                 <TouchableOpacity
-                    onPress={() => { setModalVisible(true) }}
+                    onPress={() => {
+                        Login()
+
+                    }}
                     style={styles.btn1}>
                     <Text style={styles.txt1}>Create Account</Text>
                 </TouchableOpacity>

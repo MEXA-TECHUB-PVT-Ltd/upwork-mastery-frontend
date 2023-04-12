@@ -40,6 +40,10 @@ import Checkout from './app/src/views/screens/Paypal/Checkout';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+
+global.url = "https://postgres-php-staging-projects.mtechub.com.mtechub.com/server/apis/"
+
 function MainNavigator() {
 
   return (
