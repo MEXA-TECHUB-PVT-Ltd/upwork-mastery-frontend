@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {
     SafeAreaView,
     StyleSheet,
@@ -45,6 +45,26 @@ const App = ({ navigation }) => {
     const openmodel1 = async () => {
         setModalVisible1(true)
     }
+
+    const [l, setl] = useState();
+
+    const alll = async () => {
+        try {
+            const response = await fetch(global.url + "policy/GetLicence.php")
+            const json = await response.json();
+            setl(json.licence.agreement);            //json.id to sub ides ayan ge
+
+            // console.log(json.result[0]._id)
+
+        } catch (error) {
+            console.error(error);
+        } finally {
+            // setLoading(false);
+        }
+    }
+    useEffect(() => {
+        alll()
+    }, []);
 
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
@@ -288,8 +308,7 @@ const App = ({ navigation }) => {
                                     License Agreement
                                 </Text>
                                 <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua., sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolo
+                                    {l}
                                 </Text>
                             </View>
 

@@ -36,11 +36,12 @@ const SignIn = () => {
 
     const Login = async () => {
         if (email != '' && pass != '') {
-            var InsertAPIURL = global.url + "Login.php";
+            var InsertAPIURL = global.url + "auth/Login.php";
             var headers = {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             };
+
             await fetch(InsertAPIURL, {
                 method: 'POST',
                 headers: headers,
@@ -51,22 +52,21 @@ const SignIn = () => {
             })
                 .then(response => response.json())
                 .then(async response => {
-                    console.log(response)
-                    if (response.status === true) {
+                    if (response.status == true) {
 
                         await AsyncStorage.setItem("userid", response.data.id);
                         await AsyncStorage.setItem("username", response.data.username);
                         await AsyncStorage.setItem("useremail", response.data.email);
+                        console.log(response.data._id)
+                        navigation.replace('Home')
 
-                        // console.log(response.data.id,response.data.username,response.data.email)
-
-                        navigation.replace("drawer_Home")
                     } else {
                         setfil(response.message)
                     }
-                    console.log(response.message)
+                    // console.log(response.message)
                 })
                 .catch(error => {
+
                     console.log('this is error' + error);
                     setfil('Email or Password is incorrect')
                 });
@@ -177,8 +177,8 @@ const SignIn = () => {
             <View style={{ marginTop: '74%' }}>
                 <View style={styles.buttonview}>
                     <TouchableOpacity onPress={() => {
-                        // reset()
-                        navigation.navigate('Home')
+                        Login()
+
                     }} style={styles.btn}>
                         <Text style={{ color: '#fff', fontSize: 17 }}>
                             Sign In

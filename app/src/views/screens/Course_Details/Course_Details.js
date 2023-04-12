@@ -78,7 +78,8 @@ const App = ({ navigation }) => {
                 <Appbar.Action icon="chevron-left" color={'white'} onPress={() => { navigation.goBack() }} />
                 <Appbar.Content color={'white'} title="Video Title" />
                 <Appbar.Action onPress={() => { }} />
-
+                <Appbar.Action onPress={() => { }} />
+                <Appbar.Content color={'white'} title="0/4" style={{ marginRight: '0%' }} />
             </Appbar.Header>
             <Animated.FlatList
                 horizontal
@@ -111,8 +112,8 @@ const App = ({ navigation }) => {
                 <View style={styles.v11}>
                     <Text style={styles.txt1}>Course Description</Text>
                     <TouchableOpacity
-                        onPress={() => {setwish(!wish) }}>
-                        <MaterialIcons name={wish == false ? "bookmark-outline" : "bookmark"} size={25} color={wish == false ?'#9D9D9D':'#14A800'} />
+                        onPress={() => { setwish(!wish) }}>
+                        <MaterialIcons name={wish == false ? "bookmark-outline" : "bookmark"} size={25} color={wish == false ? '#9D9D9D' : '#14A800'} />
                     </TouchableOpacity >
                 </View>
 
