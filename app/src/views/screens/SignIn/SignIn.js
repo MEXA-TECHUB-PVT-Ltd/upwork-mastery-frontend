@@ -57,6 +57,7 @@ const SignIn = () => {
                         await AsyncStorage.setItem("userid", response.data.id);
                         await AsyncStorage.setItem("username", response.data.username);
                         await AsyncStorage.setItem("useremail", response.data.email);
+                        await AsyncStorage.setItem("password", pass);
                         console.log(response.data._id)
                         navigation.replace('Home')
 

@@ -23,7 +23,7 @@ const Forget_password = ({ navigation }) => {
     const forgetpass = async () => {
         try {
             if (email != '') {
-                await fetch(global.url + "forgetPassword/userForgetPassword", {
+                await fetch(global.url + "auth/OtpSend.php", {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
@@ -35,9 +35,8 @@ const Forget_password = ({ navigation }) => {
                     })
                 }).then(response => response.json())
                     .then(data => {
-                        if (data.status == 'pending') {
-                            console.log(data.data.email + '<------>' + data.data.otp)
-                            navigation.navigate("Verification", { email: data.data.email, otp: data.data.otp })
+                        if (data.status === true) {
+                            navigation.navigate("Verification", { email: email })
                         }
                         else {
                             console.log(data.message)
@@ -85,8 +84,8 @@ const Forget_password = ({ navigation }) => {
 
             <View style={styles.btnview}>
                 <TouchableOpacity onPress={() => {
-                    // forgetpass()
-                    navigation.navigate("Verification")
+                    forgetpass()
+
                 }} style={styles.btn}>
                     <Text style={styles.txtl}>
                         Send Code

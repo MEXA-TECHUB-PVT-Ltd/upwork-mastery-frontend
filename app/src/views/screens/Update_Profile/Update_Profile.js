@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import {
     StyleSheet,
     Text,
@@ -14,18 +14,26 @@ import {
     Appbar,
     Divider
 } from 'react-native-paper';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import CountryPicker from "react-native-country-picker-modal"
+import { useIsFocused } from '@react-navigation/native';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Alertt from './../../../assets/images/alert.svg';
 import styles from './styles';
 
 const Profile = ({ navigation }) => {
-
+    const isFocused = useIsFocused()
 
     const [modalVisible, setModalVisible] = useState(false);
     const [username, setusername] = useState("")
+    const [email,setemail]=useState()
+
+    const gett = async () => {
+        setemail(await AsyncStorage.getItem('useremail'))
+        console.log(email)
+    }
+    useEffect(() => {
+        gett()
+    }, [isFocused]);
 
     // ------------------------------update profile-------------------------------
 
@@ -83,20 +91,21 @@ const Profile = ({ navigation }) => {
                         }}
                     />
                 </View>
-                {/* <View style={{ marginTop: '3%' }}>
+                <View style={{ marginTop: '3%' }}>
                     <Text style={styles.txt1}>Email Address</Text>
                     <View style={[styles.inputstyle, { marginVertical: '2%' }]}>
                         <TextInput
-                            placeholder='Email'
+                            // placeholder='Email'
+                            value={email}
                             placeholderTextColor={'#969AA8'}
-                            onChangeText={email => setemail(email)}
+                            // onChangeText={email => setemail(email)}
                             style={{
                                 marginLeft: '5%',
                                 color: '#969AA8'
                             }}
                         />
                     </View>
-                </View> */}
+                </View>
 
 
 

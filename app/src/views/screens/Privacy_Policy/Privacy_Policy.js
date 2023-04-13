@@ -9,7 +9,7 @@ import {
     Divider, ProgressBar
 } from 'react-native-paper';
 // ...
-const MyWebComponent = ({navigation}) => {
+const MyWebComponent = ({ navigation }) => {
     return (
         <>
             <View>
