@@ -36,7 +36,7 @@ import Paypal from './app/src/views/screens/Paypal/Paypal';
 import Checkout from './app/src/views/screens/Paypal/Checkout';
 
 import First_screen from './app/src/views/screens/First_screen'
-
+import Come from './app/src/views/screens/Come'
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -162,7 +162,11 @@ function MainNavigator() {
           component={Term_condition}
           options={{ headerShown: false }}
         />
-
+ <Stack.Screen
+          name="Come"
+          component={Come}
+          options={{ headerShown: false }}
+        />
 
       </Stack.Navigator>
     </NavigationContainer>

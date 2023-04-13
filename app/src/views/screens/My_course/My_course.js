@@ -79,23 +79,19 @@ const App = ({ navigation }) => {
     const [all, setall] = useState([]);
 
     const alllist = async () => {
+        setall([])
         try {
-            const response = await fetch(global.url + "cource/GetCourceVideos.php")
+            const response = await fetch(global.url + "cource/SaveStatus.php?user_id=" + await AsyncStorage.getItem('userid'))
             const json = await response.json();
-            // setall(json.data);            //json.id to sub ides ayan ge
-
-            console.log(json.length)
-
-            let initialList = json;
-            // let updatedList = [];
+            // console.log(json.videos)
+            let initialList = json.videos;
             initialList.forEach(element => {
-                // console.log('============>>>>',element.data.description)
                 let obj = {
                     id: element.data.id,
                     title: element.data.title,
                     link: element.data.link,
                     description: element.data.description,
-                    // created_at:'2023-04-10 05:52:13.945929+00'
+                    status: element.data.status
                 };
                 all.push(obj);
             });
@@ -115,13 +111,84 @@ const App = ({ navigation }) => {
         console.log('userid,name,pass-->' + userid, usename, pass)
     }
 
+    const bookmarksave = async (id, status) => {
+        console.log(id, await AsyncStorage.getItem('userid'))
+        var InsertAPIURL = global.url + "cource/SaveVideo.php";
+        var headers = {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        };
 
+        await fetch(InsertAPIURL, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify({
+                user_id: await AsyncStorage.getItem('userid'),
+                video_id: id
+            }),
+        })
+            .then(response => response.json())
+            .then(async response => {
+                // console.log(response)
+                if (response.status == true) {
+                    alllist()
+                    // const newData = [...all]
+                    // newData[id] = { ...newData[id], status: 'saved' };
+                    // setall(newData)
+                    // console.log(newData)
+                } else {
+                    console.log('----' + response.message)
+                }
+                // console.log(response.message)
+            })
+            .catch(error => {
+
+                console.log('this is error' + error);
+
+            });
+    }
+    const bookmarknotsave = async (id, status) => {
+        console.log(id, await AsyncStorage.getItem('userid'))
+        var InsertAPIURL = global.url + "cource/UnsaveVideo.php";
+        var headers = {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        };
+
+        await fetch(InsertAPIURL, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify({
+                user_id: await AsyncStorage.getItem('userid'),
+                video_id: id
+            }),
+        })
+            .then(response => response.json())
+            .then(async response => {
+                // console.log(response)
+                if (response.status == true) {
+                    alllist()
+                    // const newData = [...all]
+                    // newData[id] = { ...newData[id], status: 'not_saved' };
+                    // setall(newData)
+                    // console.log(newData)
+                } else {
+                    console.log('----' + response.message)
+                }
+                // console.log(response.message)
+            })
+            .catch(error => {
+
+                console.log('this is error' + error);
+
+            });
+    }
     useEffect(() => {
         allr()
         openmodel1()
         gett()
         alllist()
-    }, []);
+    }, [isFocused]);
     const [select, setSelect] = useState(all)
     // console.log("------", select)
     const handleOnpress = (item) => {
@@ -177,7 +244,7 @@ const App = ({ navigation }) => {
                 <FlatList
                     data={select}
                     renderItem={({ item, index }) => {
-                        console.log(index)
+
                         return <TouchableOpacity
                             onPress={() => {
                                 navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, select: select })
@@ -203,10 +270,16 @@ const App = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={styles.btn}
                                     onPress={() => {
-                                        setclickedId(index)
-                                        handleOnpress(item)
+                                        // setclickedId(index)
+                                        // handleOnpress(item)
+                                        if (item.status == 'not_saved') {
+                                            bookmarksave(item.id, item.status)
+                                        }
+                                        else {
+                                            bookmarknotsave(item.id, item.status)
+                                        }
                                     }}>
-                                    <MaterialIcons name={item.selected == true ? "bookmark" : "bookmark-outline"} size={25} color={item.selected == true ? '#14A800' : '#9D9D9D'} />
+                                    <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
                                 </TouchableOpacity >
                             </View>
 
