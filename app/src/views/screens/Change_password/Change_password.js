@@ -50,43 +50,42 @@ const Change_password = () => {
 
     const reset = async () => {
         if (conferm != '' && neww != '' && old != '') {
-            // if (await AsyncStorage.getItem('password') === old) {
-            //     if (conferm === neww) {
-            //         try {
-            //             await fetch(global.url + "user/updatePassword", {
-            //                 method: 'PUT',
-            //                 headers: {
-            //                     Accept: 'application/json',
-            //                     'Content-Type': 'application/json'
-            //                 },
-            //                 body: JSON.stringify({
-            //                     email: email,
-            //                     password: conferm
-            //                 })
-            //             }).then(response => response.json())
-            //                 .then(async data => {
-            //                     if (data.message === 'Password has been updated') {
-            setModalVisible(true)
-            //                         settxt('')
-            //                         await AsyncStorage.setItem("password", conferm);
-            //                     }
-            //                     else console.log("Plz Try Again!")
-            //                 });
-
-            //         }
-            //         catch (error) {
-            //             console.log("Post submission failed");
-            //             console.log(error.message);
-            //         }
-            //     } else {
-            //         setc(true)
-            //         settxt('New and confirm password are not same')
-            //     }
-            // }
-            // else {
-            //     setc(true)
-            //     settxt('Wrong old password')
-            // }
+            if (await AsyncStorage.getItem('password') === old) {
+                if (conferm === neww) {
+                    try {
+                        await fetch(global.url + "auth/ResetPassword.php", {
+                            method: 'PUT',
+                            headers: {
+                                Accept: 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                email: await AsyncStorage.getItem('useremail'),
+                                password: conferm
+                            })
+                        }).then(response => response.json())
+                            .then(async data => {
+                                if (data.status === true) {
+                                    setModalVisible(true)
+                                    settxt('')
+                                    await AsyncStorage.setItem("password", conferm);
+                                }
+                                else console.log("Plz Try Again!")
+                            });
+                    }
+                    catch (error) {
+                        console.log("Post submission failed");
+                        console.log(error.message);
+                    }
+                } else {
+                    setc(true)
+                    settxt('New and confirm password are not same')
+                }
+            }
+            else {
+                setc(true)
+                settxt('Wrong old password')
+            }
         }
         else {
             setc(true)
@@ -94,13 +93,13 @@ const Change_password = () => {
         }
     }
     useEffect(() => {
-        // gett()
+        gett()
     }, [isFocused]);
 
-    // const gett = async () => {
-    //     setemail(await AsyncStorage.getItem('useremail'))
-    //     console.log('useremail-->' + email)
-    // }
+    const gett = async () => {
+        setemail(await AsyncStorage.getItem('useremail'))
+        console.log('useremail-->' + email)
+    }
 
 
     return (

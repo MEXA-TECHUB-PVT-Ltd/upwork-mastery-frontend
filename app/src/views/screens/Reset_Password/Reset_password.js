@@ -18,7 +18,7 @@ import styles from './styles';
 import Alertt from './../../../assets/images/alert.svg';
 const Reset_password = ({ route, navigation }) => {
 
-    // const { email } = route.params;
+    const { email } = route.params;
 
     const [neww, setnew] = useState('')
     const [conferm, setconferm] = useState('')
@@ -30,42 +30,43 @@ const Reset_password = ({ route, navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
 
 
-    const reset = async () => {
-        setModalVisible(true)
-    }
     // const reset = async () => {
-    //     if (conferm === neww && conferm != '' && neww != '') {
-    //         try {
-    //             await fetch(global.url + "user/updatePassword", {
-    //                 method: 'PUT',
-    //                 headers: {
-    //                     Accept: 'application/json',
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 body: JSON.stringify({
-    //                     email: email,
-    //                     password: conferm
-    //                 })
-    //             }).then(response => response.json())
-    //                 .then(data => {
-    //                     if (data.message === 'Password has been updated') {
-    //                         setModalVisible(true)
-
-    //                     }
-    //                     else console.log("Plz Try Again!")
-    //                 });
-
-    //         }
-    //         catch (error) {
-    //             console.log("Post submission failed");
-    //             console.log(error.message);
-    //         }
-    //     }
-    //     else {
-
-    //         setc(true)
-    //     }
+    //     setModalVisible(true)
     // }
+    const reset = async () => {
+        if (conferm === neww && conferm != '' && neww != '') {
+            try {
+                await fetch(global.url + "auth/ResetPassword.php", {
+                    method: 'PUT',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: conferm
+                    })
+                }).then(response => response.json())
+                .then(async data => {
+                    console.log(data)
+                    if (data.status === true) {
+                            setModalVisible(true)
+
+                        }
+                        else console.log("Plz Try Again!")
+                    });
+
+            }
+            catch (error) {
+                console.log("Post submission failed");
+                console.log(error.message);
+            }
+        }
+        else {
+
+            setc(true)
+        }
+    }
     return (
         <ScrollView style={styles.myBackground} keyboardShouldPersistTaps={'always'}>
             <TouchableOpacity style={styles.navigate_next} onPress={() => navigation.goBack()}>

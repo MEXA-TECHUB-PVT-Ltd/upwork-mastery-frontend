@@ -35,8 +35,7 @@ import Term_condition from './app/src/views/screens/Term_condition/Term_conditio
 import Paypal from './app/src/views/screens/Paypal/Paypal';
 import Checkout from './app/src/views/screens/Paypal/Checkout';
 
-
-
+import First_screen from './app/src/views/screens/First_screen'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,6 +68,13 @@ function MainNavigator() {
         {/* <Stack.Screen
           name="Payment_Screen"
           component={Payment_Screen}
+          options={{ headerShown: false }}
+        /> */}
+
+
+        {/* <Stack.Screen
+          name="First_screen"
+          component={First_screen}
           options={{ headerShown: false }}
         /> */}
         <Stack.Screen

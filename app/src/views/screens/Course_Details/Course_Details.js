@@ -27,7 +27,8 @@ import img1 from './../../../assets/images/img1.svg';
 import img2 from './../../../assets/images/img2.svg';
 import img3 from './../../../assets/images/img3.svg';
 import img4 from './../../../assets/images/img4.svg';
-const App = ({ navigation }) => {
+const App = ({ route, navigation }) => {
+    const { index, id, description, select } = route.params;
     const isFocused = useIsFocused()
     const [currentIndex, setCurrentIndex] = useState(0);
     const [wish, setwish] = useState(false);
@@ -70,6 +71,8 @@ const App = ({ navigation }) => {
             id: 3,
             linkid: 'J28bwxjl4EA'
         }])
+    console.log('item list--->>  ' + index, description)
+    const line = index + '/' + select.length
     return (
         <ScrollView style={[styles.myBackground]}>
             <Appbar.Header
@@ -79,11 +82,11 @@ const App = ({ navigation }) => {
                 <Appbar.Content color={'white'} title="Video Title" />
                 <Appbar.Action onPress={() => { }} />
                 <Appbar.Action onPress={() => { }} />
-                <Appbar.Content color={'white'} title="0/4" style={{ marginRight: '0%' }} />
+                <Appbar.Content color={'white'} title={line + " "} style={{ marginRight: '0%' }} />
             </Appbar.Header>
             <Animated.FlatList
                 horizontal
-                data={TEMP_DATA}
+                data={select}
                 pagingEnabled={true}
                 keyExtractor={(item) => item.id}
                 ref={ref}
@@ -100,7 +103,7 @@ const App = ({ navigation }) => {
                             width={360}
                             play={playing}
                             // mute={isMute}
-                            videoId={item.linkid}
+                            videoId={item.link}
                             onChangeState={onStateChange}
                         />
                     </Animated.View>
@@ -118,9 +121,7 @@ const App = ({ navigation }) => {
                 </View>
 
                 <View>
-                    <Text style={styles.txt3}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</Text>
+                    <Text style={styles.txt3}>{description}</Text>
                 </View>
             </View>
 
@@ -144,7 +145,7 @@ const App = ({ navigation }) => {
                     )
                 }
                 {
-                    TEMP_DATA.length - 1 < currentIndex ? <Text></Text> : (
+                    select.length - 1 < currentIndex ? <Text></Text> : (
                         <TouchableOpacity style={styles.btnl}
                             onPress={() => {
                                 setCurrentIndex(currentIndex + 1)

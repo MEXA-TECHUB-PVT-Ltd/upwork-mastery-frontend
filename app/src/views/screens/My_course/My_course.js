@@ -20,10 +20,12 @@ import {
 import styles from './styles';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import img1 from './../../../assets/images/img1.svg';
-import img2 from './../../../assets/images/img2.svg';
-import img3 from './../../../assets/images/img3.svg';
-import img4 from './../../../assets/images/img4.svg';
+import Img1 from './../../../assets/images/img1.svg';
+import Img2 from './../../../assets/images/img2.svg';
+import Img3 from './../../../assets/images/img3.svg';
+import Img4 from './../../../assets/images/img4.svg';
+import Aa from './../../../assets/images/aa.svg';
+import { BackgroundImage } from 'react-native-elements/dist/config';
 
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
@@ -36,28 +38,28 @@ const App = ({ navigation }) => {
     const openmodel1 = async () => {
         setModalVisible1(true)
     }
-    const [TEMP_DATA, setTEMP_DATA] = useState([
-        {
-            id: 1,
-            src: img1,
-            selected: false,
-            head: 'Course Title',
-            down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
-        },
-        {
-            id: 2,
-            src: img2,
-            selected: false,
-            head: 'Course Title',
-            down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
-        },
-        {
-            id: 3,
-            src: img3,
-            selected: false,
-            head: 'Course Title',
-            down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
-        }])
+    // const [TEMP_DATA, setTEMP_DATA] = useState([
+    //     {
+    //         id: 1,
+    //         src: Img1,
+    //         selected: false,
+    //         head: 'Course Title',
+    //         down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
+    //     },
+    //     {
+    //         id: 2,
+    //         src: img2,
+    //         selected: false,
+    //         head: 'Course Title',
+    //         down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
+    //     },
+    //     {
+    //         id: 3,
+    //         src: img3,
+    //         selected: false,
+    //         head: 'Course Title',
+    //         down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
+    //     }])
     const [r, setr] = useState();
 
     const allr = async () => {
@@ -74,13 +76,43 @@ const App = ({ navigation }) => {
             // setLoading(false);
         }
     }
+    const [all, setall] = useState([]);
 
+    const alllist = async () => {
+        try {
+            const response = await fetch(global.url + "cource/GetCourceVideos.php")
+            const json = await response.json();
+            // setall(json.data);            //json.id to sub ides ayan ge
+
+            console.log(json.length)
+
+            let initialList = json;
+            // let updatedList = [];
+            initialList.forEach(element => {
+                // console.log('============>>>>',element.data.description)
+                let obj = {
+                    id: element.data.id,
+                    title: element.data.title,
+                    link: element.data.link,
+                    description: element.data.description,
+                    // created_at:'2023-04-10 05:52:13.945929+00'
+                };
+                all.push(obj);
+            });
+            console.log(all)
+        } catch (error) {
+            console.error(error);
+        } finally {
+            // setLoading(false);
+        }
+    }
 
     const gett = async () => {
 
         const userid = await AsyncStorage.getItem('userid')
         const usename = await AsyncStorage.getItem('username')
-        console.log('userid-->' + userid, usename)
+        const pass = await AsyncStorage.getItem('password')
+        console.log('userid,name,pass-->' + userid, usename, pass)
     }
 
 
@@ -88,8 +120,9 @@ const App = ({ navigation }) => {
         allr()
         openmodel1()
         gett()
+        alllist()
     }, []);
-    const [select, setSelect] = useState(TEMP_DATA)
+    const [select, setSelect] = useState(all)
     // console.log("------", select)
     const handleOnpress = (item) => {
         const newlitem = select.map((val) => {
@@ -111,6 +144,7 @@ const App = ({ navigation }) => {
         // select[2] = temp
         // }
     }
+
     return (
         <ScrollView style={[styles.myBackground, { backgroundColor: 'white' }]}>
             <Appbar.Header
@@ -143,10 +177,10 @@ const App = ({ navigation }) => {
                 <FlatList
                     data={select}
                     renderItem={({ item, index }) => {
-
+                        console.log(index)
                         return <TouchableOpacity
                             onPress={() => {
-                                navigation.navigate('Course_Details')
+                                navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, select: select })
 
                             }}
 
@@ -154,13 +188,15 @@ const App = ({ navigation }) => {
                             <View
                                 style={styles.v2}>
                                 <View>
-                                    <item.src width={100} height={290} viewBox="0 0 100 290" />
-
+                                    <Aa width={100} height={290} viewBox="0 0 100 290" />
+                                    {/* <BackgroundImage source={appImages.f} style={{width:150,Height:150}}>
+                                        <Text>sjx</Text>
+                                    </BackgroundImage> */}
                                 </View>
 
                                 <View style={styles.v1}>
-                                    <Text style={[styles.txt14]}>{item.head}</Text>
-                                    <Text style={[styles.txt12]}>{item.down}</Text>
+                                    <Text style={[styles.txt14]}>{item.title}</Text>
+                                    <Text numberOfLines={6} style={[styles.txt12]}>{item.description}</Text>
 
                                 </View>
 
@@ -220,22 +256,24 @@ const App = ({ navigation }) => {
                 >
                     <View style={styles.centeredView1}>
                         <View style={styles.modalView1}>
-                            <View style={{ justifyContent: 'center', marginHorizontal: '5%', marginVertical: '5%' }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ color: '#242424', fontSize: 19 }}>
-                                        Recommendations
-                                    </Text>
-                                    <TouchableOpacity onPress={() => {
-                                        setModalVisible1(!modalVisible1)
+                            <ScrollView>
+                                <View style={{ justifyContent: 'center', marginHorizontal: '5%', marginVertical: '5%' }}>
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                        <Text style={{ color: '#242424', fontSize: 19 }}>
+                                            Recommendations
+                                        </Text>
+                                        <TouchableOpacity onPress={() => {
+                                            setModalVisible1(!modalVisible1)
 
-                                    }}>
-                                        <MaterialIcons name="close" size={24} color={'#000000'} style={styles.icon} />
-                                    </TouchableOpacity>
+                                        }}>
+                                            <MaterialIcons name="close" size={24} color={'#000000'} style={styles.icon} />
+                                        </TouchableOpacity>
+                                    </View>
+                                    <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
+                                        {r}
+                                    </Text>
                                 </View>
-                                <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
-                                    {r}
-                                </Text>
-                            </View>
+                            </ScrollView>
 
 
 

@@ -61,7 +61,7 @@ const Profile = ({ navigation }) => {
                         await AsyncStorage.setItem("userid", response.user.id);
                         // await AsyncStorage.setItem("username", response.user.username);
                         await AsyncStorage.setItem("useremail", response.user.email);
-
+                        await AsyncStorage.setItem("password", pass);
                         // console.log(response.data.id,response.data.username,response.data.email)
                         openmodel1()
 

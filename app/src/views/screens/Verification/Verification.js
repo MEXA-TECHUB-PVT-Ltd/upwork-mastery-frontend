@@ -27,14 +27,15 @@ import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const CELL_COUNT = 4;
-const Verification = ({ navigation }) => {
+const Verification = ({ route, navigation }) => {
+    
+    const { email } = route.params;
     const [modalVisible, setModalVisible] = useState(false);
 
 
     const v = async () => {
         setModalVisible(true)
     }
-    // const { email, otp } = route.params;
 
 
     const [value, setValue] = useState('');
@@ -46,8 +47,8 @@ const Verification = ({ navigation }) => {
 
     const verify = async () => {
         try {
-
-            await fetch(global.url + "forgetPassword/verifyOTP", {
+            console.log(email)
+            await fetch(global.url + "auth/CodeVerification.php", {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -55,7 +56,7 @@ const Verification = ({ navigation }) => {
                 },
                 body: JSON.stringify({
                     email: email,
-                    // userEnteredOtp: otp
+                    otp: value
                 })
             }).then(response => response.json())
                 .then(data => {
@@ -120,8 +121,8 @@ const Verification = ({ navigation }) => {
             </View> */}
             <View style={styles.btnview}>
                 <TouchableOpacity onPress={() => {
-                    // verify()
-                    console.log('dnj')
+                    verify()
+                    // console.log('dnj')
                     // navigation.navigate("Reset_Password")
                     v()
                 }} style={styles.btn}

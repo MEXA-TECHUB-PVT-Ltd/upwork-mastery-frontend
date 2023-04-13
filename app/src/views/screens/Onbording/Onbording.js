@@ -303,17 +303,23 @@ const App = ({ navigation }) => {
                 >
                     <View style={styles.centeredView1}>
                         <View style={styles.modalView1}>
+
                             <View style={{ justifyContent: 'center', marginHorizontal: '5%', marginTop: '5%' }}>
                                 <Text style={{ color: '#242424', fontSize: 19 }}>
                                     License Agreement
                                 </Text>
-                                <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
-                                    {l}
-                                </Text>
+
+                                <ScrollView style={{ height: 240 }}>
+                                    <View>
+                                        <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
+                                            {l}
+                                        </Text>
+                                    </View>
+                                </ScrollView>
                             </View>
 
 
-                            <View style={{ flexDirection: 'row', marginTop: '2%', justifyContent: 'space-around', marginRight: '20%' }}>
+                            <View style={{ flexDirection: 'row', marginTop: '5%', justifyContent: 'space-around', marginRight: '20%' }}>
                                 <Checkbox
                                     color="#14A800"
                                     status={checked ? 'checked' : 'unchecked'}
@@ -346,6 +352,7 @@ const App = ({ navigation }) => {
                                     <Text style={[styles.textStyle1, { color: 'white' }]}>Continue</Text>
                                 </TouchableOpacity>
                             </View>
+
                         </View>
                     </View>
                 </Modal>

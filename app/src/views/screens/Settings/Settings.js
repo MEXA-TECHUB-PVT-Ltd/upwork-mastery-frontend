@@ -24,18 +24,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [modalVisible, setModalVisible] = useState(false);
-    const p = 'https://mtechub.org/privacy/'
-    const t = 'https://mtechub.org/terms/'
-    const privicy = () => {
-        Linking.canOpenURL(p).then((supported) => {
-            supported && Linking.openURL(p)
-        })
-    }
-    const term = () => {
-        Linking.canOpenURL(t).then((supported) => {
-            supported && Linking.openURL(t)
-        })
-    }
+
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
             id: 1,
@@ -95,12 +84,34 @@ const App = ({ navigation }) => {
         setModalVisible(true)
 
     }
-    const logout = () => {
+    const logout = async () => {
+        await AsyncStorage.setItem("userid", "");
+        await AsyncStorage.setItem("username", "");
+        await AsyncStorage.setItem("useremail", "");
+        await AsyncStorage.setItem("password", "");
         navigation?.popToTop();
         navigation.replace("SignIn")
     }
-    useEffect(() => {
 
+
+
+    const [all, setall] = useState([]);
+
+    const alllist = async () => {
+        try {
+            const response = await fetch(global.url + "auth/GetUserById.php?id=" + await AsyncStorage.getItem('userid'))
+            const json = await response.json();
+            setall(json);            //json.id to sub ides ayan ge
+
+            console.log(all)
+        } catch (error) {
+            console.error(error);
+        } finally {
+            // setLoading(false);
+        }
+    }
+    useEffect(() => {
+        alllist()
     }, [isFocused]);
     return (
         <ScrollView style={[styles.myBackground, { backgroundColor: 'white' }]}>
@@ -115,8 +126,8 @@ const App = ({ navigation }) => {
             <View>
                 <View style={styles.v1}>
                     <View style={styles.v2}>
-                        <Text style={styles.txt1}>Johan Deo</Text>
-                        <Text style={styles.txt2}>johndeo@gmail.com</Text>
+                        <Text style={styles.txt1}>{all.user.username}</Text>
+                        <Text style={styles.txt2}>{all.user.email}</Text>
                     </View>
                 </View>
                 <View style={styles.v3}>
