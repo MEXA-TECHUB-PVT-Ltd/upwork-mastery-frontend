@@ -72,21 +72,21 @@ const Home = () => {
         }
         if (await AsyncStorage.getItem('userid') == null) {
             setTimeout(() => {
-                navigation.replace("SignIn")
-                console.log('signin')
-            }, 500)
-        }
-        if (check === true) {
-            setTimeout(() => {
                 navigation.replace("Onbording")
                 console.log('Onbording')
             }, 500)
         }
+        // if (check === true) {
+        //     setTimeout(() => {
+        //         navigation.replace("Onbording")
+        //         console.log('Onbording')
+        //     }, 500)
+        // }
     }
 
     useEffect(() => {
         gett()
-        alllist()
+        // alllist()
         ckecking()
 
     }, [isFocused]);

@@ -83,9 +83,10 @@ const STYLES = StyleSheet.create({
         alignSelf: 'center'
     },
     input: {
-        marginLeft: '10%',
+        marginLeft: '5%',
         color: '#969AA8',
-        height: 55
+        height: 55,
+        width: '80%',
     },
     // ----------------------------model styleing----------------------
     centeredView: {

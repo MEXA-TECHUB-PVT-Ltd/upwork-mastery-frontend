@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
@@ -25,7 +25,7 @@ const Profile = ({ navigation }) => {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [username, setusername] = useState("")
-    const [email,setemail]=useState()
+    const [email, setemail] = useState()
 
     const gett = async () => {
         setemail(await AsyncStorage.getItem('useremail'))
@@ -87,7 +87,9 @@ const Profile = ({ navigation }) => {
                         onChangeText={username => setusername(username)}
                         style={{
                             marginLeft: '5%',
-                            color: '#969AA8'
+                            color: '#969AA8',
+                            height: 55,
+                            width: '80%',
                         }}
                     />
                 </View>
@@ -101,7 +103,9 @@ const Profile = ({ navigation }) => {
                             // onChangeText={email => setemail(email)}
                             style={{
                                 marginLeft: '5%',
-                                color: '#969AA8'
+                                color: '#969AA8',
+                                height: 55,
+                                width: '80%',
                             }}
                         />
                     </View>
@@ -144,6 +148,7 @@ const Profile = ({ navigation }) => {
                                     style={[styles.button]}
                                     onPress={() => {
                                         setModalVisible(!modalVisible)
+                                        navigation.goBack()
                                     }}
                                 >
                                     <Text style={[styles.textStyle, { color: 'white' }]}>OK</Text>

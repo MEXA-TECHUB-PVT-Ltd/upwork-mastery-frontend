@@ -98,7 +98,9 @@ const Profile = ({ navigation }) => {
                     onChangeText={email => setemail(email)}
                     style={{
                         marginLeft: '5%',
-                        color: '#969AA8'
+                        height: 55,
+                        color: '#969AA8',
+                        width: '90%'
                     }}
                 />
 
@@ -111,7 +113,9 @@ const Profile = ({ navigation }) => {
                     onChangeText={username => setusername(username)}
                     style={{
                         marginLeft: '5%',
-                        color: '#969AA8'
+                        height: 55,
+                        color: '#969AA8',
+                        width: '90%'
                     }}
                 />
 
@@ -125,9 +129,10 @@ const Profile = ({ navigation }) => {
                         placeholder='Password'
                         onChangeText={pass => setpass(pass)}
                         style={{
-                            marginLeft: '15%',
+                            marginLeft: '5%',
                             height: 55,
-                            color: '#969AA8'
+                            color: '#969AA8',
+                            width: '80%'
                         }}
                     />
                 </View>
@@ -149,7 +154,7 @@ const Profile = ({ navigation }) => {
             <View style={{ flexDirection: 'row', marginHorizontal: '5%' }}>
 
                 <TouchableOpacity style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
-                    <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>term & Conditions </Text>
+                    <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>Term & Conditions </Text>
                 </TouchableOpacity>
                 <Text style={{ alignSelf: 'center', fontSize: 13, color: '#969AA8' }}>and </Text>
                 <TouchableOpacity style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>

@@ -72,11 +72,11 @@ function MainNavigator() {
         /> */}
 
 
-        {/* <Stack.Screen
+        <Stack.Screen
           name="First_screen"
           component={First_screen}
           options={{ headerShown: false }}
-        /> */}
+        />
         <Stack.Screen
           name="Onbording"
           component={Onbording}

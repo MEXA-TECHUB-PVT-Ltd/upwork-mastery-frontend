@@ -36,6 +36,7 @@ const Forget_password = ({ navigation }) => {
                 }).then(response => response.json())
                     .then(data => {
                         if (data.status === true) {
+                            setfil('')
                             navigation.navigate("Verification", { email: email })
                         }
                         else {
