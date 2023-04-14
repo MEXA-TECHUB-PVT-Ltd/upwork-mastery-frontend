@@ -30,9 +30,10 @@ import img4 from './../../../assets/images/img4.svg';
 const App = ({ route, navigation }) => {
     const { index, id, description, select } = route.params;
     const isFocused = useIsFocused()
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(index);
     const [wish, setwish] = useState(false);
     const [playing, setPlaying] = useState(false);
+    const [all, setall] = useState(select);
     const ref = useRef()
 
     const onStateChange = useCallback((state) => {
@@ -45,34 +46,103 @@ const App = ({ route, navigation }) => {
 
     }, [isFocused]);
 
-    // const [TEMP_DATA, setTEMP_DATA] = useState([
-    //     {
-    //         id: 1,
-    //         src: '118783781937'
-    //     },
-    //     {
-    //         id: 2,
-    //         src: 'dhxihwijxiwjx'
-    //     },
-    //     {
-    //         id: 3,
-    //         src: "'][]'''\]'][]']\']''",
-    //     }])
-    const [TEMP_DATA, setTEMP_DATA] = useState([
-        {
-            id: 1,
-            linkid: 'J28bwxjl4EA'
-        },
-        {
-            id: 2,
-            linkid: '84WIaK3bl_s'
-        },
-        {
-            id: 3,
-            linkid: 'J28bwxjl4EA'
-        }])
+
+
+    // -------------------------------------------------------------------------
     console.log('item list--->>  ' + index, description)
-    const line = index + '/' + select.length
+
+    const line = parseInt(currentIndex) + '/' + select.length
+    // -------------------------------------------------------------------------
+
+    const bookmarksave = async (id, status) => {
+        console.log(id, await AsyncStorage.getItem('userid'))
+        var InsertAPIURL = global.url + "cource/SaveVideo.php";
+        var headers = {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        };
+
+        await fetch(InsertAPIURL, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify({
+                user_id: await AsyncStorage.getItem('userid'),
+                video_id: id
+            }),
+        })
+            .then(response => response.json())
+            .then(async response => {
+
+                if (response.status == true) {
+                    alllist()
+                } else {
+                    console.log('----' + response.message)
+                }
+                // console.log(response.message)
+            })
+            .catch(error => {
+
+                console.log('this is error' + error);
+
+            });
+    }
+    const bookmarknotsave = async (id, status) => {
+        console.log(id, await AsyncStorage.getItem('userid'))
+        var InsertAPIURL = global.url + "cource/UnsaveVideo.php";
+        var headers = {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        };
+
+        await fetch(InsertAPIURL, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify({
+                user_id: await AsyncStorage.getItem('userid'),
+                video_id: id
+            }),
+        })
+            .then(response => response.json())
+            .then(async response => {
+                if (response.status == true) {
+                    alllist()
+                } else {
+                    console.log('----' + response.message)
+                }
+            })
+            .catch(error => {
+
+                console.log('this is error' + error);
+
+            });
+    }
+
+    const alllist = async () => {
+        setall([])
+        try {
+            const response = await fetch(global.url + "cource/SaveStatus.php?user_id=" + await AsyncStorage.getItem('userid'))
+            const json = await response.json();
+            // console.log(json.videos)
+            let initialList = json.videos;
+            let array = []
+            initialList.forEach(element => {
+                let obj = {
+                    id: element.data.id,
+                    title: element.data.title,
+                    link: element.data.link,
+                    description: element.data.description,
+                    status: element.data.status
+                };
+                array.push(obj);
+            });
+            setall(array)
+            console.log(all)
+        } catch (error) {
+            console.error(error);
+        } finally {
+            // setLoading(false);
+        }
+    }
     return (
         <ScrollView style={[styles.myBackground]}>
             <Appbar.Header
@@ -86,7 +156,7 @@ const App = ({ route, navigation }) => {
             </Appbar.Header>
             <Animated.FlatList
                 horizontal
-                data={select}
+                data={all}
                 pagingEnabled={true}
                 keyExtractor={(item) => item.id}
                 ref={ref}
@@ -106,24 +176,68 @@ const App = ({ route, navigation }) => {
                             videoId={item.link}
                             onChangeState={onStateChange}
                         />
+                        <View style={styles.v1}>
+                            <View style={styles.v11}>
+                                <Text style={styles.txt1}>Course Description</Text>
+                                <TouchableOpacity style={{ left: 180 }}
+                                    onPress={() => {
+                                        if (item.status == 'not_saved') {
+                                            bookmarksave(item.id, item.status)
+                                        }
+                                        else {
+                                            bookmarknotsave(item.id, item.status)
+                                        }
+
+                                    }}>
+                                    <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
+                                </TouchableOpacity >
+                            </View>
+
+                            <View>
+                                <Text style={styles.txt3}>{item.description}</Text>
+                            </View>
+                        </View>
                     </Animated.View>
                 }}
             />
 
 
-            <View style={styles.v1}>
-                <View style={styles.v11}>
-                    <Text style={styles.txt1}>Course Description</Text>
-                    <TouchableOpacity
-                        onPress={() => { setwish(!wish) }}>
-                        <MaterialIcons name={wish == false ? "bookmark-outline" : "bookmark"} size={25} color={wish == false ? '#9D9D9D' : '#14A800'} />
-                    </TouchableOpacity >
-                </View>
+            {/* <Animated.FlatList
+                horizontal
+                data={select}
+                pagingEnabled={true}
+                keyExtractor={(item) => item.id}
+                ref={ref}
+                showsHorizontalScrollIndicator={false}
+                onScroll={e => {
+                    const x = e.nativeEvent.contentOffset.x
+                    setCurrentIndex((x / (width - 50).toFixed(0)))
+                }}
+                renderItem={({ item, index }) => {
+                    return <Animated.View style={styles.v1}>
+                        <View style={styles.v11}>
+                            <Text style={styles.txt1}>Course Description</Text>
+                            <TouchableOpacity style={{ left: 180 }}
+                                onPress={() => {
+                                    if (item.status == 'not_saved') {
+                                        bookmarksave(item.id, item.status)
+                                    }
+                                    else {
+                                        bookmarknotsave(item.id, item.status)
+                                    }
+                                    // setwish(!wish)
+                                }}>
+                                <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
+                            </TouchableOpacity >
+                        </View>
 
-                <View>
-                    <Text style={styles.txt3}>{description}</Text>
-                </View>
-            </View>
+                        <View>
+                            <Text style={styles.txt3}>{item.description}</Text>
+                        </View>
+                    </Animated.View>
+                }}
+            /> */}
+
 
 
             <View style={styles.v2}>
@@ -145,7 +259,7 @@ const App = ({ route, navigation }) => {
                     )
                 }
                 {
-                    select.length - 1 < currentIndex ? <Text></Text> : (
+                    all.length - 1 < currentIndex ? <Text></Text> : (
                         <TouchableOpacity style={styles.btnl}
                             onPress={() => {
                                 setCurrentIndex(currentIndex + 1)

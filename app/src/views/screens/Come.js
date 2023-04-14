@@ -1,40 +1,33 @@
-import React, { useState, useEffect } from 'react';
 
+import React, { useState } from 'react';
+import { View, Text, Button } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
-import { useIsFocused } from '@react-navigation/native';
+const SortArray = () => {
+    const [array, setArray] = useState([
+        { name: 'John', isOnline: true },
+        { name: 'Emily', isOnline: false },
+        { name: 'Mark', isOnline: true },
+        { name: 'Emily', isOnline: false },
+        { name: 'Mark', isOnline: true },
+        { name: 'Emily', isOnline: false },
+        { name: 'Mark', isOnline: true },
+    ]);
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
-import { ScrollView } from 'react-native-gesture-handler';
-
-
-const Home = () => {
-    const navigation = useNavigation()
-    const isFocused = useIsFocused()
-  
-    const ckecking = async () => {
-        setTimeout(() => {
-            navigation.goBack()
-        }, 500)
-
-    }
-
-    useEffect(() => {
-        ckecking()
-
-
-    }, [isFocused]);
+    const sortArray = () => {
+        const sortedArray = [...array].sort((a, b) => (a.isOnline === b.isOnline) ? 0 : a.isOnline ? -1 : 1);
+        setArray(sortedArray);
+    };
 
     return (
-        <ScrollView >
-            {/* <ActivityIndicator
-                // color={global.color}
-                size="large"
-                // style={}
-            /> */}
-        </ScrollView>
+        <View>
+            <Button title="Sort Array" onPress={sortArray} />
+            {array.map((item, index) => (
+                <Text key={index}>{item.name}, {item.isOnline ? 'Online' : 'Offline'}</Text>
+            ))}
+        </View>
     );
 };
 
-export default Home  
+export default SortArray;
+
+
