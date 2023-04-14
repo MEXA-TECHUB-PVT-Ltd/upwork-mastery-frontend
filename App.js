@@ -162,7 +162,7 @@ function MainNavigator() {
           component={Term_condition}
           options={{ headerShown: false }}
         />
- <Stack.Screen
+        <Stack.Screen
           name="Come"
           component={Come}
           options={{ headerShown: false }}

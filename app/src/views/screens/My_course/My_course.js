@@ -38,30 +38,8 @@ const App = ({ navigation }) => {
     const openmodel1 = async () => {
         setModalVisible1(true)
     }
-    // const [TEMP_DATA, setTEMP_DATA] = useState([
-    //     {
-    //         id: 1,
-    //         src: Img1,
-    //         selected: false,
-    //         head: 'Course Title',
-    //         down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
-    //     },
-    //     {
-    //         id: 2,
-    //         src: img2,
-    //         selected: false,
-    //         head: 'Course Title',
-    //         down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
-    //     },
-    //     {
-    //         id: 3,
-    //         src: img3,
-    //         selected: false,
-    //         head: 'Course Title',
-    //         down: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ',
-    //     }])
-    const [r, setr] = useState();
 
+    const [r, setr] = useState();
     const allr = async () => {
         try {
             const response = await fetch(global.url + "recommendation/getRecomendation.php?id=1")
@@ -76,8 +54,8 @@ const App = ({ navigation }) => {
             // setLoading(false);
         }
     }
-    const [all, setall] = useState([]);
 
+    const [all, setall] = useState([]);
     const alllist = async () => {
         setall([])
         try {
@@ -85,6 +63,7 @@ const App = ({ navigation }) => {
             const json = await response.json();
             // console.log(json.videos)
             let initialList = json.videos;
+            let array = []
             initialList.forEach(element => {
                 let obj = {
                     id: element.data.id,
@@ -93,16 +72,16 @@ const App = ({ navigation }) => {
                     description: element.data.description,
                     status: element.data.status
                 };
-                all.push(obj);
+                array.push(obj);
             });
-            console.log(all)
+            setall(array)
+            // console.log(all)
         } catch (error) {
             console.error(error);
         } finally {
             // setLoading(false);
         }
     }
-
     const gett = async () => {
 
         const userid = await AsyncStorage.getItem('userid')
@@ -132,10 +111,7 @@ const App = ({ navigation }) => {
                 // console.log(response)
                 if (response.status == true) {
                     alllist()
-                    // const newData = [...all]
-                    // newData[id] = { ...newData[id], status: 'saved' };
-                    // setall(newData)
-                    // console.log(newData)
+                    // Check()
                 } else {
                     console.log('----' + response.message)
                 }
@@ -168,10 +144,7 @@ const App = ({ navigation }) => {
                 // console.log(response)
                 if (response.status == true) {
                     alllist()
-                    // const newData = [...all]
-                    // newData[id] = { ...newData[id], status: 'not_saved' };
-                    // setall(newData)
-                    // console.log(newData)
+                    // Check()
                 } else {
                     console.log('----' + response.message)
                 }
@@ -188,8 +161,12 @@ const App = ({ navigation }) => {
         openmodel1()
         gett()
         alllist()
+
     }, [isFocused]);
-    const [select, setSelect] = useState(all)
+
+
+
+
     // console.log("------", select)
     const handleOnpress = (item) => {
         const newlitem = select.map((val) => {
@@ -202,16 +179,38 @@ const App = ({ navigation }) => {
         })
         setSelect(newlitem)
     }
-    if (book == true) {
-        select.splice(2, 0, select.splice(1, 1)[0]);
-        // if (select.selected == true) {
-        // const temp = select[0]
-        // select[0] = select[1]
-        // select[1] = select[2]
-        // select[2] = temp
-        // }
-    }
 
+    // ------------------------------SORT-----------------------------------
+    const [select, setSelect] = useState([])
+    const Check = () => {
+        if (book != true) {
+            const sortedArray = [...all].sort((a, b) => {
+                if (a.status === b.status) {
+                    return 0;
+                } else if (a.status === 'saved') {
+                    return -1;
+                } else if (b.status === 'saved') {
+                    return 1;
+                } else {
+                    return a.status.localeCompare(b.status);
+                }
+            });
+            setSelect(sortedArray);
+            let i
+            console.log('------------------all-------------------------')
+            for (i = 0; i < all.length; i++)
+                console.log('--------sort list', all[i].status)
+            console.log('------------------sort-------------------------')
+            let k
+            for (k = 0; k < select.length; k++)
+                console.log('--------sort list', select[k].status)
+            let j
+            console.log('------------------select-------------------------')
+            for (j = 0; j < select.length; j++)
+                console.log('--------sort list', select[j].status)
+        }
+    }
+    // -------------------------------------------------------------------
     return (
         <ScrollView style={[styles.myBackground, { backgroundColor: 'white' }]}>
             <Appbar.Header
@@ -221,73 +220,112 @@ const App = ({ navigation }) => {
                 <Appbar.Action onPress={() => { }} />
                 <Appbar.Action icon={'eye'} color={'white'} onPress={() => { openmodel1() }} />
 
-                <Appbar.Action icon={book == true ? 'bookmark' : 'bookmark-outline'} color={'white'} onPress={() => { setbook(!book) }} />
+                <Appbar.Action icon={book == true ? 'bookmark' : 'bookmark-outline'} color={'white'} onPress={() => {
+                    setbook(!book)
+                    Check()
+                }}
+                />
 
             </Appbar.Header>
 
             <View style={{}}>
-                {/* <ImageBackground style={{
-                    width: "50%",
-                    height: "50%"
-                }}
-                source={appImages.f}>
-                    <View style={{
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: 'rgba( 0, 0, 0, 0.3 )',
-                        alignSelf: "center"
-                    }} />
-                </ImageBackground> */}
 
 
+                {book != true ?
+                    <FlatList
+                        data={all}
+                        renderItem={({ item, index }) => {
 
-                <FlatList
-                    data={select}
-                    renderItem={({ item, index }) => {
+                            return <TouchableOpacity
+                                onPress={() => {
+                                    navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, select: all })
 
-                        return <TouchableOpacity
-                            onPress={() => {
-                                navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, select: select })
+                                }}
 
-                            }}
-
-                            style={{ marginHorizontal: '5%', backgroundColor: 'white' }}>
-                            <View
-                                style={styles.v2}>
-                                <View>
-                                    <Aa width={100} height={290} viewBox="0 0 100 290" />
-                                    {/* <BackgroundImage source={appImages.f} style={{width:150,Height:150}}>
+                                style={{ marginHorizontal: '5%', backgroundColor: 'white' }}>
+                                <View
+                                    style={styles.v2}>
+                                    <View>
+                                        <Aa width={100} height={290} viewBox="0 0 100 290" />
+                                        {/* <BackgroundImage source={appImages.f} style={{width:150,Height:150}}>
                                         <Text>sjx</Text>
                                     </BackgroundImage> */}
+                                    </View>
+
+                                    <View style={styles.v1}>
+                                        <Text style={[styles.txt14]}>{item.title}</Text>
+                                        <Text numberOfLines={6} style={[styles.txt12]}>{item.description}</Text>
+
+                                    </View>
+
+                                    <TouchableOpacity
+                                        style={styles.btn}
+                                        onPress={() => {
+                                            // setclickedId(index)
+                                            // handleOnpress(item)
+                                            if (item.status == 'not_saved') {
+                                                bookmarksave(item.id, item.status)
+                                            }
+                                            else {
+                                                bookmarknotsave(item.id, item.status)
+                                            }
+                                        }}>
+                                        <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
+                                    </TouchableOpacity >
                                 </View>
 
-                                <View style={styles.v1}>
-                                    <Text style={[styles.txt14]}>{item.title}</Text>
-                                    <Text numberOfLines={6} style={[styles.txt12]}>{item.description}</Text>
 
+                            </TouchableOpacity>
+                        }}
+
+                    />
+                    :
+                    <FlatList
+                        data={select}
+                        renderItem={({ item, index }) => {
+                            return <TouchableOpacity
+                                disabled={true}
+                                onPress={() => {
+                                    navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, select: select })
+                                }}
+                                style={{ marginHorizontal: '5%', backgroundColor: 'white' }}>
+                                <View
+                                    style={styles.v2}>
+                                    <View>
+                                        <Aa width={100} height={290} viewBox="0 0 100 290" />
+
+                                    </View>
+
+                                    <View style={styles.v1}>
+                                        <Text style={[styles.txt14]}>{item.title}</Text>
+                                        <Text numberOfLines={6} style={[styles.txt12]}>{item.description}</Text>
+
+                                    </View>
+
+                                    <TouchableOpacity
+                                        style={styles.btn}
+                                        disabled={true}
+                                        onPress={() => {
+                                            // setclickedId(index)
+                                            // handleOnpress(item)
+                                            if (item.status == 'not_saved') {
+                                                bookmarksave(item.id, item.status)
+                                            }
+                                            else {
+                                                bookmarknotsave(item.id, item.status)
+                                            }
+                                        }}>
+                                        <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
+                                    </TouchableOpacity >
                                 </View>
 
-                                <TouchableOpacity
-                                    style={styles.btn}
-                                    onPress={() => {
-                                        // setclickedId(index)
-                                        // handleOnpress(item)
-                                        if (item.status == 'not_saved') {
-                                            bookmarksave(item.id, item.status)
-                                        }
-                                        else {
-                                            bookmarknotsave(item.id, item.status)
-                                        }
-                                    }}>
-                                    <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
-                                </TouchableOpacity >
-                            </View>
 
+                            </TouchableOpacity>
+                        }}
 
-                        </TouchableOpacity>
-                    }}
+                    />
 
-                />
+                }
             </View>
 
             <View style={styles.centeredView}>

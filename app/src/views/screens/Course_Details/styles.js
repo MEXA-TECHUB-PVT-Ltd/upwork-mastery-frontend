@@ -15,16 +15,22 @@ const STYLES = StyleSheet.create({
         justifyContent: 'center'
     },
     v1: {
-        marginHorizontal: '5%',
-        marginTop: '5%'
+        // marginHorizontal: '5%',
+        left: 5,
+        top: 10,
+        bottom: 10,
+        width: 360,
+        height: 300
+        // marginTop: '5%'
     },
     v11: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: '2%'
+        // justifyContent: 'space-between',
+        // marginBottom: '2%'
     },
     txt1: {
         color: '#000000',
+        // marginHorizontal:'5%',
         fontSize: 16
     },
     txt2: {
