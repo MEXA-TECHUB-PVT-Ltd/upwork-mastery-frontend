@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import {
     SafeAreaView,
     StyleSheet,
@@ -13,6 +13,7 @@ import {
     Modal, Pressable, FlatList
 } from 'react-native'
 
+import YoutubePlayer from 'react-native-youtube-iframe';
 import {
     Button, TextInput, Appbar, Checkbox, Divider
 } from 'react-native-paper';
@@ -37,7 +38,13 @@ const App = ({ navigation }) => {
     const [checked, setChecked] = React.useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible1, setModalVisible1] = useState(false);
-
+    const [playing, setPlaying] = useState(false);
+    const onStateChange = useCallback((state) => {
+        if (state === "ended") {
+            setPlaying(false);
+            Alert.alert("video has finished playing!");
+        }
+    }, []);
 
     const openmodel = async () => {
         setModalVisible(true)
@@ -149,91 +156,71 @@ const App = ({ navigation }) => {
         <View>
             <ScrollView style={styles.myBackground}>
 
-                <SVGImg width={500} height={270} viewBox="100 100 450 200" />
 
-                <View style={styles.top}>
-                    <View style={{
-                        alignItems: 'center',
-                        marginTop: 25
-                    }}>
-                        <Text style={styles.txtb}>Welcome </Text>
-                        <Text style={styles.txtb}>to </Text>
-                        <Text style={styles.txtb}>Upwork Mastery</Text>
-                    </View>
-                    <View style={{ marginLeft: '10%', marginTop: '5%' }}>
-
-                        <Text style={styles.txtg}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem </Text>
-                    </View>
-                </View>
-                <View style={styles.bigview}>
-                    <View style={{ marginHorizontal: '5%' }}>
-                        <Text style={styles.header}>More than 1k+ Users Trust us</Text>
-                        <Text style={styles.down}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus </Text>
-                    </View>
-
-
-
-
-                    <View style={{ backgroundColor: '#F7F7F7', marginTop: '5%' }}>
-                        <View style={styles.choose}>
-                            <Text style={styles.choose1}>Why Choose Us</Text>
-                        </View>
-                        <View style={{ marginHorizontal: '5%' }}>
-                            <Text style={styles.header}>Why you should learn from Upwork Mastery</Text>
-                            <Text style={styles.down}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna </Text>
-                        </View>
-
-                        <View style={styles.v1}>
-                            <View>
-                                <Text style={styles.txt1}>1k+</Text>
-                                <Text style={styles.txt2}>Lorem ipsum</Text>
-
-                                <Text style={[styles.txt1, { marginTop: '45%' }]}>450k+</Text>
-                                <Text style={styles.txt2}>Lorem ipsum</Text>
-                            </View>
-                            <View>
-                                <Text style={styles.txt1}>100k+</Text>
-                                <Text style={styles.txt2}>Lorem ipsum</Text>
-
-                                <Text style={[styles.txt1, { marginTop: '45%' }]}>2.5k+</Text>
-                                <Text style={styles.txt2}>Lorem ipsum</Text>
-                            </View>
-                        </View>
-
-                    </View>
-
-
-
-
+                <View style={{ backgroundColor: 'white' }}>
                     <View>
-                        <View style={styles.choose}>
-                            <Text style={styles.choose1}>Features</Text>
-                        </View>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontWeight: 'bold', fontSize: 20, color: 'black', marginVertical: '5%' }}>
+                            The Secret Method To Get As Many Clients As You Can Possibly Handle Without Facing Instability Ever Again
+                        </Text>
                         <View style={{ marginHorizontal: '5%' }}>
-                            <Text style={styles.header}>What we provide</Text>
-                        </View>
-                        <View style={{ marginBottom: '25%' }}>
-                            <Divider style={{ marginTop: '5%' }} />
-                            <FlatList
-                                data={TEMP_DATA}
-                                // disableVirtualization={true}
-                                ItemSeparatorComponent={Divider}
-                                // scrollEnabled={isScrollEnabled}
-                                renderItem={({ item, index }) => {
-                                    return <View style={{ height: 110 }}>
-                                        <Star width={600} height={90} style={{ marginLeft: '6%' }} />
-                                        <View style={styles.v2}>
-                                            <Text style={styles.txt3}>{item.head}</Text>
-                                            <Text style={styles.txt4}>{item.down}</Text>
-                                        </View>
-                                    </View>
-
-                                }}
-                                numColumns={1}
-                                keyExtractor={item => item.id}
+                            <YoutubePlayer
+                                height={200}
+                                // width={360}
+                                play={playing}
+                                // mute={isMute}
+                                videoId={'IpoPqNfy7JU'}
+                                onChangeState={onStateChange}
                             />
                         </View>
+                    </View>
+                    <View style={{ marginHorizontal: '5%' }}>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontWeight: 'bold', fontSize: 20, color: 'black', marginVertical: '5%' }}>
+                            Ever wondered how so many people are killing it on Upwork and Fiverr?
+                        </Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <Image source={appImages.a2} style={{ width: 150, height: 170 }} />
+                            <Image source={appImages.a1} style={{ width: 150, height: 170 }} />
+                        </View>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontWeight: 'bold', fontSize: 17, color: 'black', marginVertical: '5%' }}>
+                            Designers, copywriters, social media managers, web developers, between many others!
+                        </Text>
+                    </View>
 
+                    <View style={{ marginHorizontal: '5%', backgroundColor: 'lightgray' }}>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontSize: 15, color: 'black', marginVertical: '2%' }}>
+                            Only profile with all the right elements to climb the Upwork and Fiverr rankings will appear in front of Clients eyes.
+                        </Text>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontSize: 17, fontWeight: 'bold', color: 'black', marginVertical: '2%' }}>
+                            This means that over time, you will find it harder and harder to get new clients...
+                        </Text>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontSize: 15, color: 'black', marginVertical: '2%' }}>
+                            If you don't take action, the day will come when you will never close a new client again.
+                        </Text>
+                    </View>
+
+
+                    <View style={{ marginHorizontal: '5%', marginVertical: '2%', alignItems: 'center' }}>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontSize: 17, fontWeight: 'bold', color: 'black' }}>
+                            Luckily for you, there’s now a solution:
+                        </Text>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontSize: 20, fontWeight: 'bold', color: 'black' }}>
+                            FREELANCE MASTERY</Text>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontSize: 20, color: 'black' }}>
+                            COURSE</Text>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontSize: 17, color: '#14A800' }}>
+                            The Bulletproof Roadmap for Client Acquisition and Economical Stability
+                        </Text>
+                        <Image source={appImages.a3} style={{ width: 300, height: 220 }} resizeMode='stretch' />
+
+                    </View>
+
+                    <View style={{ marginHorizontal: '5%', marginVertical: '2%', alignItems: 'center', marginBottom: '20%' }}>
+                        <Text style={{ alignSelf: 'center', textAlign: 'center', fontSize: 20, fontWeight: 'bold', color: 'black' }}>
+                            Some Of The Counter-intuitive Secrets, Tips & Techniques This Course Will Teach You To Get As Many Clients As You Want (Regardless Of Hourly Rate)
+                        </Text>
+                        <Text>
+
+                        </Text>
                     </View>
                 </View>
 
