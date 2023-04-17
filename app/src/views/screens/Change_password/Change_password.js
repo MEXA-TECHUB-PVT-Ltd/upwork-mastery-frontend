@@ -125,9 +125,10 @@ const Change_password = () => {
                                 placeholderTextColor={'#8F8F8F'}
                                 placeholder='Old Password'
                                 style={{
-                                    marginLeft: '15%',
+                                    marginLeft: '5%',
+                                    color: '#969AA8',
                                     height: 55,
-                                    color: '#969AA8'
+                                    width: '80%',
                                 }}
                             />
                         </View>
@@ -152,9 +153,10 @@ const Change_password = () => {
                                 placeholderTextColor={'#8F8F8F'}
                                 placeholder='New Password'
                                 style={{
-                                    marginLeft: '15%',
+                                    marginLeft: '5%',
+                                    color: '#969AA8',
                                     height: 55,
-                                    color: '#969AA8'
+                                    width: '80%',
                                 }}
                             // textColor='pink'
                             />
@@ -180,9 +182,10 @@ const Change_password = () => {
                                 placeholderTextColor={'#8F8F8F'}
                                 placeholder='Confirm Password'
                                 style={{
-                                    marginLeft: '15%',
+                                    marginLeft: '5%',
+                                    color: '#969AA8',
                                     height: 55,
-                                    color: '#969AA8'
+                                    width: '80%',
                                 }}
                             // textColor='pink'
                             />
@@ -238,6 +241,7 @@ const Change_password = () => {
                                     style={[styles.button]}
                                     onPress={() => {
                                         setModalVisible(!modalVisible)
+                                        navigation.goBack()
                                     }}
                                 >
                                     <Text style={[styles.textStyle, { color: 'white' }]}>OK</Text>

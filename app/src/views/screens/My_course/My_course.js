@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {
     SafeAreaView,
     StyleSheet,
@@ -25,8 +25,6 @@ import Img2 from './../../../assets/images/img2.svg';
 import Img3 from './../../../assets/images/img3.svg';
 import Img4 from './../../../assets/images/img4.svg';
 import Aa from './../../../assets/images/aa.svg';
-import { BackgroundImage } from 'react-native-elements/dist/config';
-
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [modalVisible, setModalVisible] = useState(false);
@@ -35,10 +33,10 @@ const App = ({ navigation }) => {
     const [clickedId, setclickedId] = useState(100)
     const [modalVisible1, setModalVisible1] = useState(false);
 
-    const openmodel1 = async () => {
+    const openmodel1 = useCallback(() => {
         setModalVisible1(true)
     }
-
+        , [])
     const [r, setr] = useState();
     const allr = async () => {
         try {
@@ -157,11 +155,13 @@ const App = ({ navigation }) => {
             });
     }
     useEffect(() => {
-        allr()
         openmodel1()
+    }, []);
+
+    useEffect(() => {
+        allr()
         gett()
         alllist()
-
     }, [isFocused]);
 
 
@@ -284,7 +284,7 @@ const App = ({ navigation }) => {
                         data={select}
                         renderItem={({ item, index }) => {
                             return <TouchableOpacity
-                                disabled={true}
+                                // disabled={true}
                                 onPress={() => {
                                     navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, select: select })
                                 }}
@@ -304,7 +304,7 @@ const App = ({ navigation }) => {
 
                                     <TouchableOpacity
                                         style={styles.btn}
-                                        disabled={true}
+                                        // disabled={true}
                                         onPress={() => {
                                             // setclickedId(index)
                                             // handleOnpress(item)

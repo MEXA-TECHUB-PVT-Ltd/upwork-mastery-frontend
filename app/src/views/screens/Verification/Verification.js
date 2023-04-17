@@ -63,7 +63,7 @@ const Verification = ({ route, navigation }) => {
                     console.log(data.status)
                     if (data.status == true) {
                         // console.log(otp)
-                        navigation.navigate("Reset_Password", { email: email })
+                       
                     }
                     else console.log("Plz Try Again!")
                 });
@@ -155,7 +155,7 @@ const Verification = ({ route, navigation }) => {
                                     activeOpacity={0.7}
                                     style={[styles.button]}
                                     onPress={() => {
-                                        navigation.navigate("Reset_Password")
+                                        navigation.navigate("Reset_Password", { email: email })
                                     }}
                                 >
                                     <Text style={[styles.textStyle, { color: 'white' }]}>Reset Password</Text>

@@ -124,7 +124,9 @@ const SignIn = () => {
                         style={{
                             marginLeft: '5%',
                             color: '#969AA8',
-                            height: 55
+                            height: 55,
+                            width:'100%',
+                            // backgroundColor: 'pink'
                         }}
                     />
                 </View>
@@ -138,9 +140,10 @@ const SignIn = () => {
                             placeholder='Password'
                             onChangeText={pass => setpass(pass)}
                             style={{
-                                marginLeft: '15%',
+                                marginLeft: '5%',
                                 color: '#969AA8',
-                                height: 55
+                                height: 55,
+                                width:'80%',
                             }}
                         />
                     </View>

@@ -101,9 +101,9 @@ const App = ({ navigation }) => {
         try {
             const response = await fetch(global.url + "auth/GetUserById.php?id=" + await AsyncStorage.getItem('userid'))
             const json = await response.json();
-            setall(json);            //json.id to sub ides ayan ge
+            setall(json.user);            //json.id to sub ides ayan ge
 
-            console.log(all)
+            console.log(json.user)
         } catch (error) {
             console.error(error);
         } finally {
@@ -126,8 +126,8 @@ const App = ({ navigation }) => {
             <View>
                 <View style={styles.v1}>
                     <View style={styles.v2}>
-                        <Text style={styles.txt1}>{all.user.username}</Text>
-                        <Text style={styles.txt2}>{all.user.email}</Text>
+                        <Text style={styles.txt1}>{all.email}</Text>
+                        <Text style={styles.txt2}>{all.username}</Text>
                     </View>
                 </View>
                 <View style={styles.v3}>
