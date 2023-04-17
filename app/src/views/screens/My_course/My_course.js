@@ -252,8 +252,8 @@ const App = ({ navigation }) => {
                                     </BackgroundImage> */}
                                     </View>
 
-                                    <View style={styles.v1}>
-                                        <Text style={[styles.txt14]}>{item.title}</Text>
+                                    <View  style={styles.v1}>
+                                        <Text numberOfLines={1} style={[styles.txt14,{marginRight:'10%'}]}>{item.title}</Text>
                                         <Text numberOfLines={6} style={[styles.txt12]}>{item.description}</Text>
 
                                     </View>
@@ -297,7 +297,7 @@ const App = ({ navigation }) => {
                                     </View>
 
                                     <View style={styles.v1}>
-                                        <Text style={[styles.txt14]}>{item.title}</Text>
+                                    <Text numberOfLines={1} style={[styles.txt14,{marginRight:'10%'}]}>{item.title}</Text>
                                         <Text numberOfLines={6} style={[styles.txt12]}>{item.description}</Text>
 
                                     </View>

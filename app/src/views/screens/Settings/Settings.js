@@ -24,7 +24,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [modalVisible, setModalVisible] = useState(false);
-
+    const [str, setStr] = useState('');
     const [TEMP_DATA, setTEMP_DATA] = useState([
         {
             id: 1,
@@ -104,6 +104,7 @@ const App = ({ navigation }) => {
             setall(json.user);            //json.id to sub ides ayan ge
 
             console.log(json.user)
+            setStr(all.username)
         } catch (error) {
             console.error(error);
         } finally {
@@ -131,7 +132,7 @@ const App = ({ navigation }) => {
                     </View>
                 </View>
                 <View style={styles.v3}>
-                    <Text style={styles.txt3}>JD</Text>
+                    <Text style={styles.txt3}>{str}</Text>
                 </View>
             </View>
             <View style={styles.v4}>

@@ -24,8 +24,9 @@ import styles from './styles';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Profile = ({ navigation }) => {
-    const [email, setemail] = useState("")
+const Profile = ({ route, navigation }) => {
+    const { e } = route.params;
+    const [email, setemail] = useState(e)
     const [pass, setpass] = useState("")
     const [username, setusername] = useState("")
 
@@ -96,6 +97,7 @@ const Profile = ({ navigation }) => {
                     placeholder='Email'
                     placeholderTextColor={'#969AA8'}
                     onChangeText={email => setemail(email)}
+                    value={email}
                     style={{
                         marginLeft: '5%',
                         height: 55,

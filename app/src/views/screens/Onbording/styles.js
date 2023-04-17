@@ -7,59 +7,51 @@ const STYLES = StyleSheet.create({
         backgroundColor: '#ffff',
 
     },
-    top: {
-        position: 'absolute'
-    },
-    txtb: {
-        color: 'white',
-        fontSize: 28,
-        fontWeight: '500'
-    },
-    txtg: {
-        color: 'white',
-        fontSize: 12,
-        textAlign: 'center'
-    },
-    bigview: {
-        marginTop: '5%',
-
-    },
-    header: {
-        color: '#242424',
-        fontSize: 24,
-        marginRight: '20%',
-        fontWeight: 'bold'
-    },
-    down: {
-        color: '#242424',
-        fontSize: 12
-    },
-    choose:
-    {
-        backgroundColor: '#ACDDA6',
-        width: 110, height: 35,
-        borderRadius: 25,
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        marginTop: '7%',
-        marginBottom: '3%'
-    },
-    choose1: {
-        textAlign: 'center',
-        color: '#14A800'
+    v1: {
+        backgroundColor: 'white',
+        marginBottom: '30%'
     },
     txt1: {
-        fontSize: 24,
-        color: '#242424',
+        alignSelf: 'center',
         textAlign: 'center',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 20,
+        color: 'black',
+        marginVertical: '5%'
     },
-    txt2: {
-        fontSize: 14,
-        marginTop: '5%',
-        color: '#242424',
-        textAlign: 'center'
+    uv: {
+        marginHorizontal: '5%'
     },
+    txt20b: { alignSelf: 'center', textAlign: 'center', fontWeight: 'bold', fontSize: 20, color: 'black', marginVertical: '5%' },
+    txt17b: { alignSelf: 'center', textAlign: 'center', fontWeight: 'bold', fontSize: 17, color: 'black', marginVertical: '5%' },
+    txt15n: { alignSelf: 'center', textAlign: 'center', fontSize: 15, color: 'black', marginVertical: '2%' },
+    txt17: { alignSelf: 'center', textAlign: 'center', fontSize: 17, fontWeight: 'bold', color: 'black' },
+    txt20: { alignSelf: 'center', textAlign: 'center', fontSize: 20, fontWeight: 'bold', color: 'black' },
+    green: { alignSelf: 'center', textAlign: 'center', fontSize: 17, color: '#14A800' },
+    img: { width: 300, height: 220 },
+    v4: {
+        marginHorizontal: '5%',
+        marginVertical: '10%',
+        alignItems: 'center'
+    },
+    v5: {
+        flexDirection: 'row',
+        width: '90%',
+        marginVertical: '2%'
+    },
+    txt: { fontSize: 15, color: 'black', marginLeft: '2%' },
+    v6: { backgroundColor: 'lightgray', marginHorizontal: '5%', alignItems: 'center' },
+    img1: { width: 150, height: 170 },
+    v7: { marginHorizontal: '5%', marginVertical: '2%', alignItems: 'center' },
+    img2: { width: 200, height: 200, marginVertical: '2%' },
+    bv1:{ marginHorizontal: '5%', marginTop: '5%', alignItems: 'center' },
+    bhead:{ fontSize: 20, fontWeight: 'bold', marginTop: '5%', color: '#14A800' },
+    bhead1:{ fontSize: 17, fontWeight: 'bold', color: '#14A800' },
+    txtb:{ width: 180, color: 'black'},
+    txtb1:{ width: 180, color: 'black',marginTop:'3%'},
+    img3: { width: 120, height: 100, marginVertical: '2%' },
+    
+    
     vbtnlast: {
         position: 'absolute',
         bottom: '0%',
@@ -81,34 +73,23 @@ const STYLES = StyleSheet.create({
         fontSize: 17,
         alignSelf: 'center'
     },
-    v1: {
+
+    inputstyle: {
+
+        borderTopLeftRadius: 10,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginHorizontal: '15%',
-        marginTop: '5%',
-        marginBottom: '7%'
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        height: 55,
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#E6E6E6'
     },
-    v2: {
-        marginTop: 5,
-        position: 'absolute',
-        marginHorizontal: '5%',
-        width: '65%',
-        // backgroundColor: 'pink'
+    logo: {
+        width: 180,
+        height: 76,
     },
-
-    txt3: {
-        fontSize: 18,
-        color: '#242424',
-        fontWeight: 'bold'
-    },
-    txt4: {
-        fontSize: 12,
-        color: '#242424',
-        marginRight: '12%',
-        marginTop: '3%'
-    },
-
-
     // ----------------------------model styleing----------------------
     centeredView: {
         flex: 1,
@@ -171,6 +152,10 @@ const STYLES = StyleSheet.create({
         top: 10
     },
     v3: {
+        marginTop: '5%',
+        alignItems: "center"
+    },
+    v31: {
         marginTop: '15%',
         alignItems: "center"
     },
@@ -189,13 +174,13 @@ const STYLES = StyleSheet.create({
     },
     modalView1: {
         // margin: 10,
-        width: '80%',height:400,
+        width: '80%', height: 400,
         backgroundColor: "white",
         borderRadius: 15,
         elevation: 5
     },
     model1: {
-       
+
         width: 100,
         backgroundColor: 'white',
         borderRadius: 100,
