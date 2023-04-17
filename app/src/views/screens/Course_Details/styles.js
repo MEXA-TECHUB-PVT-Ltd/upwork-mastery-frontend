@@ -25,6 +25,7 @@ const STYLES = StyleSheet.create({
     },
     v11: {
         flexDirection: 'row',
+        marginHorizontal:'5%'
         // justifyContent: 'space-between',
         // marginBottom: '2%'
     },

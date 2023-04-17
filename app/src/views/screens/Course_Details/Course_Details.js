@@ -193,7 +193,7 @@ const App = ({ route, navigation }) => {
                                 </TouchableOpacity >
                             </View>
 
-                            <View>
+                            <View style={{marginHorizontal:'5%'}}>
                                 <Text style={styles.txt3}>{item.description}</Text>
                             </View>
                         </View>
