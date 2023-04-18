@@ -36,7 +36,8 @@ const STYLES = StyleSheet.create({
     txt12: {
         fontSize: 11,
         color: '#000000',
-        marginVertical: '2%'
+        marginVertical: '2%',
+        marginRight: '10%'
     },
     txt11: {
         fontSize: 11,
@@ -65,12 +66,12 @@ const STYLES = StyleSheet.create({
         marginLeft: '90%',
         marginTop: '5%'
     },
-    v2:{
+    v2: {
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: '#DBDBDB',
         width: '100%',
-        height: 132,
+        height: 110,
         borderRadius: 10,
         marginVertical: '3%',
         justifyContent: 'space-between'
@@ -134,13 +135,13 @@ const STYLES = StyleSheet.create({
     },
     modalView1: {
         // margin: 10,
-        width: '80%',height:400,
+        width: '80%', height: 400,
         backgroundColor: "white",
         borderRadius: 15,
         elevation: 5
     },
     model1: {
-       
+
         width: 100,
         backgroundColor: 'white',
         borderRadius: 100,
@@ -177,7 +178,7 @@ const STYLES = StyleSheet.create({
         fontSize: 18,
         marginTop: '3%'
     },
-    
+
 })
 
 export default STYLES; 

@@ -51,37 +51,45 @@ const Change_password = () => {
     const reset = async () => {
         if (conferm != '' && neww != '' && old != '') {
             if (await AsyncStorage.getItem('password') === old) {
-                if (conferm === neww) {
-                    try {
-                        await fetch(global.url + "auth/ResetPassword.php", {
-                            method: 'PUT',
-                            headers: {
-                                Accept: 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                email: await AsyncStorage.getItem('useremail'),
-                                password: conferm
-                            })
-                        }).then(response => response.json())
-                            .then(async data => {
-                                if (data.status === true) {
-                                    setModalVisible(true)
-                                    settxt('')
-                                    await AsyncStorage.setItem("password", conferm);
-                                }
-                                else console.log("Plz Try Again!")
-                            });
-                    }
-                    catch (error) {
-                        console.log("Post submission failed");
-                        console.log(error.message);
+                const regex = /^.{8,}$/;
+
+                if (regex.test(neww) && regex.test(conferm)) {
+                    if (conferm === neww) {
+                        try {
+                            await fetch(global.url + "auth/ResetPassword.php", {
+                                method: 'PUT',
+                                headers: {
+                                    Accept: 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    email: await AsyncStorage.getItem('useremail'),
+                                    password: conferm
+                                })
+                            }).then(response => response.json())
+                                .then(async data => {
+                                    if (data.status === true) {
+                                        setModalVisible(true)
+                                        settxt('')
+                                        await AsyncStorage.setItem("password", conferm);
+                                    }
+                                    else console.log("Plz Try Again!")
+                                });
+                        }
+                        catch (error) {
+                            console.log("Post submission failed");
+                            console.log(error.message);
+                        }
+                    } else {
+                        setc(true)
+                        settxt('New and confirm password are not same')
                     }
                 } else {
                     setc(true)
-                    settxt('New and confirm password are not same')
+                    settxt('Enter at least 8 characters')
                 }
             }
+
             else {
                 setc(true)
                 settxt('Wrong old password')
@@ -205,7 +213,7 @@ const Change_password = () => {
 
                     {
                         c === false ?
-                            null : <Text style={{ color: 'red', alignSelf: 'flex-end' }}>{txt}</Text>
+                            null : <Text style={{ color: 'red' }}>{txt}</Text>
                     }
 
                 </View>

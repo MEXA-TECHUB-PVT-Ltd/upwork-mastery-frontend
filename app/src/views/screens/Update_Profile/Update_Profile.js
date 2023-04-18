@@ -101,6 +101,7 @@ const Profile = ({ navigation }) => {
                             value={email}
                             placeholderTextColor={'#969AA8'}
                             // onChangeText={email => setemail(email)}
+                            editable={false}
                             style={{
                                 marginLeft: '5%',
                                 color: '#969AA8',

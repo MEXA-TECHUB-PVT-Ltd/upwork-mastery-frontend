@@ -51,7 +51,7 @@ const App = ({ route, navigation }) => {
     // -------------------------------------------------------------------------
     console.log('item list--->>  ' + index, description)
 
-    const line = parseInt(currentIndex) + '/' + select.length
+    const line = parseInt(currentIndex + 1) + '/' + select.length
     // -------------------------------------------------------------------------
 
     const bookmarksave = async (id, status) => {
@@ -152,12 +152,14 @@ const App = ({ route, navigation }) => {
                 <Appbar.Content color={'white'} title="Video Title" />
                 <Appbar.Action onPress={() => { }} />
                 <Appbar.Action onPress={() => { }} />
-                <Appbar.Content color={'white'} title={line + " "} style={{ marginRight: '0%' }} />
+                <Appbar.Content />
+                <Appbar.Content color={'white'} title={line} style={{ marginRight: '0%' }} />
             </Appbar.Header>
             <Animated.FlatList
                 horizontal
                 data={all}
                 pagingEnabled={true}
+                // scrollToIndex={parseInt(currentIndex)}
                 keyExtractor={(item) => item.id}
                 ref={ref}
                 showsHorizontalScrollIndicator={false}
@@ -193,7 +195,7 @@ const App = ({ route, navigation }) => {
                                 </TouchableOpacity >
                             </View>
 
-                            <View style={{marginHorizontal:'5%'}}>
+                            <View style={{ marginHorizontal: '5%' }}>
                                 <Text style={styles.txt3}>{item.description}</Text>
                             </View>
                         </View>

@@ -15,7 +15,7 @@ import {
 
 import YoutubePlayer from 'react-native-youtube-iframe';
 import {
-    Button, Appbar, Checkbox, Divider
+    Button, Appbar, Checkbox, Divider, Snackbar
 } from 'react-native-paper';
 import styles from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -38,11 +38,18 @@ const App = ({ navigation }) => {
     const [checked, setChecked] = React.useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible1, setModalVisible1] = useState(false);
+
     const [playing, setPlaying] = useState(false);
+
+    const [color, setcolor] = useState('gray')
+
+
 
 
 
     const [email, setemail] = useState('')
+    const [fil, setfil] = useState('')
+
 
     const input = useRef(null);
     const onPress = () => {
@@ -61,7 +68,8 @@ const App = ({ navigation }) => {
     }, []);
 
     const openmodel = async () => {
-        setModalVisible(true)
+        // setModalVisible(true)
+        navigation.replace('Complete_Profile', { e: email })
     }
     const openmodel1 = async () => {
         setModalVisible1(true)
@@ -314,8 +322,16 @@ const App = ({ navigation }) => {
     return (
         <View>
             <ScrollView style={styles.myBackground}>
-
-
+                <TouchableOpacity
+                    onPress={() => { navigation.navigate('SignIn') }}
+                    style={{ backgroundColor: "#14A800", marginTop: '5%', marginRight: '5%', borderRadius: 20, width: '20%', justifyContent: 'center', alignSelf: 'flex-end' }}>
+                    <Text style={{ fontSize: 17, padding: '5%', color: 'white', alignSelf: 'center' }}>
+                        Login
+                    </Text>
+                </TouchableOpacity>
+                <View style={{ alignSelf: 'center', marginVertical: '10%' }}>
+                    <Image source={appImages.logo} style={styles.logo} resizeMode={'contain'} />
+                </View>
                 <View style={styles.v1}>
                     <View>
                         <Text style={styles.txt1}>
@@ -731,7 +747,7 @@ const App = ({ navigation }) => {
                     <View style={{ marginHorizontal: '5%', marginTop: '5%', alignItems: 'center' }}>
 
                         <Image source={appImages.a11} style={styles.img} resizeMode='stretch' />
-                        <Text style={{ color: 'blue', fontSize: 20 }}>
+                        <Text style={{ color: '#14A800', fontSize: 20 }}>
                             What You'll Get Today
                         </Text>
                         <FlatList
@@ -739,7 +755,7 @@ const App = ({ navigation }) => {
                             // ItemSeparatorComponent={Divider}
                             renderItem={({ item, index }) => {
                                 return <View style={styles.v5}>
-                                    <MaterialIcons name={'check'} color={'blue'} size={24} />
+                                    <MaterialIcons name={'check'} color={'#14A800'} size={24} />
                                     <Text style={styles.txt}>
                                         {item.head}
                                     </Text>
@@ -758,7 +774,7 @@ const App = ({ navigation }) => {
                         <Text style={{ fontSize: 20, color: 'black', fontWeight: 'bold' }}>
                             GET IT ALL TODAY FOR:
                         </Text>
-                        <Text style={{ color: 'blue', fontSize: 21, fontWeight: 'bold' }}>
+                        <Text style={{ color: '#14A800', fontSize: 21, fontWeight: 'bold' }}>
                             Just $27
                         </Text>
                     </View>
@@ -776,8 +792,18 @@ const App = ({ navigation }) => {
                             <TextInput
                                 placeholder='Email@gmail.com'
                                 placeholderTextColor={'#969AA8'}
-                                onChangeText={email => setemail(email)}
-
+                                // onChangeText={email => setemail(email)}
+                                onChangeText={email => {
+                                    let rjx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                                    if (!rjx.test(email)) {
+                                        setfil("Wrong format of email")
+                                    }
+                                    else {
+                                        console.log("1v", email)
+                                        setfil('')
+                                        setemail(email)
+                                    }
+                                }}
 
                                 ref={input}
                                 selectTextOnFocus
@@ -792,6 +818,7 @@ const App = ({ navigation }) => {
                                 }}
                             />
                         </View>
+                        <Text style={{ color: 'red' }}>{fil}</Text>
                     </View>
                     {/* ************************************************************************ */}
 
@@ -829,13 +856,17 @@ const App = ({ navigation }) => {
                         <View style={{ alignSelf: 'center', marginVertical: '10%' }}>
                             <Image source={appImages.logo} style={styles.logo} resizeMode={'contain'} />
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: '17%' }}>
-                            <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#14A800' }}>
-                                TERM & CONDITION
-                            </Text>
-                            <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#14A800' }}>
-                                PRIVACY POLICY
-                            </Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: '5%', marginBottom: '3%' }}>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Term_condition') }}>
+                                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#14A800' }}>
+                                    TERM & CONDITION
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Privacy_Policy') }}>
+                                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#14A800' }}>
+                                    PRIVACY POLICY
+                                </Text>
+                            </TouchableOpacity>
                         </View>
                         <Text style={{ color: 'black', textAlign: 'center' }}>
                             We don't create or promote products to get rich overnight. We also cannot promise result, and we warn you that our results or testimonials are not the average results. Therefore, whoever hires our services will not necessarily obtain similar results. You may not get any results, especially id you don't put into practice what you have learned.
@@ -933,7 +964,7 @@ const App = ({ navigation }) => {
                                     style={[styles.button]}
                                     onPress={() => {
                                         setModalVisible(!modalVisible)
-                                        navigation.navigate('Complete_Profile', { e: email })
+                                        navigation.replace('Complete_Profile', { e: email })
                                     }}
                                 >
                                     <Text style={[styles.textStyle, { color: 'white' }]}>OK</Text>
@@ -977,6 +1008,8 @@ const App = ({ navigation }) => {
                             <View style={{ flexDirection: 'row', marginTop: '5%', justifyContent: 'space-around', marginRight: '20%' }}>
                                 <Checkbox
                                     color="#14A800"
+                                    // uncheckedColor={color}
+
                                     status={checked ? 'checked' : 'unchecked'}
                                     onPress={() => {
                                         setChecked(!checked);
@@ -992,26 +1025,42 @@ const App = ({ navigation }) => {
                                 <TouchableOpacity
                                     activeOpacity={0.7}
                                     style={[styles.button1]}
-                                    onPress={() => {
-                                        setModalVisible1(!modalVisible1);
-                                        onPressPaypal()
-                                    }}
-                                    // disabled={true}
                                     disabled={loading == false && checked == true ? false : true}
-                                // onPress={() => {
-                                //     setModalVisible1(!modalVisible1);
-
-                                //     openmodel()
-                                // }}
+                                    onPress={() => {
+                                        // if (checked == true && loading == false) {
+                                            onPressPaypal()
+                                            setTimeout(() => {
+                                                setModalVisible1(!modalVisible1);
+                                            }, 2000)
+                                        // }
+                                        // else {
+                                        // }
+                                    }}
+                               
                                 >
                                     <Text style={[styles.textStyle1, { color: 'white' }]}>Continue</Text>
+                                    <ActivityIndicator
+                                        size={20}
+                                        color='white'
+                                        animating={loading}
+                                        style={{ marginLeft: 10 }}
+                                    />
                                 </TouchableOpacity>
                             </View>
 
+
+
+
+
                         </View>
                     </View>
+
                 </Modal>
+
             </View>
+            {/* -----------------------------modal or check the check box----------------------------- */}
+
+
             {/* --------------------paypalmodel--------------------------- */}
             <Modal
                 visible={!!paypalurl}>

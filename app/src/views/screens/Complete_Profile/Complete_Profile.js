@@ -40,41 +40,48 @@ const Profile = ({ route, navigation }) => {
 
     const Login = async () => {
         if (email != '' && pass != '' && username != '') {
-            var InsertAPIURL = global.url + "auth/Signup.php";
-            var headers = {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            };
-            await fetch(InsertAPIURL, {
-                method: 'POST',
-                headers: headers,
-                body: JSON.stringify({
-                    username: username,
-                    email: email,
-                    password: pass
-                }),
-            })
-                .then(response => response.json())
-                .then(async response => {
-                    console.log(response)
-                    if (response.status === true) {
+            const regex = /^.{8,}$/;
 
-                        await AsyncStorage.setItem("userid", response.user.id);
-                        // await AsyncStorage.setItem("username", response.user.username);
-                        await AsyncStorage.setItem("useremail", response.user.email);
-                        await AsyncStorage.setItem("password", pass);
-                        // console.log(response.data.id,response.data.username,response.data.email)
-                        openmodel1()
-
-                    } else {
-                        setfil(response.message)
-                    }
-                    console.log(response.message)
+            if (regex.test(pass)) {
+                var InsertAPIURL = global.url + "auth/Signup.php";
+                var headers = {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                };
+                await fetch(InsertAPIURL, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify({
+                        username: username,
+                        email: email,
+                        password: pass
+                    }),
                 })
-                .catch(error => {
-                    console.log('this is error' + error);
-                    setfil('Email or Password is incorrect')
-                });
+                    .then(response => response.json())
+                    .then(async response => {
+                        console.log(response)
+                        if (response.status === true) {
+
+                            await AsyncStorage.setItem("userid", response.user.id);
+                            // await AsyncStorage.setItem("username", response.user.username);
+                            await AsyncStorage.setItem("useremail", response.user.email);
+                            await AsyncStorage.setItem("password", pass);
+                            // console.log(response.data.id,response.data.username,response.data.email)
+                            openmodel1()
+
+                        } else {
+                            setfil(response.message)
+                        }
+                        console.log(response.message)
+                    })
+                    .catch(error => {
+                        console.log('this is error' + error);
+                        setfil('Email or Password is incorrect')
+                    });
+            }
+            else {
+                setfil("Enter Password at least 8 characters")
+            }
         }
         else {
             setfil('Fill all requirments')
@@ -82,7 +89,7 @@ const Profile = ({ route, navigation }) => {
     }
 
     return (
-        <ScrollView style={styles.myBackground}>
+        <ScrollView style={styles.myBackground} keyboardShouldPersistTaps={true}>
             <Appbar.Header
                 style={{ backgroundColor: '#14A800', }}>
                 <Appbar.Action icon="chevron-left" onPress={() => { navigation.goBack() }} iconColor='white' />
@@ -96,7 +103,8 @@ const Profile = ({ route, navigation }) => {
                 <TextInput
                     placeholder='Email'
                     placeholderTextColor={'#969AA8'}
-                    onChangeText={email => setemail(email)}
+                    // onChangeText={email => setemail(email)}
+                    editable={false}
                     value={email}
                     style={{
                         marginLeft: '5%',
@@ -155,11 +163,17 @@ const Profile = ({ route, navigation }) => {
 
             <View style={{ flexDirection: 'row', marginHorizontal: '5%' }}>
 
-                <TouchableOpacity style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
+                <TouchableOpacity
+                    onPress={() => {
+                        navigation.navigate('Term_condition')
+                    }}
+                    style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
                     <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>Term & Conditions </Text>
                 </TouchableOpacity>
                 <Text style={{ alignSelf: 'center', fontSize: 13, color: '#969AA8' }}>and </Text>
-                <TouchableOpacity style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
+                <TouchableOpacity
+                    onPress={() => { navigation.navigate('Privacy_Policy') }}
+                    style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
                     <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>Privacy & Policy </Text>
                 </TouchableOpacity>
             </View>
@@ -199,7 +213,7 @@ const Profile = ({ route, navigation }) => {
                                     style={[styles.button]}
                                     onPress={() => {
                                         setModalVisible(!modalVisible)
-                                        navigation.navigate('Home')
+                                        navigation.replace('Home')
                                         // openmodel1()
                                     }}
                                 >

@@ -104,7 +104,8 @@ const App = ({ navigation }) => {
             setall(json.user);            //json.id to sub ides ayan ge
 
             console.log(json.user)
-            setStr(all.username)
+            const a = json.user.username
+            setStr(a[0])
         } catch (error) {
             console.error(error);
         } finally {
@@ -132,7 +133,7 @@ const App = ({ navigation }) => {
                     </View>
                 </View>
                 <View style={styles.v3}>
-                    <Text style={styles.txt3}>{str}</Text>
+                    <Text style={styles.txt3}>{str[0]}</Text>
                 </View>
             </View>
             <View style={styles.v4}>
