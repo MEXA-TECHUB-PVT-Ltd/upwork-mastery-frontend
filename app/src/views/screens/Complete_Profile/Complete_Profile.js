@@ -6,7 +6,7 @@ import {
     Image,
     ImageBackground,
     TouchableOpacity,
-    TextInput, ScrollView, Modal
+    TextInput, ScrollView, Modal, ActivityIndicator
 } from 'react-native';
 import {
     Button,
@@ -26,9 +26,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Profile = ({ route, navigation }) => {
     const { e } = route.params;
+    const [loading, setloading] = useState(false)
+
     const [email, setemail] = useState(e)
     const [pass, setpass] = useState("")
     const [username, setusername] = useState("")
+
+    const [check1, setcheck1] = useState(false)
 
     const [check, setcheck] = useState(false)
     const [fil, setfil] = useState()
@@ -40,41 +44,52 @@ const Profile = ({ route, navigation }) => {
 
     const Login = async () => {
         if (email != '' && pass != '' && username != '') {
-            var InsertAPIURL = global.url + "auth/Signup.php";
-            var headers = {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            };
-            await fetch(InsertAPIURL, {
-                method: 'POST',
-                headers: headers,
-                body: JSON.stringify({
-                    username: username,
-                    email: email,
-                    password: pass
-                }),
-            })
-                .then(response => response.json())
-                .then(async response => {
-                    console.log(response)
-                    if (response.status === true) {
+            const regex = /^.{8,}$/;
 
-                        await AsyncStorage.setItem("userid", response.user.id);
-                        // await AsyncStorage.setItem("username", response.user.username);
-                        await AsyncStorage.setItem("useremail", response.user.email);
-                        await AsyncStorage.setItem("password", pass);
-                        // console.log(response.data.id,response.data.username,response.data.email)
-                        openmodel1()
-
-                    } else {
-                        setfil(response.message)
-                    }
-                    console.log(response.message)
+            if (regex.test(pass)) {
+                setloading(true)
+                var InsertAPIURL = global.url + "auth/Signup.php";
+                var headers = {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                };
+                await fetch(InsertAPIURL, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify({
+                        username: username,
+                        email: email,
+                        password: pass
+                    }),
                 })
-                .catch(error => {
-                    console.log('this is error' + error);
-                    setfil('Email or Password is incorrect')
-                });
+                    .then(response => response.json())
+                    .then(async response => {
+                        console.log(response)
+                        if (response.status === true) {
+                            setloading(false)
+                            await AsyncStorage.setItem("userid", response.user.id);
+                            // await AsyncStorage.setItem("username", response.user.username);
+                            await AsyncStorage.setItem("useremail", response.user.email);
+                            await AsyncStorage.setItem("password", pass);
+                            // console.log(response.data.id,response.data.username,response.data.email)
+                            openmodel1()
+
+                        } else {
+                            setloading(false)
+                            setfil(response.message)
+                        }
+                        setloading(false)
+                        console.log(response.message)
+                    })
+                    .catch(error => {
+                        setloading(false)
+                        console.log('this is error' + error);
+                        setfil('Email or Password is incorrect')
+                    });
+            }
+            else {
+                setfil("Enter Password at least 8 characters")
+            }
         }
         else {
             setfil('Fill all requirments')
@@ -82,7 +97,7 @@ const Profile = ({ route, navigation }) => {
     }
 
     return (
-        <ScrollView style={styles.myBackground}>
+        <View style={styles.myBackground} keyboardShouldPersistTaps={true}>
             <Appbar.Header
                 style={{ backgroundColor: '#14A800', }}>
                 <Appbar.Action icon="chevron-left" onPress={() => { navigation.goBack() }} iconColor='white' />
@@ -96,13 +111,20 @@ const Profile = ({ route, navigation }) => {
                 <TextInput
                     placeholder='Email'
                     placeholderTextColor={'#969AA8'}
-                    onChangeText={email => setemail(email)}
+                    // onChangeText={email => setemail(email)}
+                    editable={false}
                     value={email}
                     style={{
                         marginLeft: '5%',
                         height: 55,
                         color: '#969AA8',
                         width: '90%'
+                    }}
+                    onFocus={() => {
+                        setcheck1(true)
+                    }}
+                    onSubmitEditing={() => {
+                        setcheck1(false)
                     }}
                 />
 
@@ -118,6 +140,12 @@ const Profile = ({ route, navigation }) => {
                         height: 55,
                         color: '#969AA8',
                         width: '90%'
+                    }}
+                    onFocus={() => {
+                        setcheck1(true)
+                    }}
+                    onSubmitEditing={() => {
+                        setcheck1(false)
                     }}
                 />
 
@@ -135,6 +163,12 @@ const Profile = ({ route, navigation }) => {
                             height: 55,
                             color: '#969AA8',
                             width: '80%'
+                        }}
+                        onFocus={() => {
+                            setcheck1(true)
+                        }}
+                        onSubmitEditing={() => {
+                            setcheck1(false)
                         }}
                     />
                 </View>
@@ -155,28 +189,43 @@ const Profile = ({ route, navigation }) => {
 
             <View style={{ flexDirection: 'row', marginHorizontal: '5%' }}>
 
-                <TouchableOpacity style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
+                <TouchableOpacity
+                    onPress={() => {
+                        navigation.navigate('Term_condition')
+                    }}
+                    style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
                     <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>Term & Conditions </Text>
                 </TouchableOpacity>
                 <Text style={{ alignSelf: 'center', fontSize: 13, color: '#969AA8' }}>and </Text>
-                <TouchableOpacity style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
+                <TouchableOpacity
+                    onPress={() => { navigation.navigate('Privacy_Policy') }}
+                    style={{ alignSelf: 'center', borderBottomColor: '#14A800', borderBottomWidth: 1 }}>
                     <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>Privacy & Policy </Text>
                 </TouchableOpacity>
             </View>
+            {check1 == false ?
+                <View style={styles.btnv}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            Login()
 
-            <View style={styles.btnv}>
-                <TouchableOpacity
-                    onPress={() => {
-                        Login()
+                        }}
+                        style={styles.btn1}>
+                        <Text style={styles.txt1}>Create Account</Text>
+                        {
+                            loading == true ?
+                                <ActivityIndicator
+                                    size={20}
+                                    color='white'
+                                    animating={loading}
+                                    style={{ marginLeft: 10 }}
+                                /> : null
+                        }
+                    </TouchableOpacity>
+                </View>
+                : null}
 
-                    }}
-                    style={styles.btn1}>
-                    <Text style={styles.txt1}>Create Account</Text>
-                </TouchableOpacity>
-            </View>
 
-
-            <View style={styles.centeredView}>
                 <Modal
                     animationType="slide"
                     transparent={true}
@@ -199,7 +248,7 @@ const Profile = ({ route, navigation }) => {
                                     style={[styles.button]}
                                     onPress={() => {
                                         setModalVisible(!modalVisible)
-                                        navigation.navigate('Home')
+                                        navigation.replace('Home')
                                         // openmodel1()
                                     }}
                                 >
@@ -209,9 +258,8 @@ const Profile = ({ route, navigation }) => {
                         </View>
                     </View>
                 </Modal>
-            </View>
-
-        </ScrollView>
+            
+        </View>
     );
 };
 

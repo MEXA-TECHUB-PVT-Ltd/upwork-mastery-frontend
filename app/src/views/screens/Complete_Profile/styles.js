@@ -4,6 +4,7 @@ import COLORS from '../../../assets/consts/colors';
 const STYLES = StyleSheet.create({
 
     myBackground: {
+        flex: 1,
         backgroundColor: 'white',
 
     },
@@ -48,14 +49,16 @@ const STYLES = StyleSheet.create({
         marginVertical: '4%'
     },
     btnv: {
-        marginTop: '98%',
-        marginBottom: '5%',
+        position: 'absolute',
+        bottom: '5%',
         marginHorizontal: '5%'
     },
     btn1: {
+        flexDirection: 'row',
         backgroundColor: '#14A800',
         borderRadius: 25,
-        height: 55,
+        padding: '4.5%',
+        width: 320,
         justifyContent: 'center'
     },
     txt1: {

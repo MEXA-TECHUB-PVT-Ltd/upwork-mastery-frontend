@@ -63,7 +63,7 @@ const STYLES = StyleSheet.create({
     },
     btnlast: {
         backgroundColor: '#14A800',
-        width: 250, height: 45,
+        width: 250, padding:'3%',
         borderRadius: 25,
         justifyContent: 'center',
         marginVertical: '5%'
@@ -174,7 +174,7 @@ const STYLES = StyleSheet.create({
     },
     modalView1: {
         // margin: 10,
-        width: '80%', height: 400,
+        width: '80%',
         backgroundColor: "white",
         borderRadius: 15,
         elevation: 5
@@ -191,6 +191,8 @@ const STYLES = StyleSheet.create({
         elevation: 5
     },
     button1: {
+        flexDirection:'row',
+        justifyContent:'center',
         borderRadius: 25,
         padding: 10,
         elevation: 2,

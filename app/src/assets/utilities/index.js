@@ -9,6 +9,7 @@ const appImages = {
   g: require(IMAGES_DIR + 'g.png'),
   search: require(IMAGES_DIR + 'search.png'),
 
+  w: require(IMAGES_DIR + 'w.png'),
 
   a1: require(IMAGES_DIR + 'a1.jpg'),
   a2: require(IMAGES_DIR + 'a2.jpg'),

@@ -9,6 +9,7 @@ const { height, width } = Dimensions.get('screen')
 const STYLES = StyleSheet.create({
 
     container: {
+        flex: 1,
         backgroundColor: 'white'
     },
 
@@ -47,15 +48,12 @@ const STYLES = StyleSheet.create({
         borderColor: '#E6E6E6'
     },
     button1: {
-        alignItems: 'center',
-        marginTop: '90%',       //uper sa margen
-        marginBottom: '5%',
-        justifyContent: "center",  // for middle writting
-        height: 58,
-        fontSize: 20,
-        borderRadius: 50,
         backgroundColor: '#14A800',
-        marginHorizontal: '5%'
+        borderRadius: 25,
+        padding: '4.5%',
+        justifyContent: 'center',
+        width: 320,
+        flexDirection: 'row',
     },
     // ----------------------------model styleing----------------------
     centeredView: {

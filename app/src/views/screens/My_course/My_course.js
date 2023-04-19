@@ -4,7 +4,7 @@ import {
     StyleSheet,
     Dimensions,
     ScrollView, FlatList, Modal, Pressable,
-    View, Image, Text, TouchableOpacity, ImageBackground
+    View, Image, Text, TouchableOpacity, ImageBackground, ActivityIndicator
 } from 'react-native'
 import { appImages } from '../../../assets/utilities/index'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -25,6 +25,7 @@ import Img2 from './../../../assets/images/img2.svg';
 import Img3 from './../../../assets/images/img3.svg';
 import Img4 from './../../../assets/images/img4.svg';
 import Aa from './../../../assets/images/aa.svg';
+import { BackgroundImage } from 'react-native-elements/dist/config';
 const App = ({ navigation }) => {
     const isFocused = useIsFocused()
     const [modalVisible, setModalVisible] = useState(false);
@@ -34,7 +35,7 @@ const App = ({ navigation }) => {
     const [modalVisible1, setModalVisible1] = useState(false);
 
     const openmodel1 = useCallback(() => {
-        setModalVisible1(true)
+        // setModalVisible1(true)
     }
         , [])
     const [r, setr] = useState();
@@ -218,7 +219,7 @@ const App = ({ navigation }) => {
             >
                 <Appbar.Content color={'white'} title="My Course" />
                 <Appbar.Action onPress={() => { }} />
-                <Appbar.Action icon={'eye'} color={'white'} onPress={() => { openmodel1() }} />
+                {/* <Appbar.Action icon={'information-outline'} color={'white'} onPress={() => { openmodel1() }} /> */}
 
                 <Appbar.Action icon={book == true ? 'bookmark' : 'bookmark-outline'} color={'white'} onPress={() => {
                     setbook(!book)
@@ -231,14 +232,14 @@ const App = ({ navigation }) => {
             <View style={{}}>
 
 
-                {book != true ?
+                {book != true && all != '' ?
                     <FlatList
                         data={all}
                         renderItem={({ item, index }) => {
-
+                            console.log('select lengt---',item.link)
                             return <TouchableOpacity
                                 onPress={() => {
-                                    navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, select: all })
+                                    navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, title: item.title, stat: item.status,vid:item.link, select: all })
 
                                 }}
 
@@ -246,65 +247,22 @@ const App = ({ navigation }) => {
                                 <View
                                     style={styles.v2}>
                                     <View>
-                                        <Aa width={100} height={290} viewBox="0 0 100 290" />
-                                        {/* <BackgroundImage source={appImages.f} style={{width:150,Height:150}}>
-                                        <Text>sjx</Text>
-                                    </BackgroundImage> */}
-                                    </View>
-
-                                    <View  style={styles.v1}>
-                                        <Text numberOfLines={1} style={[styles.txt14,{marginRight:'10%'}]}>{item.title}</Text>
-                                        <Text numberOfLines={6} style={[styles.txt12]}>{item.description}</Text>
-
-                                    </View>
-
-                                    <TouchableOpacity
-                                        style={styles.btn}
-                                        onPress={() => {
-                                            // setclickedId(index)
-                                            // handleOnpress(item)
-                                            if (item.status == 'not_saved') {
-                                                bookmarksave(item.id, item.status)
-                                            }
-                                            else {
-                                                bookmarknotsave(item.id, item.status)
-                                            }
-                                        }}>
-                                        <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
-                                    </TouchableOpacity >
-                                </View>
-
-
-                            </TouchableOpacity>
-                        }}
-
-                    />
-                    :
-                    <FlatList
-                        data={select}
-                        renderItem={({ item, index }) => {
-                            return <TouchableOpacity
-                                // disabled={true}
-                                onPress={() => {
-                                    navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, select: select })
-                                }}
-                                style={{ marginHorizontal: '5%', backgroundColor: 'white' }}>
-                                <View
-                                    style={styles.v2}>
-                                    <View>
-                                        <Aa width={100} height={290} viewBox="0 0 100 290" />
-
+                                        {/* <Aa width={100} height={290} viewBox="0 0 100 290" /> */}
+                                        <BackgroundImage source={appImages.w} style={{ width: 110, height: 110 }}>
+                                            <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center', marginVertical: '40%' }}>
+                                                {index + 1}/{all.length}
+                                            </Text>
+                                        </BackgroundImage>
                                     </View>
 
                                     <View style={styles.v1}>
-                                    <Text numberOfLines={1} style={[styles.txt14,{marginRight:'10%'}]}>{item.title}</Text>
-                                        <Text numberOfLines={6} style={[styles.txt12]}>{item.description}</Text>
+                                        <Text numberOfLines={1} style={[styles.txt14, { marginRight: '10%' }]}>{item.title}</Text>
+                                        <Text numberOfLines={4} style={[styles.txt12]}>{item.description}</Text>
 
                                     </View>
 
                                     <TouchableOpacity
                                         style={styles.btn}
-                                        // disabled={true}
                                         onPress={() => {
                                             // setclickedId(index)
                                             // handleOnpress(item)
@@ -324,6 +282,63 @@ const App = ({ navigation }) => {
                         }}
 
                     />
+                    : book != false && all != '' ?
+                        <FlatList
+                            data={select}
+                            renderItem={({ item, index }) => {
+                                console.log('select lengt---', select.length)
+                                return <TouchableOpacity
+                                    // disabled={true}
+                                    onPress={() => {
+                                        navigation.navigate('Course_Details',
+                                            { index: index, id: item.id, description: item.description, title: item.title, stat: item.status,vid:item.link, select: select })
+                                    }}
+                                    style={{ marginHorizontal: '5%', backgroundColor: 'white' }}>
+                                    <View
+                                        style={styles.v2}>
+                                        <View>
+                                            {/* <Aa width={100} height={290} viewBox="0 0 100 290" /> */}
+                                            <BackgroundImage source={appImages.w} style={{ width: 110, height: 110 }}>
+                                                <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center', marginVertical: '40%' }}>
+                                                    {index + 1}/{all.length}
+                                                </Text>
+                                            </BackgroundImage>
+                                        </View>
+
+                                        <View style={styles.v1}>
+                                            <Text numberOfLines={1} style={[styles.txt14, { marginRight: '25%' }]}>{item.title}</Text>
+                                            <Text numberOfLines={4} style={[styles.txt12]}>{item.description}</Text>
+
+                                        </View>
+
+                                        <TouchableOpacity
+                                            style={styles.btn}
+                                            // disabled={true}
+                                            onPress={() => {
+                                                // setclickedId(index)
+                                                // handleOnpress(item)
+                                                if (item.status == 'not_saved') {
+                                                    bookmarksave(item.id, item.status)
+                                                }
+                                                else {
+                                                    bookmarknotsave(item.id, item.status)
+                                                }
+                                            }}>
+                                            <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
+                                        </TouchableOpacity >
+                                    </View>
+
+
+                                </TouchableOpacity>
+                            }}
+
+                        />
+                        : <ActivityIndicator
+                            size={20}
+                            color='green'
+                            animating={true}
+                            style={{ alignSelf: 'center', marginVertical: '60%' }}
+                        />
 
                 }
             </View>

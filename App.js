@@ -187,6 +187,7 @@ function MainNavigator() {
             fontSize: 10,
             margin: 0,
             padding: 0,
+            // marginBottom:'2%',
             color: 'pink'
           },
           // style: {
@@ -212,7 +213,7 @@ function MainNavigator() {
           // },
 
 
-          tabBarLabelStyle: { textAlign: 'center' },
+          tabBarLabelStyle: { textAlign: 'center', marginBottom: '5%' },
           // tabBarIndicatorStyle: {
           //   borderBottomColor: '#C2D5A8',
           //   borderBottomWidth: 2,
@@ -233,6 +234,7 @@ function MainNavigator() {
             // borderWidth:1,
             // borderColor:'gray',
 
+
           },
 
           tabBarIcon: ({ focused, color, size }) => {
@@ -245,7 +247,7 @@ function MainNavigator() {
               setname("home")
             }
 
-            else if (route.name === 'Promocode') {
+            else if (route.name === 'Onbording1') {
               iconName = focused ? 'confirmation-num' : 'confirmation-num';
               setname("confirmation-num")
             }
@@ -262,8 +264,9 @@ function MainNavigator() {
         })}
       >
         <Tab.Screen name="My_course" component={My_course} options={{ headerShown: false, title: 'Home' }} />
-        <Tab.Screen name="Promocode" component={Promocode} options={{ headerShown: false, title: 'Promo Codes', }} />
+        <Tab.Screen name="Onbording1" component={Onbording1} options={{ headerShown: false, title: 'Details', }} />
         <Tab.Screen name="Settings" component={Settings} options={{ headerShown: false, title: 'Settings' }} />
+
       </Tab.Navigator>
     );
   }

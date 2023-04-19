@@ -65,8 +65,8 @@ const STYLES = StyleSheet.create({
     txt4: {
         marginLeft: '10%',
         alignSelf: 'center',
-        color:'#242424',
-        fontSize:15
+        color: '#242424',
+        fontSize: 15
     },
     m1: {
         alignSelf: 'center'
@@ -99,7 +99,7 @@ const STYLES = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
-    main:{
+    main: {
         height: 100,
         width: 100,
         backgroundColor: 'white',
@@ -118,7 +118,7 @@ const STYLES = StyleSheet.create({
     buttonClose: {
         // marginTop:10,
         width: 110,
-        height: 50,
+        padding: '4%',
         // backgroundColor: COLORS.orange,
         borderWidth: 1,
         borderColor: '#14A800',
@@ -133,9 +133,9 @@ const STYLES = StyleSheet.create({
     buttonClose1: {
         // marginTop:10,
         width: 110,
-        height: 50,
+        padding: '4%',
         backgroundColor: '#14A800',
-        margin: 10
+
     },
     textStyle: {
         fontSize: 17,

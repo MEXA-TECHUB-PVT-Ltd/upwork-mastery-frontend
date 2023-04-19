@@ -3,6 +3,7 @@ import COLORS from '../../../assets/consts/colors';
 
 const STYLES = StyleSheet.create({
     myBackground: {
+        flex: 1,
         backgroundColor: 'white',
     },
     imageView: {
@@ -44,6 +45,19 @@ const STYLES = StyleSheet.create({
         backgroundColor: '#14A800',
         marginBottom: '5%'
     },
+    btnv: {
+        position: 'absolute',
+        bottom: '5%',
+        marginHorizontal: '5%'
+    },
+    btn1: {
+        flexDirection: 'row',
+        backgroundColor: '#14A800',
+        borderRadius: 25,
+        padding: '4.5%',
+        width: 320,
+        justifyContent: 'center'
+    },
     text: {
         fontSize: 14,
         alignSelf: 'center',
@@ -73,21 +87,22 @@ const STYLES = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#E6E6E6'
     },
-    inputstyle1:{
+    inputstyle1: {
         marginLeft: '5%',
         color: '#969AA8',
         height: 55,
-        width:'80%',
+        width: '80%',
     },
     txt: {
         fontSize: 24,
         alignSelf: 'center',
         color: '#001E00',
         marginBottom: '5%',
-        fontWeight:'bold'
+        fontWeight: 'bold'
     },
     txtl: {
-        color: '#fff',
+        color: 'white',
+        alignSelf: 'center',
         fontSize: 17
     }
 })

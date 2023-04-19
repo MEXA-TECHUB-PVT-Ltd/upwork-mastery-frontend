@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { WebView } from 'react-native-webview';
+import React, { Component, useState, useEffect } from 'react';
+import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+
+import { useIsFocused } from '@react-navigation/native';
+import RenderHtml from 'react-native-render-html';
 
 import {
     Button,
@@ -10,19 +12,47 @@ import {
 } from 'react-native-paper';
 // ...
 const MyWebComponent = ({ navigation }) => {
+    const isFocused = useIsFocused()
+    const { width } = useWindowDimensions();
+    const [all, setall] = useState([]);
+
+    const alllist = async () => {
+        try {
+            const response = await fetch(global.url + "policy/GetPrivacyPolicy.php")
+            const json = await response.json();
+            setall(json[0].policy);            //json.id to sub ides ayan ge
+
+            // console.log(json[0].policy)
+
+        } catch (error) {
+            console.error(error);
+        } finally {
+            // setLoading(false);
+        }
+    }
+    const source = {
+        html: `${all}`
+    };
+    useEffect(() => {
+        alllist()
+    }, [isFocused]);
     return (
         <>
-            <View>
-                <Appbar.Header
-                    style={{ backgroundColor: '#14A800' }}
-                >
-                    <Appbar.Action icon="chevron-left" color={'white'} onPress={() => { navigation.goBack() }} />
-                    <Appbar.Content color={'white'} title="Privacy Policy" />
-                    <Appbar.Action onPress={() => { }} />
-                </Appbar.Header>
 
+            <Appbar.Header
+                style={{ backgroundColor: '#14A800' }} >
+                <Appbar.Action icon="chevron-left" color={'white'} onPress={() => { navigation.goBack() }} />
+                <Appbar.Content color={'white'} title="Privacy Policy" />
+                <Appbar.Action onPress={() => { }} />
+            </Appbar.Header>
+
+            <View style={{marginHorizontal:'1%'}}>
+                <RenderHtml
+                    contentWidth={width}
+                    source={source}
+
+                />
             </View>
-            <WebView source={{ uri: 'https://mtechub.org/privacy/' }} style={{ flex: 1 }} />
         </>
     )
 }

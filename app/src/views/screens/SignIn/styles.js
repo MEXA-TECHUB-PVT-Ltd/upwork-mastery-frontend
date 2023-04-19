@@ -8,7 +8,7 @@ const height = Dimensions.get('screen').height;
 const STYLES = StyleSheet.create({
 
     myBackground: {
-        // flex: 1,
+        flex: 1,
         backgroundColor: 'white',
         paddingHorizontal: '7%',
 
@@ -32,20 +32,19 @@ const STYLES = StyleSheet.create({
         marginTop: '10%'
     },
     buttonview: {
-        // marginVertical: '10%',
-        // marginBottom: '5%'
+        position: 'absolute',
+        bottom: '5%',
+        marginHorizontal: '5%'
     },
     btn: {
-        alignItems: 'center',
-        marginTop: '5%',       //uper sa margen
-        justifyContent: "center",  // for middle writting
-        height: 52,
-        fontSize: 20,
-        borderRadius: 50,
+        flexDirection: 'row',
         backgroundColor: '#14A800',
-        marginBottom: '5%'
+        borderRadius: 25,
+        padding: '4.5%',
+        width: 320,
+        justifyContent: 'center'
     },
-    
+
     img: {
         height: 53,
         width: 53,
