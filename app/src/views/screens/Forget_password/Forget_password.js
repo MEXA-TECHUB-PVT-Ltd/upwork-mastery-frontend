@@ -20,6 +20,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 const Forget_password = ({ navigation }) => {
     const [email, setemail] = useState("")
     const [fil, setfil] = useState()
+    const [check1, setcheck1] = useState(false)
     const forgetpass = async () => {
         try {
             if (email != '') {
@@ -59,7 +60,7 @@ const Forget_password = ({ navigation }) => {
 
 
     return (
-        <ScrollView style={styles.myBackground} keyboardShouldPersistTaps={'always'}>
+        <View style={styles.myBackground} keyboardShouldPersistTaps={'always'}>
             <TouchableOpacity style={styles.navigate_next} onPress={() => navigation.goBack()}>
                 <MaterialIcons name="navigate-before" size={30} color={'#14A800'} />
             </TouchableOpacity>
@@ -77,24 +78,31 @@ const Forget_password = ({ navigation }) => {
                         placeholderTextColor={'#969AA8'}
                         onChangeText={email => setemail(email)}
                         style={styles.inputstyle1}
+                        onFocus={() => {
+                            setcheck1(true)
+                        }}
+                        onSubmitEditing={() => {
+                            setcheck1(false)
+                        }}
                     />
                 </View>
                 <Text style={{ color: 'red' }}>{fil}</Text>
             </View>
 
+            {check1 == false ?
+                <View style={styles.btnv}>
+                    <TouchableOpacity onPress={() => {
+                        forgetpass()
 
-            <View style={styles.btnview}>
-                <TouchableOpacity onPress={() => {
-                    forgetpass()
+                    }} style={styles.btn1}>
+                        <Text style={styles.txtl}>
+                            Send Code
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                : null}
 
-                }} style={styles.btn}>
-                    <Text style={styles.txtl}>
-                        Send Code
-                    </Text>
-                </TouchableOpacity>
-            </View>
-
-        </ScrollView>
+        </View>
 
     );
 };

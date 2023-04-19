@@ -10,7 +10,7 @@ import {
     TouchableOpacity,
     LogBox,
     ImageBackground,
-    Modal, Pressable, FlatList, TextInput
+    Modal, Pressable, FlatList, TextInput, ActivityIndicator,useWindowDimensions
 } from 'react-native'
 
 import YoutubePlayer from 'react-native-youtube-iframe';
@@ -26,19 +26,19 @@ import Alertt from './../../../assets/images/alert.svg';
 import { collectBankAccountForPayment } from '@stripe/stripe-react-native';
 
 import PaymentScreen from './../Payment_Screen/Payment_Screen'
+import RenderHtml from 'react-native-render-html';
 LogBox.ignoreAllLogs();
 import { StripeProvider } from '@stripe/stripe-react-native';
 import { SP_KEY } from '@env'
 import WebView from 'react-native-webview'
 import paypalApi from './../apis/paypalApi'
-import { ActivityIndicator } from 'react-native-paper'
 import queryString from 'query-string';
 const App = ({ navigation }) => {
     // alert(SP_KEY)
     const [checked, setChecked] = React.useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible1, setModalVisible1] = useState(false);
-
+    const { width } = useWindowDimensions();
     const [playing, setPlaying] = useState(false);
 
     const [color, setcolor] = useState('gray')
@@ -91,6 +91,10 @@ const App = ({ navigation }) => {
             // setLoading(false);
         }
     }
+    const source = {
+        html: `${l}
+     `
+    };
     useEffect(() => {
         alll()
     }, []);
@@ -996,10 +1000,12 @@ const App = ({ navigation }) => {
                                 </Text>
 
                                 <ScrollView style={{ height: 240 }}>
-                                    <View>
-                                        <Text style={{ color: '#242424', fontSize: 12, marginTop: '3%' }}>
-                                            {l}
-                                        </Text>
+                                    <View style={{ marginHorizontal: '1%' }}>
+                                        <RenderHtml
+                                            contentWidth={width}
+                                            source={source}
+
+                                        />
                                     </View>
                                 </ScrollView>
                             </View>
@@ -1019,6 +1025,11 @@ const App = ({ navigation }) => {
 
                             </View>
 
+
+                            {loading == true ?
+                                <Text style={{ color: "#14A800", alignSelf: 'center' }}>Opening Paypal</Text>
+                                : null}
+
                             <View style={{
                                 borderTopColor: 'lightgray', borderTopWidth: 1, alignItems: 'center'
                             }}>
@@ -1028,23 +1039,26 @@ const App = ({ navigation }) => {
                                     disabled={loading == false && checked == true ? false : true}
                                     onPress={() => {
                                         // if (checked == true && loading == false) {
-                                            onPressPaypal()
-                                            setTimeout(() => {
-                                                setModalVisible1(!modalVisible1);
-                                            }, 2000)
+                                        onPressPaypal()
+                                        setTimeout(() => {
+                                            setModalVisible1(!modalVisible1);
+                                        }, 2000)
                                         // }
                                         // else {
                                         // }
                                     }}
-                               
+
                                 >
                                     <Text style={[styles.textStyle1, { color: 'white' }]}>Continue</Text>
-                                    <ActivityIndicator
-                                        size={20}
-                                        color='white'
-                                        animating={loading}
-                                        style={{ marginLeft: 10 }}
-                                    />
+                                    {
+                                        loading == true ?
+                                            <ActivityIndicator
+                                                size={20}
+                                                color='white'
+                                                animating={loading}
+                                                style={{ marginLeft: 10 }}
+                                            /> : null
+                                    }
                                 </TouchableOpacity>
                             </View>
 

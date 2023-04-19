@@ -6,7 +6,7 @@ import {
     Image,
     ImageBackground,
     TouchableOpacity,
-    TextInput, ScrollView
+    TextInput, ScrollView, ActivityIndicator
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -27,15 +27,20 @@ import styles from './styles';
 
 const SignIn = () => {
     const navigation = useNavigation()
+    const [loading, setloading] = useState(false)
+
     const [email, setemail] = useState("")
     const [pass, setpass] = useState("")
     const [check, setcheck] = useState(false)
+    const [check1, setcheck1] = useState(false)
+
     const [checked, setChecked] = React.useState(false);
     const [fil, setfil] = useState()
 
 
     const Login = async () => {
         if (email != '' && pass != '') {
+            setloading(true)
             var InsertAPIURL = global.url + "auth/Login.php";
             var headers = {
                 Accept: 'application/json',
@@ -53,7 +58,7 @@ const SignIn = () => {
                 .then(response => response.json())
                 .then(async response => {
                     if (response.status == true) {
-
+                        setloading(false)
                         await AsyncStorage.setItem("userid", response.data.id);
                         await AsyncStorage.setItem("username", response.data.username);
                         await AsyncStorage.setItem("useremail", response.data.email);
@@ -62,12 +67,13 @@ const SignIn = () => {
                         navigation.replace('Home')
 
                     } else {
+                        setloading(false)
                         setfil(response.message)
                     }
                     // console.log(response.message)
                 })
                 .catch(error => {
-
+                    setloading(false)
                     console.log('this is error' + error);
                     setfil('Email or Password is incorrect')
                 });
@@ -78,7 +84,7 @@ const SignIn = () => {
     }
     return (
 
-        <ScrollView style={styles.myBackground}
+        <View style={styles.myBackground}
             keyboardShouldPersistTaps='handled'
         >
 
@@ -125,8 +131,14 @@ const SignIn = () => {
                             marginLeft: '5%',
                             color: '#969AA8',
                             height: 55,
-                            width:'100%',
+                            width: '100%',
                             // backgroundColor: 'pink'
+                        }}
+                        onFocus={() => {
+                            setcheck1(true)
+                        }}
+                        onSubmitEditing={() => {
+                            setcheck1(false)
                         }}
                     />
                 </View>
@@ -143,7 +155,13 @@ const SignIn = () => {
                                 marginLeft: '5%',
                                 color: '#969AA8',
                                 height: 55,
-                                width:'80%',
+                                width: '80%',
+                            }}
+                            onFocus={() => {
+                                setcheck1(true)
+                            }}
+                            onSubmitEditing={() => {
+                                setcheck1(false)
                             }}
                         />
                     </View>
@@ -178,20 +196,29 @@ const SignIn = () => {
             </View>
 
 
-            <View style={{ marginTop: '74%' }}>
+            {check1 == false ?
                 <View style={styles.buttonview}>
                     <TouchableOpacity onPress={() => {
                         Login()
 
                     }} style={styles.btn}>
-                        <Text style={{ color: '#fff', fontSize: 17 }}>
+                        <Text style={{ color: '#fff', fontSize: 17, alignSelf: 'center' }}>
                             Sign In
                         </Text>
+                        {
+                            loading == true ?
+                                <ActivityIndicator
+                                    size={20}
+                                    color='white'
+                                    animating={loading}
+                                    style={{ marginLeft: 10 }}
+                                /> : null
+                        }
                     </TouchableOpacity>
                 </View>
+                : null}
 
-            </View>
-        </ScrollView>
+        </View>
 
 
 

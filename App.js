@@ -187,6 +187,7 @@ function MainNavigator() {
             fontSize: 10,
             margin: 0,
             padding: 0,
+            // marginBottom:'2%',
             color: 'pink'
           },
           // style: {
@@ -212,7 +213,7 @@ function MainNavigator() {
           // },
 
 
-          tabBarLabelStyle: { textAlign: 'center' },
+          tabBarLabelStyle: { textAlign: 'center', marginBottom: '5%' },
           // tabBarIndicatorStyle: {
           //   borderBottomColor: '#C2D5A8',
           //   borderBottomWidth: 2,
@@ -232,6 +233,7 @@ function MainNavigator() {
             borderTopWidth: 0.5,
             // borderWidth:1,
             // borderColor:'gray',
+
 
           },
 

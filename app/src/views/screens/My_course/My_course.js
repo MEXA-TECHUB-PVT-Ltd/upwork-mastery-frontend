@@ -35,7 +35,7 @@ const App = ({ navigation }) => {
     const [modalVisible1, setModalVisible1] = useState(false);
 
     const openmodel1 = useCallback(() => {
-        setModalVisible1(true)
+        // setModalVisible1(true)
     }
         , [])
     const [r, setr] = useState();
@@ -219,7 +219,7 @@ const App = ({ navigation }) => {
             >
                 <Appbar.Content color={'white'} title="My Course" />
                 <Appbar.Action onPress={() => { }} />
-                <Appbar.Action icon={'information-outline'} color={'white'} onPress={() => { openmodel1() }} />
+                {/* <Appbar.Action icon={'information-outline'} color={'white'} onPress={() => { openmodel1() }} /> */}
 
                 <Appbar.Action icon={book == true ? 'bookmark' : 'bookmark-outline'} color={'white'} onPress={() => {
                     setbook(!book)
@@ -236,10 +236,10 @@ const App = ({ navigation }) => {
                     <FlatList
                         data={all}
                         renderItem={({ item, index }) => {
-                            // console.log('select lengt---',all.length)
+                            console.log('select lengt---',item.link)
                             return <TouchableOpacity
                                 onPress={() => {
-                                    navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, select: all })
+                                    navigation.navigate('Course_Details', { index: index, id: item.id, description: item.description, title: item.title, stat: item.status,vid:item.link, select: all })
 
                                 }}
 
@@ -286,12 +286,12 @@ const App = ({ navigation }) => {
                         <FlatList
                             data={select}
                             renderItem={({ item, index }) => {
-                                console.log('select lengt---',select.length)
+                                console.log('select lengt---', select.length)
                                 return <TouchableOpacity
                                     // disabled={true}
                                     onPress={() => {
                                         navigation.navigate('Course_Details',
-                                            { index: index, id: item.id, description: item.description, select: select })
+                                            { index: index, id: item.id, description: item.description, title: item.title, stat: item.status,vid:item.link, select: select })
                                     }}
                                     style={{ marginHorizontal: '5%', backgroundColor: 'white' }}>
                                     <View

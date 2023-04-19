@@ -28,14 +28,16 @@ import img2 from './../../../assets/images/img2.svg';
 import img3 from './../../../assets/images/img3.svg';
 import img4 from './../../../assets/images/img4.svg';
 const App = ({ route, navigation }) => {
-    const { index, id, description, select } = route.params;
+    const { index, id, description, title, stat, vid, select } = route.params;
+
     const isFocused = useIsFocused()
     const [currentIndex, setCurrentIndex] = useState(index);
-    const [wish, setwish] = useState(false);
+    const [titlee, settitlee] = useState(title);
+
     const [playing, setPlaying] = useState(false);
     const [all, setall] = useState(select);
     const ref = useRef()
-
+    const [check, setcheck] = useState(false);
     const onStateChange = useCallback((state) => {
         if (state === "ended") {
             setPlaying(false);
@@ -43,14 +45,14 @@ const App = ({ route, navigation }) => {
         }
     }, []);
     useEffect(() => {
-
     }, [isFocused]);
 
 
 
     // -------------------------------------------------------------------------
-    console.log('item list--->>  ' + index, description)
+    console.log('item list--->>  ' + vid)
 
+    console.log(currentIndex)
     const line = parseInt(currentIndex + 1) + '/' + select.length
     // -------------------------------------------------------------------------
 
@@ -145,29 +147,34 @@ const App = ({ route, navigation }) => {
     }
     return (
         <ScrollView style={[styles.myBackground]}>
-            <Appbar.Header
-                style={{ backgroundColor: '#14A800' }}
-            >
-                <Appbar.Action icon="chevron-left" color={'white'} onPress={() => { navigation.goBack() }} />
-                <Appbar.Content color={'white'} title="Video Title" />
-                <Appbar.Action onPress={() => { }} />
-                <Appbar.Action onPress={() => { }} />
-                <Appbar.Content />
-                <Appbar.Content color={'white'} title={line} style={{ marginRight: '0%' }} />
-            </Appbar.Header>
+
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#14A800', height: 60 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', marginHorizontal: '5%' }}>
+                    <MaterialIcons name={'navigate-before'} size={24} color={'white'} onPress={() => { navigation.goBack() }} />
+                    <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center', marginLeft: '5%' }}>
+                        {titlee}
+                    </Text>
+                </View>
+                <Text style={{ fontSize: 20, color: 'white', marginRight: '5%', alignSelf: 'center' }}>{line}</Text>
+            </View>
             <Animated.FlatList
                 horizontal
                 data={all}
                 pagingEnabled={true}
+
                 // scrollToIndex={parseInt(currentIndex)}
-                keyExtractor={(item) => item.id}
+
+                // keyExtractor={(item) => item.id}
+
                 ref={ref}
                 showsHorizontalScrollIndicator={false}
                 onScroll={e => {
                     const x = e.nativeEvent.contentOffset.x
                     setCurrentIndex((x / (width - 50).toFixed(0)))
+
                 }}
                 renderItem={({ item, index }) => {
+
                     return <Animated.View>
 
                         <YoutubePlayer
@@ -175,7 +182,7 @@ const App = ({ route, navigation }) => {
                             width={360}
                             play={playing}
                             // mute={isMute}
-                            videoId={item.link}
+                            videoId={check != false ? item.link : vid}
                             onChangeState={onStateChange}
                         />
                         <View style={styles.v1}>
@@ -191,12 +198,16 @@ const App = ({ route, navigation }) => {
                                         }
 
                                     }}>
-                                    <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
-                                </TouchableOpacity >
+                                    {check != false ?
+                                        <MaterialIcons name={item.status == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={item.status == 'saved' ? '#14A800' : '#9D9D9D'} />
+                                        : <MaterialIcons name={stat == 'saved' ? "bookmark" : "bookmark-outline"} size={25} color={stat == 'saved' ? '#14A800' : '#9D9D9D'} />
+                                    }</TouchableOpacity >
                             </View>
 
                             <View style={{ marginHorizontal: '5%' }}>
-                                <Text style={styles.txt3}>{item.description}</Text>
+                                {check != false ?
+                                    <Text style={styles.txt3}>{item.description}</Text>
+                                    : <Text style={styles.txt3}>{description}</Text>}
                             </View>
                         </View>
                     </Animated.View>
@@ -247,6 +258,14 @@ const App = ({ route, navigation }) => {
                     currentIndex == 0 ? <Text></Text> : (
                         <TouchableOpacity style={styles.btnl}
                             onPress={() => {
+
+                                let i
+                                for (i = 0; i < select.length; i++) {
+                                    if (parseInt(currentIndex - 1) == i) {
+                                        settitlee(select[i].title)
+                                        setcheck(true)
+                                    }
+                                }
                                 setCurrentIndex(currentIndex - 1)
                                 ref.current.scrollToIndex({
                                     animated: true,
@@ -264,6 +283,14 @@ const App = ({ route, navigation }) => {
                     all.length - 1 < currentIndex ? <Text></Text> : (
                         <TouchableOpacity style={styles.btnl}
                             onPress={() => {
+
+                                let i
+                                for (i = 0; i < select.length; i++) {
+                                    if (parseInt(currentIndex + 1) == i) {
+                                        settitlee(select[i].title)
+                                        setcheck(true)
+                                    }
+                                }
                                 setCurrentIndex(currentIndex + 1)
                                 ref.current.scrollToIndex({
                                     animated: true,

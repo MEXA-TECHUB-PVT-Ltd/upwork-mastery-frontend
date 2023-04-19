@@ -26,7 +26,7 @@ const STYLES = StyleSheet.create({
         marginTop: '95%',       //uper sa margen
         justifyContent: "center",  // for middle writting
         marginHorizontal: '5%',
-        height: 52,
+        padding: '4.5%',
         fontSize: 20,
         borderRadius: 50,
         backgroundColor: '#14A800',

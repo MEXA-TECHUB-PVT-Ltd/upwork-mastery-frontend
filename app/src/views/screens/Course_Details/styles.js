@@ -25,7 +25,7 @@ const STYLES = StyleSheet.create({
     },
     v11: {
         flexDirection: 'row',
-        marginHorizontal:'5%'
+        marginHorizontal: '5%'
         // justifyContent: 'space-between',
         // marginBottom: '2%'
     },
@@ -51,10 +51,11 @@ const STYLES = StyleSheet.create({
     },
     btnl: {
         backgroundColor: '#14A800',
-        height: 48,
+        padding: '4%',
         width: 130,
         borderRadius: 25,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginVertical: 5,
     },
     txtl: {
         color: 'white',

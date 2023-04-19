@@ -12,7 +12,8 @@ import {
     Button,
     TouchableRipple,
     Appbar,
-    Divider
+    Divider,
+    ActivityIndicator
 } from 'react-native-paper';
 import { useIsFocused } from '@react-navigation/native';
 
@@ -22,6 +23,8 @@ import styles from './styles';
 
 const Profile = ({ navigation }) => {
     const isFocused = useIsFocused()
+    const [loading, setloading] = useState(false)
+    const [check, setcheck] = useState(false)
 
     const [modalVisible, setModalVisible] = useState(false);
     const [username, setusername] = useState("")
@@ -39,6 +42,7 @@ const Profile = ({ navigation }) => {
 
     const update = async () => {
         try {
+            setloading(true)
             console.log(await AsyncStorage.getItem('userid'))
             await fetch(global.url + "auth/UpdateProfile.php", {
                 method: 'PUT',
@@ -54,13 +58,19 @@ const Profile = ({ navigation }) => {
                 .then(data => {
                     if (data.status === true) {
                         setModalVisible(true)
+                        setloading(false)
                     }
-                    else console.log("Plz Try Again!")
+                    else {
+                        console.log("Plz Try Again!")
+                        setloading(false)
+                    }
+
                 });
         }
         catch (error) {
             console.log("Post submission failed");
             console.log(error.message);
+            setloading(false)
         }
 
 
@@ -69,7 +79,7 @@ const Profile = ({ navigation }) => {
 
 
     return (
-        <ScrollView style={styles.myBackground}>
+        <View style={styles.myBackground} >
             <Appbar.Header
                 style={{ backgroundColor: '#14A800', }}>
                 <Appbar.Action icon="chevron-left" color={'white'} onPress={() => { navigation.goBack() }} />
@@ -91,6 +101,14 @@ const Profile = ({ navigation }) => {
                             height: 55,
                             width: '80%',
                         }}
+
+                        onFocus={() => {
+                            setcheck(true)
+                        }}
+                        onSubmitEditing={() => {
+                            setcheck(false)
+                        }}
+                
                     />
                 </View>
                 <View style={{ marginTop: '3%' }}>
@@ -108,58 +126,65 @@ const Profile = ({ navigation }) => {
                                 height: 55,
                                 width: '80%',
                             }}
+
                         />
                     </View>
                 </View>
+            </View>
 
-
-
-
-
-                <View style={{ marginTop: '150%', marginBottom: '5%' }}>
+            {check == false ?
+                < View style={{ position: 'absolute', bottom: '5%', marginHorizontal: '5%' }}>
                     <TouchableOpacity
                         onPress={() => { update() }}
-                        style={{ backgroundColor: '#14A800', borderRadius: 25, height: 55, justifyContent: 'center' }}>
+                        style={{ flexDirection: 'row', backgroundColor: '#14A800', borderRadius: 25, padding: '4.5%', justifyContent: 'center', width: 320 }}>
                         <Text style={{ color: 'white', alignSelf: 'center', fontSize: 17 }}>Update</Text>
+                        {
+                            loading == true ?
+                                <ActivityIndicator
+                                    size={20}
+                                    color='white'
+                                    animating={loading}
+                                    style={{ marginLeft: 10 }}
+                                /> : null
+                        }
                     </TouchableOpacity>
                 </View>
-            </View>
+                : null}
 
 
-            <View style={styles.centeredView}>
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been closed.");
-                        setModalVisible(!modalVisible);
-                    }}
-                >
-                    <View style={styles.centeredView}>
-                        <View style={styles.modalView}>
-                            <View style={styles.model}>
-                                <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
-                            </View>
-                            <View style={styles.v3}>
-                                <Text style={styles.textStyle}>Success</Text>
-                                <Text style={styles.txt5}>Profile updated successfully</Text>
-                                <TouchableOpacity
-                                    activeOpacity={0.7}
-                                    style={[styles.button]}
-                                    onPress={() => {
-                                        setModalVisible(!modalVisible)
-                                        navigation.goBack()
-                                    }}
-                                >
-                                    <Text style={[styles.textStyle, { color: 'white' }]}>OK</Text>
-                                </TouchableOpacity>
-                            </View>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <View style={styles.model}>
+                            <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
+                        </View>
+                        <View style={styles.v3}>
+                            <Text style={[styles.textStyle, { fontSize: 23 }]}>Success</Text>
+                            <Text style={styles.txt5}>Profile updated successfully</Text>
+                            <TouchableOpacity
+                                activeOpacity={0.7}
+                                style={[styles.button]}
+                                onPress={() => {
+                                    setModalVisible(!modalVisible)
+                                    navigation.goBack()
+                                }}
+                            >
+                                <Text style={[styles.textStyle, { color: 'white' }]}>OK</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
-                </Modal>
-            </View>
-        </ScrollView>
+                </View>
+            </Modal>
+
+        </View >
     );
 };
 
