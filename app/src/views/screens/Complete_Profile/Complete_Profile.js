@@ -97,10 +97,10 @@ const Profile = ({ route, navigation }) => {
     }
 
     return (
-        <View style={styles.myBackground} keyboardShouldPersistTaps={true}>
+        <ScrollView style={styles.myBackground} keyboardShouldPersistTaps={true}>
             <Appbar.Header
                 style={{ backgroundColor: '#14A800', }}>
-                <Appbar.Action icon="chevron-left" onPress={() => { navigation.goBack() }} iconColor='white' />
+                {/* <Appbar.Action icon="chevron-left" onPress={() => { navigation.goBack() }} iconColor='white' /> */}
                 <Appbar.Content title="Complete Profile" color='white' />
                 <Appbar.Action />
             </Appbar.Header>
@@ -141,12 +141,12 @@ const Profile = ({ route, navigation }) => {
                         color: '#969AA8',
                         width: '90%'
                     }}
-                    onFocus={() => {
-                        setcheck1(true)
-                    }}
-                    onSubmitEditing={() => {
-                        setcheck1(false)
-                    }}
+                // onFocus={() => {
+                //     setcheck1(true)
+                // }}
+                // onSubmitEditing={() => {
+                //     setcheck1(false)
+                // }}
                 />
 
             </View>
@@ -164,12 +164,12 @@ const Profile = ({ route, navigation }) => {
                             color: '#969AA8',
                             width: '80%'
                         }}
-                        onFocus={() => {
-                            setcheck1(true)
-                        }}
-                        onSubmitEditing={() => {
-                            setcheck1(false)
-                        }}
+                    // onFocus={() => {
+                    //     setcheck1(true)
+                    // }}
+                    // onSubmitEditing={() => {
+                    //     setcheck1(false)
+                    // }}
                     />
                 </View>
                 {
@@ -203,63 +203,63 @@ const Profile = ({ route, navigation }) => {
                     <Text style={{ alignSelf: 'center', color: '#14A800', fontSize: 13 }}>Privacy & Policy </Text>
                 </TouchableOpacity>
             </View>
-            {check1 == false ?
-                <View style={styles.btnv}>
-                    <TouchableOpacity
-                        onPress={() => {
-                            Login()
 
-                        }}
-                        style={styles.btn1}>
-                        <Text style={styles.txt1}>Create Account</Text>
-                        {
-                            loading == true ?
-                                <ActivityIndicator
-                                    size={20}
-                                    color='white'
-                                    animating={loading}
-                                    style={{ marginLeft: 10 }}
-                                /> : null
-                        }
-                    </TouchableOpacity>
-                </View>
-                : null}
+            <View style={styles.btnv}>
+                <TouchableOpacity
+                    onPress={() => {
+                        Login()
 
-
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been closed.");
-                        setModalVisible(!modalVisible);
                     }}
-                >
-                    <View style={styles.centeredView}>
-                        <View style={styles.modalView}>
-                            <View style={styles.model}>
-                                <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
-                            </View>
-                            <View style={styles.v3}>
-                                <Text style={styles.textStyle}>Success</Text>
-                                <Text style={styles.txt5}>Profile created successfully</Text>
-                                <TouchableOpacity
-                                    activeOpacity={0.7}
-                                    style={[styles.button]}
-                                    onPress={() => {
-                                        setModalVisible(!modalVisible)
-                                        navigation.replace('Home')
-                                        // openmodel1()
-                                    }}
-                                >
-                                    <Text style={[styles.textStyle1, { color: 'white' }]}>Go to Home</Text>
-                                </TouchableOpacity>
-                            </View>
+                    style={styles.btn1}>
+                    <Text style={styles.txt1}>Create Account</Text>
+                    {
+                        loading == true ?
+                            <ActivityIndicator
+                                size={20}
+                                color='white'
+                                animating={loading}
+                                style={{ marginLeft: 10 }}
+                            /> : null
+                    }
+                </TouchableOpacity>
+            </View>
+
+
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <View style={styles.model}>
+                            <Alertt width={600} height={75} style={{ marginTop: '10%' }} />
+                        </View>
+                        <View style={styles.v3}>
+                            <Text style={styles.textStyle}>Success</Text>
+                            <Text style={styles.txt5}>Profile created successfully</Text>
+                            <TouchableOpacity
+                                activeOpacity={0.7}
+                                style={[styles.button]}
+                                onPress={() => {
+                                    setModalVisible(!modalVisible)
+                                    navigation.replace('Home')
+                                    // openmodel1()
+                                }}
+                            >
+                                <Text style={[styles.textStyle1, { color: 'white' }]}>Go to Home</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
-                </Modal>
-            
-        </View>
+                </View>
+            </Modal>
+
+        </ScrollView>
     );
 };
 

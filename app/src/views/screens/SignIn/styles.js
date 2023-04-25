@@ -8,7 +8,7 @@ const height = Dimensions.get('screen').height;
 const STYLES = StyleSheet.create({
 
     myBackground: {
-        flex: 1,
+
         backgroundColor: 'white',
         paddingHorizontal: '7%',
 
@@ -32,16 +32,18 @@ const STYLES = StyleSheet.create({
         marginTop: '10%'
     },
     buttonview: {
-        position: 'absolute',
-        bottom: '5%',
-        marginHorizontal: '5%'
+        alignItems: 'center',
+        marginTop: '60%',
+        // marginHorizontal: '5%',
+        marginBottom: '5%'
     },
     btn: {
         flexDirection: 'row',
         backgroundColor: '#14A800',
         borderRadius: 25,
-        padding: '4.5%',
-        width: 320,
+        padding: 14,
+        width: '100%',
+        // height:45,
         justifyContent: 'center'
     },
 

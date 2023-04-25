@@ -3,7 +3,6 @@ import COLORS from '../../../assets/consts/colors';
 
 const STYLES = StyleSheet.create({
     myBackground: {
-        flex: 1,
         backgroundColor: 'white',
     },
     imageView: {
@@ -46,8 +45,8 @@ const STYLES = StyleSheet.create({
         marginBottom: '5%'
     },
     btnv: {
-        position: 'absolute',
-        bottom: '5%',
+        marginTop: '69%',
+        marginBottom: '5%',
         marginHorizontal: '5%'
     },
     btn1: {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
@@ -6,7 +6,7 @@ import {
     Image,
     ImageBackground,
     TouchableOpacity,
-    TextInput, ScrollView, ActivityIndicator
+    TextInput, ScrollView, ActivityIndicator, Keyboard, BackHandler
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -33,7 +33,7 @@ const SignIn = () => {
     const [pass, setpass] = useState("")
     const [check, setcheck] = useState(false)
     const [check1, setcheck1] = useState(false)
-
+    const next = useRef()
     const [checked, setChecked] = React.useState(false);
     const [fil, setfil] = useState()
 
@@ -84,7 +84,7 @@ const SignIn = () => {
     }
     return (
 
-        <View style={styles.myBackground}
+        <ScrollView style={styles.myBackground}
             keyboardShouldPersistTaps='handled'
         >
 
@@ -134,12 +134,14 @@ const SignIn = () => {
                             width: '100%',
                             // backgroundColor: 'pink'
                         }}
-                        onFocus={() => {
-                            setcheck1(true)
-                        }}
+
                         onSubmitEditing={() => {
-                            setcheck1(false)
+                            next.current.focus()
+
                         }}
+
+                        blurOnSubmit={false}
+                        returnKeyType='next'
                     />
                 </View>
 
@@ -157,12 +159,8 @@ const SignIn = () => {
                                 height: 55,
                                 width: '80%',
                             }}
-                            onFocus={() => {
-                                setcheck1(true)
-                            }}
-                            onSubmitEditing={() => {
-                                setcheck1(false)
-                            }}
+
+                            ref={next}
                         />
                     </View>
                     {
@@ -193,10 +191,17 @@ const SignIn = () => {
                         Forget Password?
                     </Text>
                 </TouchableOpacity>
-            </View>
 
 
-            {check1 == false ?
+
+
+
+
+
+
+
+
+
                 <View style={styles.buttonview}>
                     <TouchableOpacity onPress={() => {
                         Login()
@@ -216,9 +221,14 @@ const SignIn = () => {
                         }
                     </TouchableOpacity>
                 </View>
-                : null}
 
-        </View>
+            </View>
+
+
+
+
+
+        </ScrollView>
 
 
 
