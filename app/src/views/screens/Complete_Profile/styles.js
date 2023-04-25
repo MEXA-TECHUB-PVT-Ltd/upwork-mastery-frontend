@@ -4,7 +4,7 @@ import COLORS from '../../../assets/consts/colors';
 const STYLES = StyleSheet.create({
 
     myBackground: {
-        flex: 1,
+
         backgroundColor: 'white',
 
     },
@@ -49,8 +49,8 @@ const STYLES = StyleSheet.create({
         marginVertical: '4%'
     },
     btnv: {
-        position: 'absolute',
-        bottom: '5%',
+        marginTop: '73%',
+        marginBottom: '5%',
         marginHorizontal: '5%'
     },
     btn1: {

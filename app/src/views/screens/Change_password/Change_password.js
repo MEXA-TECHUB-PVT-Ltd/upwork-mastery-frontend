@@ -5,7 +5,7 @@ import {
     Text,
     View, Image, ImageBackground, Dimensions,
     TextInput,
-    TouchableOpacity, Modal, Pressable, ActivityIndicator
+    TouchableOpacity, Modal, Pressable, ActivityIndicator, ScrollView
 } from 'react-native';
 import { TouchableRipple, Checkbox, Appbar } from 'react-native-paper';
 // import { TouchableRipple } from 'react-native-paper';
@@ -21,7 +21,6 @@ import { useIsFocused } from '@react-navigation/native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { useNavigation } from '@react-navigation/native';
-import { ScrollView } from 'react-native-gesture-handler';
 
 
 const Change_password = () => {
@@ -117,7 +116,7 @@ const Change_password = () => {
 
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
 
             <Appbar.Header
                 style={{ backgroundColor: '#14A800' }}
@@ -143,12 +142,12 @@ const Change_password = () => {
                                 height: 55,
                                 width: '80%',
                             }}
-                            onFocus={() => {
-                                setcheckk(true)
-                            }}
-                            onSubmitEditing={() => {
-                                setcheckk(false)
-                            }}
+                        // onFocus={() => {
+                        //     setcheckk(true)
+                        // }}
+                        // onSubmitEditing={() => {
+                        //     setcheckk(false)
+                        // }}
                         />
                     </View>
                     {
@@ -177,12 +176,12 @@ const Change_password = () => {
                                 height: 55,
                                 width: '80%',
                             }}
-                            onFocus={() => {
-                                setcheckk(true)
-                            }}
-                            onSubmitEditing={() => {
-                                setcheckk(false)
-                            }}
+                        // onFocus={() => {
+                        //     setcheckk(true)
+                        // }}
+                        // onSubmitEditing={() => {
+                        //     setcheckk(false)
+                        // }}
                         // textColor='pink'
                         />
                     </View>
@@ -212,12 +211,12 @@ const Change_password = () => {
                                 height: 55,
                                 width: '80%',
                             }}
-                            onFocus={() => {
-                                setcheckk(true)
-                            }}
-                            onSubmitEditing={() => {
-                                setcheckk(false)
-                            }}
+                        // onFocus={() => {
+                        //     setcheckk(true)
+                        // }}
+                        // onSubmitEditing={() => {
+                        //     setcheckk(false)
+                        // }}
                         // textColor='pink'
                         />
                     </View>
@@ -241,24 +240,24 @@ const Change_password = () => {
 
             </View>
 
-            {checkk == false ?
-                <View style={{ position: 'absolute', bottom: '5%', marginHorizontal: '5%' }}>
-                    <TouchableOpacity onPress={() => reset()} style={styles.button1}>
-                        <Text style={{ fontSize: 18, color: '#fff', alignSelf: 'center' }}>
-                            Change
-                        </Text>
-                        {
-                            loading == true ?
-                                <ActivityIndicator
-                                    size={20}
-                                    color='white'
-                                    animating={loading}
-                                    style={{ marginLeft: 10 }}
-                                /> : null
-                        }
-                    </TouchableOpacity>
-                </View>
-                : null}
+
+            <View style={{ marginTop: '70%', marginHorizontal: '5%', marginBottom: '5%' }}>
+                <TouchableOpacity onPress={() => reset()} style={styles.button1}>
+                    <Text style={{ fontSize: 18, color: '#fff', alignSelf: 'center' }}>
+                        Change
+                    </Text>
+                    {
+                        loading == true ?
+                            <ActivityIndicator
+                                size={20}
+                                color='white'
+                                animating={loading}
+                                style={{ marginLeft: 10 }}
+                            /> : null
+                    }
+                </TouchableOpacity>
+            </View>
+
 
 
 
@@ -293,7 +292,7 @@ const Change_password = () => {
                     </View>
                 </View>
             </Modal>
-        </View>
+        </ScrollView>
     );
 };
 

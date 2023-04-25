@@ -60,7 +60,7 @@ const Forget_password = ({ navigation }) => {
 
 
     return (
-        <View style={styles.myBackground} keyboardShouldPersistTaps={'always'}>
+        <ScrollView style={styles.myBackground} keyboardShouldPersistTaps={'always'}>
             <TouchableOpacity style={styles.navigate_next} onPress={() => navigation.goBack()}>
                 <MaterialIcons name="navigate-before" size={30} color={'#14A800'} />
             </TouchableOpacity>
@@ -78,18 +78,18 @@ const Forget_password = ({ navigation }) => {
                         placeholderTextColor={'#969AA8'}
                         onChangeText={email => setemail(email)}
                         style={styles.inputstyle1}
-                        onFocus={() => {
-                            setcheck1(true)
-                        }}
-                        onSubmitEditing={() => {
-                            setcheck1(false)
-                        }}
+                        // onFocus={() => {
+                        //     setcheck1(true)
+                        // }}
+                        // onSubmitEditing={() => {
+                        //     setcheck1(false)
+                        // }}
                     />
                 </View>
                 <Text style={{ color: 'red' }}>{fil}</Text>
             </View>
 
-            {check1 == false ?
+          
                 <View style={styles.btnv}>
                     <TouchableOpacity onPress={() => {
                         forgetpass()
@@ -100,9 +100,9 @@ const Forget_password = ({ navigation }) => {
                         </Text>
                     </TouchableOpacity>
                 </View>
-                : null}
+               
 
-        </View>
+        </ScrollView>
 
     );
 };

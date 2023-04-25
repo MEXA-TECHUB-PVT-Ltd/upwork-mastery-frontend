@@ -10,7 +10,7 @@ import {
     TouchableOpacity,
     LogBox,
     ImageBackground,
-    Modal, Pressable, FlatList, TextInput, ActivityIndicator,useWindowDimensions
+    Modal, Pressable, FlatList, TextInput, ActivityIndicator, useWindowDimensions
 } from 'react-native'
 
 import YoutubePlayer from 'react-native-youtube-iframe';
@@ -40,8 +40,8 @@ const App = ({ navigation }) => {
     const [modalVisible1, setModalVisible1] = useState(false);
     const { width } = useWindowDimensions();
     const [playing, setPlaying] = useState(false);
-
-    const [color, setcolor] = useState('gray')
+    check1
+    const [check1, setcheck1] = useState(true)
 
 
 
@@ -98,7 +98,17 @@ const App = ({ navigation }) => {
     useEffect(() => {
         alll()
     }, []);
-
+    const [isEndReached, setIsEndReached] = useState(false);
+    const handleScroll = (event) => {
+        const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
+        const isScrolledToEnd = layoutMeasurement.height + contentOffset.y >= contentSize.height;
+        if (isScrolledToEnd && !isEndReached) {
+            setIsEndReached(true);
+            // Perform action when the user reaches the end of the scroll view
+        } else if (!isScrolledToEnd && isEndReached) {
+            setIsEndReached(false);
+        }
+    };
     const [points, setpoints] = useState([
         {
             id: 1,
@@ -323,9 +333,16 @@ const App = ({ navigation }) => {
         setpaypalurl(null)
         setaccesstoken(null)
     }
+    const scrollRef = useRef()
+    const [c, setc] = useState(false)
     return (
         <View>
-            <ScrollView style={styles.myBackground}>
+            <ScrollView style={styles.myBackground} ref={scrollRef}
+                onContentSizeChange={() => {
+                    if (c == true)
+                        scrollRef.current.scrollToEnd()
+                }}
+            >
                 <TouchableOpacity
                     onPress={() => { navigation.navigate('SignIn') }}
                     style={{ backgroundColor: "#14A800", marginTop: '5%', marginRight: '5%', borderRadius: 20, width: '20%', justifyContent: 'center', alignSelf: 'flex-end' }}>
@@ -812,6 +829,8 @@ const App = ({ navigation }) => {
                                 ref={input}
                                 selectTextOnFocus
 
+                                // onFocus={() => { setcheck1(false) }}
+                                // onSubmitEditing={() => { setcheck1(true) }}
 
                                 style={{
                                     marginLeft: '5%',
@@ -938,13 +957,21 @@ const App = ({ navigation }) => {
                 </StripeProvider>
 
             </ScrollView >
-            <View style={styles.vbtnlast}>
-                <TouchableOpacity style={styles.btnlast} onPress={() => {
-                    onPress()
-                }}>
-                    <Text style={styles.txtlast}>Get Access Now</Text>
-                </TouchableOpacity>
-            </View>
+
+
+
+            {check1 == true ?
+                <View style={styles.vbtnlast}>
+                    <TouchableOpacity style={styles.btnlast} onPress={() => {
+                        setc(true)
+                        onPress()
+                    }}>
+                        <Text style={styles.txtlast}>Get Access Now</Text>
+                    </TouchableOpacity>
+                </View> : null
+            }
+
+
             <View style={styles.centeredView}>
                 <Modal
                     animationType="slide"
@@ -1029,6 +1056,12 @@ const App = ({ navigation }) => {
                             {loading == true ?
                                 <Text style={{ color: "#14A800", alignSelf: 'center' }}>Opening Paypal</Text>
                                 : null}
+
+
+
+
+
+
 
                             <View style={{
                                 borderTopColor: 'lightgray', borderTopWidth: 1, alignItems: 'center'

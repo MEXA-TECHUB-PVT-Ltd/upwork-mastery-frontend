@@ -79,7 +79,7 @@ const Profile = ({ navigation }) => {
 
 
     return (
-        <View style={styles.myBackground} >
+        <ScrollView style={styles.myBackground} >
             <Appbar.Header
                 style={{ backgroundColor: '#14A800', }}>
                 <Appbar.Action icon="chevron-left" color={'white'} onPress={() => { navigation.goBack() }} />
@@ -102,12 +102,12 @@ const Profile = ({ navigation }) => {
                             width: '80%',
                         }}
 
-                        onFocus={() => {
-                            setcheck(true)
-                        }}
-                        onSubmitEditing={() => {
-                            setcheck(false)
-                        }}
+                        // onFocus={() => {
+                        //     setcheck(true)
+                        // }}
+                        // onSubmitEditing={() => {
+                        //     setcheck(false)
+                        // }}
                 
                     />
                 </View>
@@ -130,10 +130,11 @@ const Profile = ({ navigation }) => {
                         />
                     </View>
                 </View>
-            </View>
 
-            {check == false ?
-                < View style={{ position: 'absolute', bottom: '5%', marginHorizontal: '5%' }}>
+
+
+
+                < View style={{marginTop:'90%',marginBottom:'5%',alignItems:'center', marginHorizontal: '5%' }}>
                     <TouchableOpacity
                         onPress={() => { update() }}
                         style={{ flexDirection: 'row', backgroundColor: '#14A800', borderRadius: 25, padding: '4.5%', justifyContent: 'center', width: 320 }}>
@@ -149,7 +150,11 @@ const Profile = ({ navigation }) => {
                         }
                     </TouchableOpacity>
                 </View>
-                : null}
+            </View>
+
+           
+               
+               
 
 
             <Modal
@@ -184,7 +189,7 @@ const Profile = ({ navigation }) => {
                 </View>
             </Modal>
 
-        </View >
+        </ScrollView>
     );
 };
 
