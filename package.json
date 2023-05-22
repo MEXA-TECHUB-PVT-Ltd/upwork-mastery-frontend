@@ -16,6 +16,7 @@
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/native-stack": "^6.9.7",
     "@stripe/stripe-react-native": "^0.26.0",
+    "add": "^2.0.6",
     "base-64": "^1.0.0",
     "formik": "^2.2.9",
     "install": "^0.13.0",
@@ -27,6 +28,7 @@
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-htmlview": "^0.16.0",
+    "react-native-iap": "^12.10.5",
     "react-native-paper": "^5.5.2",
     "react-native-raw-bottom-sheet": "^2.2.0",
     "react-native-render-html": "^6.3.4",
@@ -39,6 +41,7 @@
     "react-native-vector-icons": "^9.2.0",
     "react-native-webview": "^12.0.2",
     "react-native-youtube-iframe": "^2.2.2",
+    "yarn": "^1.22.19",
     "yup": "^1.1.1"
   },
   "devDependencies": {

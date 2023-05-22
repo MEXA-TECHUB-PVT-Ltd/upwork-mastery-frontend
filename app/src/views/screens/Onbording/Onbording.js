@@ -40,7 +40,7 @@ const App = ({ navigation }) => {
     const [modalVisible1, setModalVisible1] = useState(false);
     const { width } = useWindowDimensions();
     const [playing, setPlaying] = useState(false);
-    check1
+    // check1
     const [check1, setcheck1] = useState(true)
 
 

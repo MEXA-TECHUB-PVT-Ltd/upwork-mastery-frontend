@@ -36,7 +36,7 @@ import Paypal from './app/src/views/screens/Paypal/Paypal';
 import Checkout from './app/src/views/screens/Paypal/Checkout';
 
 import Onbording1 from './app/src/views/screens/Onbording1/Onbording1';
-
+// import InappPurchase from './app/src/views/screens/InappPurchase/InappPurchase';
 import First_screen from './app/src/views/screens/First_screen'
 import Come from './app/src/views/screens/Come'
 const Stack = createNativeStackNavigator();
@@ -78,6 +78,15 @@ function MainNavigator() {
           component={Onbording1}
           options={{ headerShown: false }}
         /> */}
+
+        {/* <Stack.Screen
+          name="InappPurchase"
+          component={InappPurchase}
+          options={{ headerShown: false }}
+        /> */}
+
+
+
         <Stack.Screen
           name="First_screen"
           component={First_screen}
